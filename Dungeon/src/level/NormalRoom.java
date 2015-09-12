@@ -1,27 +1,22 @@
 package level;
 
-public class NormalRoom implements Room{
+public class NormalRoom extends Room{
 
 	protected String name;
-	public NormalRoom(String string) {
-		this.name=name;
+	public NormalRoom(String name) {
+		super(name);
 	}
 
 	@Override
-	public void setNeighbour(String direction, Room neighbour) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Room goToDirection(String direction) {
+	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getName() {
-		return this.name;
+	public String getDirection() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

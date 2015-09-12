@@ -8,6 +8,7 @@ public class Level1 extends Level{
 		intersection= new NormalRoom("intersection");
 		trap=new NormalRoom("trap");
 		exit = new NormalRoom("exit");
+
 		
 		entrance.setNeighbour("north", intersection);
 		intersection.setNeighbour("north", exit);

@@ -1,27 +1,24 @@
 package level;
 
-public class TreasureRoom implements Room{
+public class TreasureRoom extends Room{
 
-	protected String name;
-	public TreasureRoom(String string) {
-		this.name=name;
+
+	public TreasureRoom(String name) {
+		super(name);
 	}
 	
-	@Override
-	public void setNeighbour(String direction, Room neighbour) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public Room goToDirection(String direction) {
+	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public String getName() {
-		return this.name;
+	public String getDirection() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
