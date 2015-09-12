@@ -6,7 +6,6 @@ import level.*;
 
 public class Dungeon {
 
-		private int level=1;
 		protected Room currentRoom;
 		protected boolean gameIsFinished=false;
 		protected final Scanner scanner = new Scanner(System.in);
@@ -33,19 +32,13 @@ public class Dungeon {
 				System.out.println("I don't know what you mean");
 			}
 		}
+
 		
-		public static void main(String args[]){
-			Dungeon dungeon = new Dungeon(new Level1());
-			dungeon.start();
-			/*Player p = new Player("Loic");       ===> test 
-			p.getInventory().addItem(new Potion("Sword"), 2);
-			p.getInventory().addItem(new Weapon("Sword"), 2);
-			System.out.println(p.getInventory().toString());*/
-		}
-		
-		public void start(){
+		public void start() throws InterruptedException{
 			do{
+				Thread.sleep(500);
 				System.out.println("You are in "+getCurrentRoom().getName());
+				Thread.sleep(500);
 				System.out.println("What do you want to do ?");
 				System.out.println("> ");
 				
@@ -55,8 +48,11 @@ public class Dungeon {
 			}while(!gameIsFinished());
 			
 			System.out.println("You are in "+getCurrentRoom().getName());
-			if(gameIsWon())
+			if(gameIsWon()){
+				Thread.sleep(500);
 				System.out.println("You win !");
+				Thread.sleep(1000);
+			}
 			else
 				System.out.println("You loose !");
 			
