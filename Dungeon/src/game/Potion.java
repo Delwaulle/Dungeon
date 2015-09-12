@@ -2,6 +2,11 @@ package game;
 
 public class Potion extends Item{
 	
+	public Potion(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
 	private int power;
 	public int getPower() {
 		return power;

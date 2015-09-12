@@ -2,8 +2,11 @@ package game;
 
 import java.util.Scanner;
 
+import level.*;
+
 public class Dungeon {
 
+		private int level=1;
 		protected Room currentRoom;
 		protected boolean gameIsFinished=false;
 		protected final Scanner scanner = new Scanner(System.in);
@@ -34,6 +37,10 @@ public class Dungeon {
 		public static void main(String args[]){
 			Dungeon dungeon = new Dungeon(new Level1());
 			dungeon.start();
+			/*Player p = new Player("Loic");       ===> test 
+			p.getInventory().addItem(new Potion("Sword"), 2);
+			p.getInventory().addItem(new Weapon("Sword"), 2);
+			System.out.println(p.getInventory().toString());*/
 		}
 		
 		public void start(){

@@ -1,16 +1,11 @@
-package game;
+package level;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Room {
-	private final String name;
-	private Map<String,Room> neighbours = new HashMap<String,Room>();
-	
-	public Room(String name){
-		this.name=name;
-	}
-	
+public interface Room {
+	public Map<String,Room> neighbours = new HashMap<String,Room>();	
+	/*
 	public Room goToDirection(String direction){
 		return (neighbours.containsKey(direction)) ? neighbours.get(direction) : null;
 	}
@@ -21,5 +16,9 @@ public class Room {
 	
 	public String getName(){
 		return this.name;
-	}
+	}*/
+	
+	public void setNeighbour(String direction, Room neighbour);
+	public Room goToDirection(String direction);
+	public String getName();
 }

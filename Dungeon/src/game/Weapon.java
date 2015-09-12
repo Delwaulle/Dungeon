@@ -2,18 +2,23 @@ package game;
 
 public class Weapon extends Item{
 
-	private int damages;
-	private String durability;
+	public Weapon(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
+	private int damages=5;
+	private int durability=10;
 	public int getDamages() {
 		return damages;
 	}
 	public void setDamages(int damages) {
 		this.damages = damages;
 	}
-	public String getDurability() {
+	public int getDurability() {
 		return durability;
 	}
-	public void setDurability(String durability) {
+	public void setDurability(int durability) {
 		this.durability = durability;
 	}
 	

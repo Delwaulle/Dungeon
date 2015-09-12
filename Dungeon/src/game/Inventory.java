@@ -36,7 +36,7 @@ public class Inventory {
 	public String toString(){
 		String list ="";
 		for(int i=0;i<items.size();i++){
-			list+=items.get(i).toString();
+			list+=items.get(i).toString()+"\n";
 		}
 		return list;
 	}
