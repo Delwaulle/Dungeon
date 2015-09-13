@@ -1,21 +1,45 @@
 package game;
 
+import java.util.Scanner;
+
 import level.Level1;
 
 public class GameBoard {
 
-	private static int nbLevel=10;
+	public static int nbLevel=10;
+	private Scanner scanner = new Scanner(System.in);
 	
-	public static void main(String args[]) throws InterruptedException{
+	public GameBoard() throws InterruptedException{
+		
+		System.out.println("Welcome to the game of dungeons");
+		System.out.println("Choose a name for your player : \n>");
+		String pseudo = scanner.nextLine();
+		Player p = new Player(pseudo);
+		System.out.println("Here is your departure's inventory");
+		System.out.println(p.getInventory().toString());
+		
+		pressAnyKeyToContinue();
 		
 		for(int i =1;i<=nbLevel;i++){
-			System.out.println("Welcome to the level "+i);
+			System.out.println("Welcome to the dungeon "+i);
 			Dungeon dungeon = new Dungeon(new Level1());
 			dungeon.start();
-			/*Player p = new Player("Loic");       ===> test 
-			p.getInventory().addItem(new Potion("Sword"), 2);
-			p.getInventory().addItem(new Weapon("Sword"), 2);
-			System.out.println(p.getInventory().toString());*/
 		}
+	}
+	
+	 private void pressAnyKeyToContinue()
+	 { 
+	        System.out.println("Press Enter to start the adventure !");
+	        try
+	        {
+	            System.in.read();
+	        }  
+	        catch(Exception e)
+	        {}  
+	        scanner.nextLine();
+	 }
+
+	public static void main(String args[]) throws InterruptedException{
+		new GameBoard();
 	}
 }

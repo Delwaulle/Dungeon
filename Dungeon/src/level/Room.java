@@ -15,7 +15,13 @@ public abstract class Room {
 		neighbours.put(direction,neighbour);
 	}
 	public Room goToDirection(String direction){
-		return (neighbours.containsKey(direction)) ? neighbours.get(direction) : null;
+		if(neighbours.containsKey(direction)){
+			Room nextRoom = neighbours.get(direction);
+			nextRoom.displayInformation();
+			return nextRoom;
+		}
+		else
+			return null;
 	}
 	public String getName(){
 		return this.name;
@@ -23,4 +29,6 @@ public abstract class Room {
 	public abstract String getDescription();
 	
 	public abstract String getDirection();
+	
+	public abstract void displayInformation();
 }

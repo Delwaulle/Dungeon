@@ -19,4 +19,9 @@ public class NormalRoom extends Room{
 		return null;
 	}
 
+	@Override
+	public void displayInformation() {
+		System.out.println("It is a normal room");
+	}
+
 }

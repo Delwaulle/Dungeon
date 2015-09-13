@@ -32,7 +32,13 @@ public class Player {
 
 	public Player(String name){
 		this.name=name;
+		initializeBasicInventory();
+	}
+	
+	public void initializeBasicInventory(){
 		this.inventory=new Inventory();
+		this.inventory.addItem(new Weapon("Wooden sword"), 1);
+		this.inventory.addItem(new Potion("Health's potion",1), 3);
 	}
 
 }
