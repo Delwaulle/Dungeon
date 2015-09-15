@@ -44,6 +44,12 @@ public class TreasureRoom extends Room{
 		this.item = item;
 	}
 
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

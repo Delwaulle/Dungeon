@@ -1,9 +1,12 @@
 package level;
+
+
 import game.Monster;
 
 public class MonsterRoom extends Room{
 	
 	private Monster monster;
+
 
 	public MonsterRoom(String name) {
 		super(name);
@@ -29,6 +32,11 @@ public class MonsterRoom extends Room{
 	@Override
 	public void displayInformation() {
 		System.out.println(monster.getName() + " blocks you the passage !");	
+	}
+
+	@Override
+	public void action() {
+		
 	}
 
 }
