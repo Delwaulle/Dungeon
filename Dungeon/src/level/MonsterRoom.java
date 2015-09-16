@@ -39,4 +39,10 @@ public class MonsterRoom extends Room{
 		
 	}
 
+	@Override
+	public void setDescription(String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

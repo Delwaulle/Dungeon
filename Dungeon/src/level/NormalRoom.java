@@ -2,7 +2,8 @@ package level;
 
 public class NormalRoom extends Room{
 
-	protected String name;
+	protected String name, description;
+	
 	public NormalRoom(String name) {
 		super(name);
 	}
@@ -10,7 +11,7 @@ public class NormalRoom extends Room{
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.description;
 	}
 
 	@Override
@@ -27,6 +28,12 @@ public class NormalRoom extends Room{
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDescription(String description) {
+		this.description = description;
 		
 	}
 

@@ -29,7 +29,16 @@ public class Dungeon {
 					currentRoom=newRoom;
 				else
 					System.out.println("Impossible action !");
-				break;		
+				break;
+			
+			case "describe":
+				String roomDescription = currentRoom.getDescription();
+				if(roomDescription == null)
+					System.out.println("There is no description for this room.");
+				else
+					System.out.println(roomDescription);
+				break;
+				
 			default:
 				System.out.println("I don't know what you mean");
 			}
