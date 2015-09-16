@@ -9,13 +9,15 @@ public class Dungeon {
 		protected Room currentRoom;
 		protected boolean gameIsFinished=false;
 		protected final Scanner scanner = new Scanner(System.in);
+		protected Player player;
 		
 		public Room getCurrentRoom(){
 			return this.currentRoom;
 		}
 		
-		public Dungeon(Level level){
+		public Dungeon(Level level,Player player){
 			this.currentRoom=level.getEntrance();
+			this.player=player;
 		}
 		
 		public void interpretCommand(String command){

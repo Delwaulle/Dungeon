@@ -24,4 +24,10 @@ public class NormalRoom extends Room{
 		System.out.println("It is a normal room");
 	}
 
+	@Override
+	public void action() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

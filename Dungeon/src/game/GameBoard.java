@@ -14,15 +14,15 @@ public class GameBoard {
 		System.out.println("Welcome to the game of dungeons");
 		System.out.println("Choose a name for your player : \n>");
 		String pseudo = scanner.nextLine();
-		Player p = new Player(pseudo);
+		Player player = new Player(pseudo);
 		System.out.println("Here is your departure's inventory");
-		System.out.println(p.getInventory().toString());
+		System.out.println(player.getInventory().toString());
 		
 		pressAnyKeyToContinue();
 		
 		for(int i =1;i<=nbLevel;i++){
 			System.out.println("Welcome to the dungeon "+i);
-			Dungeon dungeon = new Dungeon(new Level1());
+			Dungeon dungeon = new Dungeon(new Level1(),player);
 			dungeon.start();
 		}
 	}
