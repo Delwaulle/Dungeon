@@ -13,19 +13,20 @@ public abstract class Room {
 		this.name=name;
 	}
 	
+	
 	public void setNeighbour(String direction, Room neighbour){
 		neighbours.put(direction,neighbour);
 	}
 	public Room goToDirection(String direction){
 		if(neighbours.containsKey(direction)){
 			Room nextRoom = neighbours.get(direction);
-			nextRoom.displayInformation();
-			nextRoom.action();
 			return nextRoom;
 		}
 		else
 			return null;
 	}
+	
+	
 	public String getName(){
 		return this.name;
 	}

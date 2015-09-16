@@ -6,24 +6,27 @@ import java.util.List;
 public class Inventory {
 	private List<Item> items = new ArrayList<Item>();
 	
-	public void addItem(Item item, int quantity){
-		if(items.contains(item))
-			item.updateQuantity(quantity);
+	public void addItem(Item item){
+		int i=searchItem(item.getName());
+		if(i!=-1)
+			items.get(i).updateQuantity(item.getQuantity());
 		else
 			this.items.add(item);
 	}
 	
 	public void dropItem(Item item){
-		if(items.contains(item))
-			items.remove(item);
+		int i=searchItem(item.getName());
+		if(i!=-1)
+			items.remove(i);
 	}
 	
-	public boolean searchItem(String name){
+	//return the index of the item if the inventory contains it else return -1
+	public int searchItem(String name){
 		for(int i=0;i<items.size();i++){
 			if(items.get(i).getName().equals(name))
-				return true;
+				return i;
 		}
-		return false;
+		return -1;
 	}
 	
 	public void useItem(String name,int quantity){

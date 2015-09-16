@@ -1,6 +1,8 @@
 package level;
 
 
+import game.Battle;
+import game.GameBoard;
 import game.Monster;
 
 public class MonsterRoom extends Room{
@@ -10,6 +12,7 @@ public class MonsterRoom extends Room{
 
 	public MonsterRoom(String name) {
 		super(name);
+		this.monster=new Monster("devil cat");
 	}
 	
 	public MonsterRoom(String name,Monster monster) {
@@ -36,7 +39,35 @@ public class MonsterRoom extends Room{
 
 	@Override
 	public void action() {
+		System.out.println("Press \"1\" to try to kill the monster");
+		System.out.println("Press \"2\" to flee the fight and go back to the previous room");
 		
+		int answer=scanner.nextInt();
+		switch(answer){
+		case 1:
+			Battle battle = new Battle(GameBoard.player,this.monster);
+			int res =battle.getWinner();
+			
+			//if the player win res == 0 
+			//if the monster win res == 1
+			if(res ==0){
+				System.out.println("Good job, you have killed the monster");
+				System.out.println("Let's see your drop !");
+				this.monster.getDrop();
+			}
+			else{
+				//go back to the entrance
+			}
+		break;
+			
+		case 2 :
+			//go back to the previous room
+		break;
+		
+		default : 
+			System.out.println("I don't know what you mean");
+			action();
+		}
 	}
 
 	@Override

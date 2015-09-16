@@ -8,13 +8,14 @@ public class GameBoard {
 
 	public static int nbLevel=10;
 	private Scanner scanner = new Scanner(System.in);
+	public static Player player;
 	
 	public GameBoard() throws InterruptedException{
 		
 		System.out.println("Welcome to the game of dungeons");
 		System.out.println("Choose a name for your player : \n>");
 		String pseudo = scanner.nextLine();
-		Player player = new Player(pseudo);
+		player = new Player(pseudo);
 		System.out.println("Here is your departure's inventory");
 		System.out.println(player.getInventory().toString());
 		
@@ -22,7 +23,7 @@ public class GameBoard {
 		
 		for(int i =1;i<=nbLevel;i++){
 			System.out.println("Welcome to the dungeon "+i);
-			Dungeon dungeon = new Dungeon(new Level1(),player);
+			Dungeon dungeon = new Dungeon(new Level1());
 			dungeon.start();
 		}
 	}

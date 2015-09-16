@@ -9,6 +9,11 @@ public class Potion extends Item{
 		super(name);
 		this.power=power;
 	}
+	
+	public Potion(String name,int power,int quantity) {
+		super(name,quantity);
+		this.power=power;
+	}
 
 	public int getPower() {
 		return power;

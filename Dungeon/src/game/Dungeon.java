@@ -9,15 +9,13 @@ public class Dungeon {
 		protected Room currentRoom;
 		protected boolean gameIsFinished=false;
 		protected final Scanner scanner = new Scanner(System.in);
-		protected Player player;
 		
 		public Room getCurrentRoom(){
 			return this.currentRoom;
 		}
 		
-		public Dungeon(Level level,Player player){
+		public Dungeon(Level level){
 			this.currentRoom=level.getEntrance();
-			this.player=player;
 		}
 		
 		public void interpretCommand(String command){
@@ -47,10 +45,12 @@ public class Dungeon {
 		
 		public void start() throws InterruptedException{
 			do{
+				
 				Thread.sleep(500);
-				System.out.println("You are in "+getCurrentRoom().getName());
+				currentRoom.displayInformation();
 				Thread.sleep(500);
 				System.out.println("What do you want to do ?");
+				currentRoom.action();
 				System.out.println("> ");
 				
 				//Read a command from the player

@@ -9,6 +9,10 @@ public class Battle {
 		this.setPlayer(player);
 		this.setMonster(monster);
 	}
+	
+	public void fight(){
+		
+	}
 
 	public Player getPlayer() {
 		return player;
@@ -24,6 +28,10 @@ public class Battle {
 
 	public void setMonster(Monster monster) {
 		this.monster = monster;
+	}
+
+	public int getWinner() {
+		return 0;		
 	}
 
 }

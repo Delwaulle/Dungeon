@@ -37,8 +37,8 @@ public class Player {
 	
 	public void initializeBasicInventory(){
 		this.inventory=new Inventory();
-		this.inventory.addItem(new Weapon("Wooden sword"), 1);
-		this.inventory.addItem(new Potion("Health's potion",1), 3);
+		this.inventory.addItem(new Weapon("Wooden sword"));
+		this.inventory.addItem(new Potion("Health's potion",1,3));
 	}
 
 }

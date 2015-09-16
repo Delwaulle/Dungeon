@@ -32,8 +32,7 @@ public class TreasureRoom extends Room{
 
 	@Override
 	public void displayInformation() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("You are in a treasure room !");
 	}
 
 	public Item getItem() {
