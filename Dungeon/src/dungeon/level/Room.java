@@ -1,8 +1,10 @@
 package dungeon.level;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import dungeon.game.Action;
 
@@ -22,6 +24,20 @@ public abstract class Room {
 		this.decors.put(name,action);
 	}
 	
+	public void displayDirections(){
+		System.out.println("Possible(s) direction(s) :");
+		String directions="-- ";
+		@SuppressWarnings("rawtypes")
+		Set listKeys=this.neighbours.keySet();  // key list of the map
+		@SuppressWarnings("rawtypes")
+		Iterator iterateur=listKeys.iterator(); 
+		while(iterateur.hasNext())
+		{
+			Object key= iterateur.next();
+			directions+=key.toString()+" -- ";
+		}
+		System.out.println(directions);
+	}
 	
 	public void setNeighbour(String direction, Room neighbour){
 		neighbours.put(direction,neighbour);

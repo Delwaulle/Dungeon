@@ -102,6 +102,7 @@ public class Level {
 
 	public void displayMessage(){
 		currentRoom.displayInformation();
+		currentRoom.displayDirections();
 		System.out.println("What do you want to do ?");
 	}
 
