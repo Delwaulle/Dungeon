@@ -2,8 +2,8 @@
 
 Brainstorming:
 
-Utilisation des items dans l'inventaire.
-Arme utilisée par le joueur => augmente les dégats totaux du joueur
+Utilisation des items dans l'inventaire.\n
+Arme utilisée par le joueur => augmente les dégats totaux du joueur\n
 Système d'armure ? de vitesse ? de chance ? (un peu comme dans pokémon)
 Interface pour le combat avec plusieurs actions possibles (combattre, utiliser item, fuir, un peu comme dans pokémon, encore...)
 Pour sortir du niveau, il faut obligatoirement/pas_nécessairement avoir la clé. => induit donc une chest room au min avec la clé
