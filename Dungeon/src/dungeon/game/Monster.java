@@ -5,12 +5,19 @@ public class Monster {
 	private String name;
 	private int damages, health;
 	private boolean dead;
-	private Item[] drop=new Item[]{new Potion("Health's potion",2)};
+	private Chest chest = new Chest();
 	
 	public Monster(String name){
 		this.name=name;
 		this.dead = false;
 		this.damages = 2;
+		this.health = 5;
+	}
+	
+	public Monster (String name,int damages){
+		this.name=name;
+		this.damages=damages;
+		this.dead = false;
 		this.health = 5;
 	}
 	
@@ -26,13 +33,6 @@ public class Monster {
 		this.health = this.health - dmg;
 		if(this.health <= 0)
 			this.dead = true;
-	}
-	
-	public Monster (String name,int damages){
-		this.name=name;
-		this.damages=damages;
-		this.dead = false;
-		this.health = 5;
 	}
 
 	public String getName() {
@@ -53,13 +53,23 @@ public class Monster {
 
 	//add the drop table to the player inventory's
 	public void getDrop() {
-		for(int i=0;i<drop.length;i++){
-			GameBoard.player.getInventory().addItem(drop[i]);
-			System.out.println(drop[i].toString());
+		Item item;
+		for(int i=0;i<this.chest.getDrop().size();i++){
+			item=this.chest.getDrop().get(i);
+			GameBoard.player.getInventory().addItem(item);
+			System.out.println(item.toString());
 		}
 		
 	}
 	
+	public Chest getChest() {
+		return chest;
+	}
+
+	public void setChest(Chest chest) {
+		this.chest = chest;
+	}
+
 	public void attack(Player player){
 		player.getHit(this.damages);
 	}

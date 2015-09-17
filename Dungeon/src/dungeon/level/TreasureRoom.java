@@ -1,25 +1,24 @@
 package dungeon.level;
 
-import dungeon.game.Item;
+import dungeon.game.Chest;
 
 public class TreasureRoom extends Room{
 
-	private Item item;
+	private Chest chest=new Chest();
 	
 	public TreasureRoom(String name) {
 		super(name);
 	}
 	
-	public TreasureRoom(String name,Item item){
+	public TreasureRoom(String name,Chest chest){
 		super(name);
-		this.setItem(item);
+		this.setChest(chest);
 	}
 	
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return "There is a chest in the middle of the room !";
 	}
 
 
@@ -35,13 +34,6 @@ public class TreasureRoom extends Room{
 		System.out.println("You are in a treasure room !");
 	}
 
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
 
 	@Override
 	public void action() {
@@ -53,6 +45,14 @@ public class TreasureRoom extends Room{
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Chest getChest() {
+		return chest;
+	}
+
+	public void setChest(Chest chest) {
+		this.chest = chest;
 	}
 
 

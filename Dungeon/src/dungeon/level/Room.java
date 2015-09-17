@@ -4,13 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import dungeon.game.Action;
+
 public abstract class Room {
-	public Map<String,Room> neighbours = new HashMap<>();	
+	protected Map<String,Room> neighbours = new HashMap<>();
+	protected Map<String,Action> decors = new HashMap<>();
 	protected String name;
 	Scanner scanner = new Scanner(System.in);
 	
 	public Room(String name){
 		this.name=name;
+	}
+	
+	public void setDecor(String name,Action action){
+		this.decors.put(name,action);
 	}
 	
 	
