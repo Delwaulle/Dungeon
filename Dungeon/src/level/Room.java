@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public abstract class Room {
 	public Map<String,Room> neighbours = new HashMap<>();	
-	protected String name, description;
+	protected String name;
 	Scanner scanner = new Scanner(System.in);
 	
 	public Room(String name){
