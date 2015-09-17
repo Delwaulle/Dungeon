@@ -8,13 +8,13 @@ public class MonsterRoom extends Room {
 
 	private Monster monster;
 
-	public MonsterRoom(String name) {
-		super(name);
+	public MonsterRoom(String name,Level level) {
+		super(name,level);
 		this.monster = new Monster("devil cat");
 	}
 
-	public MonsterRoom(String name, Monster monster) {
-		super(name);
+	public MonsterRoom(String name, Monster monster,Level level) {
+		super(name,level);
 		this.monster = monster;
 	}
 
@@ -57,12 +57,13 @@ public class MonsterRoom extends Room {
 					System.out.println("Let's see your drop !");
 					this.monster.getDrop();
 				} else {
-					System.out.println("Patate");
+					this.level.goToEntrance();//lose go back to entrance
 				}
 				break;
 
 			case 2:
 				// go back to the previous room
+				this.level.goToPreviousRoom();
 				break;
 
 			default:

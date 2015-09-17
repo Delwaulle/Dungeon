@@ -6,12 +6,12 @@ public class TreasureRoom extends Room{
 
 	private Chest chest=new Chest();
 	
-	public TreasureRoom(String name) {
-		super(name);
+	public TreasureRoom(String name,Level level) {
+		super(name,level);
 	}
 	
-	public TreasureRoom(String name,Chest chest){
-		super(name);
+	public TreasureRoom(String name,Chest chest,Level level){
+		super(name,level);
 		this.setChest(chest);
 	}
 	

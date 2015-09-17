@@ -2,20 +2,16 @@ package dungeon.game;
 
 import java.util.Scanner;
 
-import dungeon.level.*;
 
 public class GameBoard {
-
-	public static int nbLevel=1;
+	
+	public static int nbDungeon=1;
 	private Scanner scanner = new Scanner(System.in);
 	public static Player player;
-	private Level[] levels;
 	
 	public GameBoard() throws InterruptedException{
 		
-		levels = new Level[nbLevel];
-		levels[0] = new Level2();
-		//levels[1] = new Level2();
+	
 		
 		System.out.println("Welcome to the game of dungeons");
 		System.out.println("Choose a name for your player : \n>");
@@ -26,11 +22,13 @@ public class GameBoard {
 		
 		pressAnyKeyToContinue();
 		
-		for(int i =0;i<nbLevel;i++){
+		for(int i =0;i<nbDungeon;i++){
 			System.out.println("Welcome to the dungeon "+(i+1));
-			Dungeon dungeon = new Dungeon(levels[i]);
+			Dungeon dungeon = new Dungeon();
 			dungeon.start();
 		}
+		
+		
 	}
 	
 	 private void pressAnyKeyToContinue()

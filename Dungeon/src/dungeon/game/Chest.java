@@ -12,7 +12,8 @@ public class Chest {
 	}
 	
 	public Chest(){
-		this.drop=new ArrayList<Item>();	
+		this.drop=new ArrayList<Item>();
+		this.setBasicChest();
 	}
 
 

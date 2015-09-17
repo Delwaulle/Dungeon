@@ -6,78 +6,33 @@ import dungeon.level.*;
 
 public class Dungeon {
 
-		protected Room currentRoom;
+		protected Level currentLevel;
 		protected boolean gameIsFinished=false;
 		protected final Scanner scanner = new Scanner(System.in);
+		private Level[] levels;
+		public static int nbLevel=1;
 		
-		public Room getCurrentRoom(){
-			return this.currentRoom;
-		}
-		
-		public Dungeon(Level level){
-			this.currentRoom=level.getEntrance();
-		}
-		
-		public void interpretCommand(String command){
-			String[] cmd = command.split(" ",2);
-			switch(cmd[0]){
-			case "go":
-				Room newRoom = currentRoom.goToDirection(cmd[1]);
-				if(newRoom!=null)
-					currentRoom=newRoom;
-				else
-					System.out.println("Impossible action !");
-				break;
-			
-			case "describe":
-				String roomDescription = currentRoom.getDescription();
-				if(roomDescription == null)
-					System.out.println("There is no description for this room.");
-				else
-					System.out.println(roomDescription);
-				break;
-				
-			default:
-				System.out.println("I don't know what you mean");
+		public Dungeon() throws InterruptedException{
+			levels = new Level[nbLevel];
+			for(int i=0;i<levels.length;i++){
+				levels[i]=new Level();
 			}
-		}
+						
 
+		}
 		
 		public void start() throws InterruptedException{
-			do{
-				
-				Thread.sleep(500);
-				currentRoom.displayInformation();
-				Thread.sleep(500);
-				System.out.println("What do you want to do ?");
-				currentRoom.action();
-				System.out.println("> ");
-				
-				//Read a command from the player
-				String line = this.scanner.nextLine();
-				interpretCommand(line);				
-			}while(!gameIsFinished());
-			
-			System.out.println("You are in "+getCurrentRoom().getName());
-			if(gameIsWon()){
-				Thread.sleep(500);
-				System.out.println("You win !");
-				Thread.sleep(1000);
+			for(int i =0;i<nbLevel;i++){
+				System.out.println("Welcome to the level "+(i+1));
+				Level level = levels[i];
+				this.currentLevel=level;
+				level.start();
+				System.out.println("again");
 			}
-			else
-				System.out.println("You loose !");
-			
 		}
 		
-		public boolean gameIsFinished(){
-			return gameIsLose() || gameIsWon();
+		public Level getCurrentLevel(){
+			return this.currentLevel;
 		}
-
-		public boolean gameIsWon() {
-			return currentRoom.getName().equals("exit");
-		}
-		
-		public boolean gameIsLose() {
-			return currentRoom.getName().equals("trap");
-		}
+	
 }

@@ -10,10 +10,12 @@ public abstract class Room {
 	protected Map<String,Room> neighbours = new HashMap<>();
 	protected Map<String,Action> decors = new HashMap<>();
 	protected String name;
+	protected Level level;
 	Scanner scanner = new Scanner(System.in);
 	
-	public Room(String name){
+	public Room(String name,Level level){
 		this.name=name;
+		this.level=level;
 	}
 	
 	public void setDecor(String name,Action action){

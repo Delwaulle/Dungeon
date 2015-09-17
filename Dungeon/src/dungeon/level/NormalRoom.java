@@ -4,8 +4,8 @@ public class NormalRoom extends Room{
 
 	protected String description;
 	
-	public NormalRoom(String name) {
-		super(name);
+	public NormalRoom(String name,Level level) {
+		super(name,level);
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class NormalRoom extends Room{
 
 	@Override
 	public void displayInformation() {
-		System.out.println("It is a normal room");
+		System.out.println("You are in "+this.name);
 	}
 
 	@Override
