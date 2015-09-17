@@ -43,5 +43,12 @@ public class Inventory {
 		}
 		return list;
 	}
+	
+	public Item getItem(String itemName){
+		Item item = null;
+		if(items.contains(itemName))
+			item = items.get(this.searchItem(itemName));
+		return item;	
+	}
 
 }

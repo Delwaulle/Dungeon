@@ -2,7 +2,8 @@ package game;
 
 public class Player {
 	
-	private int lives=5;
+	private int lives=5, health=20, damages=5;
+	private boolean dead;
 	private String name;
 	private Inventory inventory;
 	
@@ -32,6 +33,7 @@ public class Player {
 
 	public Player(String name){
 		this.name=name;
+		this.dead = false;
 		initializeBasicInventory();
 	}
 	
@@ -39,6 +41,30 @@ public class Player {
 		this.inventory=new Inventory();
 		this.inventory.addItem(new Weapon("Wooden sword"));
 		this.inventory.addItem(new Potion("Health's potion",1,3));
+	}
+	
+	public void die(){
+		this.dead = true;
+	}
+	
+	public boolean isDead(){
+		return this.dead;
+	}
+	
+	public int getDamages(){
+		return this.damages;
+	}
+	
+	public int getFullDamages(){
+		return this.damages + ((Weapon)this.getInventory().getItem("Wooden sword")).getDamages();
+	}
+	
+	public void attack(Monster monster){
+		monster.getHit(this.damages);
+	}
+	
+	public void getHit(int dmg){
+		this.health = this.health-dmg;
 	}
 
 }

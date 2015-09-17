@@ -6,7 +6,7 @@ import level.*;
 
 public class GameBoard {
 
-	public static int nbLevel=2;
+	public static int nbLevel=1;
 	private Scanner scanner = new Scanner(System.in);
 	public static Player player;
 	private Level[] levels;
@@ -14,8 +14,8 @@ public class GameBoard {
 	public GameBoard() throws InterruptedException{
 		
 		levels = new Level[nbLevel];
-		levels[0] = new Level1();
-		levels[1] = new Level2();
+		levels[0] = new Level2();
+		//levels[1] = new Level2();
 		
 		System.out.println("Welcome to the game of dungeons");
 		System.out.println("Choose a name for your player : \n>");
