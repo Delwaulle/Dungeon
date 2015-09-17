@@ -32,11 +32,13 @@ public class MonsterRoom extends Room {
 
 	@Override
 	public void displayInformation() {
-		System.out.println(monster.getName() + " blocks you the passage !");
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void action() {
+		if(!this.monster.isDead()){	
+			System.out.println(monster.getName() + " blocks you the passage !");
 			System.out.println("Press \"1\" to try to kill the monster");
 			System.out.println("Press \"2\" to flee the fight and go back to the previous room");
 
@@ -71,6 +73,7 @@ public class MonsterRoom extends Room {
 				action();
 			}
 		}
+	}
 
 	@Override
 	public void setDescription(String description) {
