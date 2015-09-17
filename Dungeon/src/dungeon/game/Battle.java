@@ -15,7 +15,7 @@ public class Battle {
 	public void fight(){
 		
 		//boucle infine sur player.attack(monster);
-		while(!monster.isDead() || !player.isDead()){
+		while(!monster.isDead() && !player.isDead()){
 			player.attack(monster);
 			System.out.println("player attacks monster");
 			if(!monster.isDead()){
