@@ -1,4 +1,4 @@
-package game;
+package dungeon.game;
 
 public abstract class Item {
 	

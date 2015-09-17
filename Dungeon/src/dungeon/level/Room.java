@@ -1,4 +1,4 @@
-package level;
+package dungeon.level;
 
 import java.util.HashMap;
 import java.util.Map;

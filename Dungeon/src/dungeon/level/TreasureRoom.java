@@ -1,6 +1,6 @@
-package level;
+package dungeon.level;
 
-import game.Item;
+import dungeon.game.Item;
 
 public class TreasureRoom extends Room{
 

@@ -1,8 +1,8 @@
-package game;
+package dungeon.game;
 
 import java.util.Scanner;
 
-import level.*;
+import dungeon.level.*;
 
 public class Dungeon {
 

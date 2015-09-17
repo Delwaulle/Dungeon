@@ -1,4 +1,4 @@
-package graphic;
+package dungeon.graphic;
 
 import java.awt.FlowLayout;
 import java.awt.Graphics;

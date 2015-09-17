@@ -1,4 +1,4 @@
-package level;
+package dungeon.level;
 
 public class Level {
 

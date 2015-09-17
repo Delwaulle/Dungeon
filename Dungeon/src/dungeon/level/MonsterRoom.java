@@ -1,8 +1,8 @@
-package level;
+package dungeon.level;
 
-import game.Battle;
-import game.GameBoard;
-import game.Monster;
+import dungeon.game.Battle;
+import dungeon.game.GameBoard;
+import dungeon.game.Monster;
 
 public class MonsterRoom extends Room {
 
