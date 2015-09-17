@@ -3,7 +3,7 @@ package level;
 public class Level2 extends Level{
 	
 	protected NormalRoom passage;
-	protected ChestRoom chestRoom ;
+	protected TreasureRoom treasureRoom ;
 	protected MonsterRoom monsterRoom;
 	
 	public Level2() {
@@ -11,8 +11,8 @@ public class Level2 extends Level{
 		intersection = new NormalRoom("intersection");
 		intersection.setDescription("2 ways, west or east. I can hear something strange on the east...");
 		
-		chestRoom = new ChestRoom("chestroom");
-		chestRoom.setDescription("There is an empty chest on the ground.");
+		treasureRoom = new TreasureRoom("treasureroom");
+		treasureRoom.setDescription("There is an empty chest on the ground.");
 		
 		monsterRoom = new MonsterRoom("monsterRoom");
 		passage = new NormalRoom("passage");
@@ -23,10 +23,10 @@ public class Level2 extends Level{
 		
 		entrance.setNeighbour("north", intersection);
 		
-		intersection.setNeighbour("west", chestRoom);
+		intersection.setNeighbour("west", treasureRoom);
 		intersection.setNeighbour("east", monsterRoom);
 		
-		chestRoom.setNeighbour("east", intersection);
+		treasureRoom.setNeighbour("east", intersection);
 		
 		monsterRoom.setNeighbour("west", intersection);
 		monsterRoom.setNeighbour("east", passage);
