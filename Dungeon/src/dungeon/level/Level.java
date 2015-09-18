@@ -3,6 +3,8 @@ package dungeon.level;
 import java.util.List;
 import java.util.Scanner;
 
+import dungeon.game.*;
+
 public class Level {
 
 	protected Room entrance,intersection,trap,exit; //better enum
@@ -93,6 +95,12 @@ public class Level {
 				System.out.println("There is no description for this room.");
 			else
 				System.out.println(roomDescription);
+			break;
+			
+		case "inventory":
+			Inventory inventory = GameBoard.player.getInventory();
+			System.out.println("Your inventory :");
+			System.out.println(inventory);
 			break;
 			
 		default:

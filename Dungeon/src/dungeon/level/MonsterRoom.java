@@ -46,9 +46,7 @@ public class MonsterRoom extends Room {
 			switch (answer) {
 			case 1:
 				Battle battle = new Battle(GameBoard.player, this.monster);
-				System.out.println("C'est l'heure du DU DU DU DUEL !");
 				battle.fight();
-				System.out.println("Battle ended");
 				int res = battle.getWinner();
 				System.out.println(res);
 
