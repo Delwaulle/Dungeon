@@ -79,6 +79,12 @@ public class Level {
 	public void interpretCommand(String command){
 		String[] cmd = command.split(" ",2);
 		switch(cmd[0]){
+		case "help":
+			System.out.println("go : go to a direction. You must specify the direction. Ex: \"go north\"");
+			System.out.println("describe :  describe you the room.");
+			System.out.println("inventory :  shows your inventory.");
+			break;
+		
 		case "go":
 			Room newRoom = currentRoom.goToDirection(cmd[1]);
 			if(newRoom!=null){
@@ -104,7 +110,7 @@ public class Level {
 			break;
 			
 		default:
-			System.out.println("I don't know what you mean");
+			System.out.println("I don't know what you mean. Type \"help\" to show the differents commands.");
 		}
 	}
 
