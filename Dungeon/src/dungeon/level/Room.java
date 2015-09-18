@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import dungeon.game.Action;
+import dungeon.action.DecorAction;
 
 public abstract class Room {
 	protected Map<String,Room> neighbours = new HashMap<>();
-	protected Map<String,Action> decors = new HashMap<>();
+	protected Map<String,DecorAction> decors = new HashMap<>();
 	protected String name;
 	protected Level level;
 	Scanner scanner = new Scanner(System.in);
@@ -20,7 +20,7 @@ public abstract class Room {
 		this.level=level;
 	}
 	
-	public void setDecor(String name,Action action){
+	public void setDecor(String name,DecorAction action){
 		this.decors.put(name,action);
 	}
 	
