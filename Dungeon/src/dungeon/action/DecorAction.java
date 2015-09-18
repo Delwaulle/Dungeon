@@ -1,11 +1,10 @@
-package dungeon.game;
+package dungeon.action;
 
-public class Action {
-
+public class DecorAction implements Action{	
 	private String description;
 	private String consequence;
 	
-	public Action(String description,String consequence){
+	public DecorAction(String description,String consequence){
 		this.setDescription(description);
 		this.setConsequence(consequence);
 	}
@@ -25,4 +24,5 @@ public class Action {
 	public void setConsequence(String consequence) {
 		this.consequence = consequence;
 	}
+
 }
