@@ -3,8 +3,13 @@ package dungeon.level;
 import java.util.List;
 import java.util.Scanner;
 
-import dungeon.game.*;
+import dungeon.game.GameBoard;
+import dungeon.item.Inventory;
 
+/**
+ * @author Loïc
+ *
+ */
 public class Level {
 
 	protected Room entrance,intersection,trap,exit; //better enum
@@ -30,9 +35,9 @@ public class Level {
 		exit = new NormalRoom("exit",this);
 
 		
-		entrance.setNeighbour("north", intersection);
-		intersection.setNeighbour("north", exit);
-		intersection.setNeighbour("west", trap);
+		entrance.setNeighbour(new Door("north"), intersection);
+		intersection.setNeighbour(new Door("north"), exit);
+		intersection.setNeighbour(new Door("west"), trap);
 	
 	}
 	
@@ -51,18 +56,18 @@ public class Level {
 		exit = new NormalRoom("exit",this);
 		
 		
-		entrance.setNeighbour("north", intersection);
+		entrance.setNeighbour(new Door("north"), intersection);
 		
-		intersection.setNeighbour("west", treasureRoom);
-		intersection.setNeighbour("east", monsterRoom);
+		intersection.setNeighbour(new Door("west"), treasureRoom);
+		intersection.setNeighbour(new Door("east"), monsterRoom);
 		
-		treasureRoom.setNeighbour("east", intersection);
+		treasureRoom.setNeighbour(new Door("east"), intersection);
 		
-		monsterRoom.setNeighbour("west", intersection);
-		monsterRoom.setNeighbour("east", passage);
+		monsterRoom.setNeighbour(new Door("west"), intersection);
+		monsterRoom.setNeighbour(new Door("east"), passage);
 		
-		passage.setNeighbour("west", monsterRoom);
-		passage.setNeighbour("north", exit);
+		passage.setNeighbour(new Door("west"), monsterRoom);
+		passage.setNeighbour(new Door("north"), exit);
 	}
 	
 	

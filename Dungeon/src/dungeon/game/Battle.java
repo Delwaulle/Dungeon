@@ -4,15 +4,13 @@ public class Battle {
 	
 	private Player player;
 	private Monster monster;
-	private int result;
 	
 	public Battle(Player player, Monster monster){
 		this.player = player;
 		this.monster = monster;
-		this.result = 0;
 	}
 	
-	public void fight(){
+	public int fight(){
 		
 		while(!monster.isDead() && !player.isDead()){
 			player.attack(monster);
@@ -22,9 +20,9 @@ public class Battle {
 		}
 		
 		if(monster.isDead())
-			result = 0;
+			return 0;
 		else
-			result = 1;
+			return 1;
 		
 	}
 
@@ -42,10 +40,6 @@ public class Battle {
 
 	public void setMonster(Monster monster) {
 		this.monster = monster;
-	}
-
-	public int getWinner() {
-		return this.result;		
 	}
 
 }

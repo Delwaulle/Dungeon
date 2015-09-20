@@ -1,5 +1,8 @@
 package dungeon.game;
 
+import dungeon.item.Chest;
+import dungeon.item.Item;
+
 public class Monster {
 	
 	private String name;

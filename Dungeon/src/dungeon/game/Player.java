@@ -1,9 +1,17 @@
 package dungeon.game;
 
+import dungeon.item.Inventory;
+import dungeon.item.Potion;
+import dungeon.item.Weapon;
+
 public class Player {
 	
 	private int lives=5, health=20, damages=5;
 	private boolean dead;
+	public void setDamages(int damages) {
+		this.damages = damages;
+	}
+
 	private String name;
 	private Inventory inventory;
 	

@@ -46,10 +46,7 @@ public class MonsterRoom extends Room {
 			switch (answer) {
 			case 1:
 				Battle battle = new Battle(GameBoard.player, this.monster);
-				battle.fight();
-				int res = battle.getWinner();
-				System.out.println(res);
-
+				int res =battle.fight();
 				// if the player win res == 0
 				// if the monster win res == 1
 				if (res == 0) {
@@ -59,6 +56,7 @@ public class MonsterRoom extends Room {
 				} else {
 					this.level.goToEntrance();//lose go back to entrance
 				}
+				this.displayDirections();
 				break;
 
 			case 2:
