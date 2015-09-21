@@ -50,7 +50,7 @@ public abstract class Room {
 	}
 	public Room goToDirection(String direction){
 		
-		Door door = validDirection(direction); // test if the direction is possible
+		Door door = validDirection(direction,this.neighbours); // test if the direction is possible
 		if(door!=null){
 			
 			if(door.isLocked()){
@@ -65,15 +65,35 @@ public abstract class Room {
 				System.out.println("you are a lucky guy you find an hidden door");
 			}
 			Room nextRoom = neighbours.get(door);
+			
+			//set the neighboor to back in the previous room
+			String oppositeDirection=getOppositeDirection(direction);
+			if(validDirection(oppositeDirection, nextRoom.neighbours)==null){
+				nextRoom.setNeighbour(new Door(oppositeDirection), this);
+			}
 			return nextRoom;
 		}
 		else
 			return null;
 	}
 	
+	public String getOppositeDirection(String direction){
+		switch(direction){
+		case "north" :
+			return "south";
+		case "west" :
+			return "east";
+		case "east" :
+			return "west";
+		case "south" :
+			return "north";
+		default : return "";
+		}
+	}
+	
 	//for each Door we look at the direction
-	public Door validDirection(String direction){
-		for(Door door : neighbours.keySet()){
+	public Door validDirection(String direction,Map<Door, Room> directions){
+		for(Door door : directions.keySet()){
 			if(door.getDirection().equals(direction))
 				return door;
 		}
