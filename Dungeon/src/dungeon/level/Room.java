@@ -54,12 +54,14 @@ public abstract class Room {
 		if(door!=null){
 			
 			if(door.isLocked()){
-				System.out.println("You need to find a key to open this door");
 				if(GameBoard.player.getInventory().searchItem("key")==-1){
 					System.out.println("Sorry you don't have the key to open this door, keep digging around this room");
 					return null;
 				}
-				System.out.println("Good game you have found the key ! You discover a new room !");
+				else{
+					GameBoard.player.getInventory().useItem("key", 1);
+					System.out.println("Good game you have the key to open this door ! You discover a new room !");
+				}
 			}
 			if(door.isHidden()){
 				System.out.println("you are a lucky guy you find an hidden door");
