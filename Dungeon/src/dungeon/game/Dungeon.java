@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import dungeon.level.*;
 
+/**
+ * @author fguilbert
+ * all the components of a dungeon
+ */
 public class Dungeon {
 
 		protected Level currentLevel;
@@ -12,15 +16,22 @@ public class Dungeon {
 		private Level[] levels;
 		public static int nbLevel=1;
 		
+		/**
+		 * Initialize all the levels in the dungeon
+		 * @throws InterruptedException
+		 */
 		public Dungeon() throws InterruptedException{
 			levels = new Level[nbLevel];
 			for(int i=0;i<levels.length;i++){
-				levels[i]=new Level();
+				levels[i]=new Level(i+1);
 			}
-						
-
 		}
 		
+		/**
+		 * the scenario of the dungeon
+		 * all the levels which compose the dungeon
+		 * @throws InterruptedException
+		 */
 		public void start() throws InterruptedException{
 			for(int i =0;i<nbLevel;i++){
 				System.out.println("Welcome to the level "+(i+1));
@@ -31,6 +42,9 @@ public class Dungeon {
 			}
 		}
 		
+		/**
+		 * @return the current level
+		 */
 		public Level getCurrentLevel(){
 			return this.currentLevel;
 		}

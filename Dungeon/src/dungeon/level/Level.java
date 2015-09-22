@@ -7,7 +7,7 @@ import dungeon.game.GameBoard;
 import dungeon.item.Inventory;
 
 /**
- * @author Loïc
+ * @author Loï¿½c
  *
  */
 public class Level {
@@ -22,7 +22,7 @@ public class Level {
 	protected boolean gameIsFinished=false;
 	protected final Scanner scanner = new Scanner(System.in);
 	
-	public Level(){
+	public Level(int numLevel){
 		initializeRooms2();
 		this.currentRoom=entrance;
 	}

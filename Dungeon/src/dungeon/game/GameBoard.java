@@ -3,16 +3,21 @@ package dungeon.game;
 import java.util.Scanner;
 
 
+/**
+ * @author fguilbert
+ * the beginning of the game
+ */
 public class GameBoard {
 	
 	public static int nbDungeon=1;
 	private Scanner scanner = new Scanner(System.in);
 	public static Player player;
 	
+	/**
+	 * the beginning of the adventure for the player
+	 * @throws InterruptedException
+	 */
 	public GameBoard() throws InterruptedException{
-		
-	
-		
 		System.out.println("Welcome to the game of dungeons");
 		System.out.println("Choose a name for your player : \n>");
 		String pseudo = scanner.nextLine();
@@ -27,15 +32,14 @@ public class GameBoard {
 			Dungeon dungeon = new Dungeon();
 			dungeon.start();
 		}
-		
-		
 	}
 	
-	 private void pressAnyKeyToContinue()
-	 { 
+	 /**
+	 * the system is waiting for a player's action
+	 */
+	private void pressAnyKeyToContinue(){ 
 	        System.out.println("Press Enter to start the adventure !");
-	        try
-	        {
+	        try{
 	            System.in.read();
 	        }  
 	        catch(Exception e)
@@ -43,6 +47,10 @@ public class GameBoard {
 	        scanner.nextLine();
 	 }
 
+	/**
+	 * @param args
+	 * @throws InterruptedException
+	 */
 	public static void main(String args[]) throws InterruptedException{
 		new GameBoard();
 	}
