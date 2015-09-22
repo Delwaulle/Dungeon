@@ -1,8 +1,10 @@
 package dungeon.level;
 
 import dungeon.game.Battle;
+import dungeon.game.Character;
 import dungeon.game.GameBoard;
 import dungeon.game.Monster;
+import dungeon.game.Player;
 
 public class MonsterRoom extends Room {
 
@@ -46,17 +48,12 @@ public class MonsterRoom extends Room {
 			switch (answer) {
 			case 1:
 				Battle battle = new Battle(GameBoard.player, this.monster);
-				int res =battle.fight();
-				// if the player win res == 0
-				// if the monster win res == 1
-				if (res == 0) {
-					System.out.println("Good job, you have killed the monster");
-					System.out.println("Let's see your drop !");
-					this.monster.getDrop();
+				Character winner =battle.fight();
+				if (winner.getClass()==Player.class) {
+					this.displayDirections();
 				} else {
 					this.level.goToEntrance();//lose go back to entrance
 				}
-				this.displayDirections();
 				break;
 
 			case 2:

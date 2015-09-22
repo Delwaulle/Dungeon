@@ -1,5 +1,9 @@
 package dungeon.game;
 
+import java.util.Scanner;
+
+import dungeon.item.Item;
+
 /**
  * @author fguilbert
  * The scenario of the fight between a player and a monster
@@ -9,6 +13,7 @@ public class Battle {
 	
 	private Player player;
 	private Monster monster;
+	private Scanner scanner=new Scanner(System.in);
 	
 	/**
 	 * create a new battle
@@ -22,21 +27,64 @@ public class Battle {
 	
 	/**
 	 * scenario of a fight between a player and a monster
-	 * @return the result of the fight
-	 * 0 if the monster dies
-	 * 1 if the player dies
+	 * @return the winner
 	 */
-	public int fight(){
+	public Character fight(){
 		while(!monster.isDead() && !player.isDead()){
-			player.attack(monster);
-			if(!monster.isDead())
-				monster.attack(player);
+			System.out.println("What do you want to do ?");
+			System.out.println("Press \"1\" to hit the monster");
+			System.out.println("Press \"2\" to use a potion");
+			
+			int answer = scanner.nextInt();
+			switch (answer) {
+			case 1:
+				//the player attacks the monster 
+				int playerDamages =player.attack();
+				monster.getHit(playerDamages);
+				System.out.println("You imposed "+playerDamages+" damages to " + monster.getName());
+				System.out.println(monster.getName() + "has " + monster.getCurrentHealth() + " HP");
+				break;
+			case 2:
+				//player.getInventory().useItem(name, quantity); // list all the potion
+				
+				//int item = scanner.nextInt();
+				break;
+			default:
+				System.out.println("I don't know what you mean");
+				fight();
+			}
+			
+			//the monster attacks the player	
+			if(!monster.isDead()){
+				int monsterDamages = monster.attack();
+				player.getHit(monsterDamages);
+				System.out.println("The "+monster.getName()+ " imposed you "+monsterDamages+" damages");
+				System.out.println("You have " + player.getCurrentHealth() + " HP");
+			}
 		}
-		if(monster.isDead())
-			return 0;
+		
+		if(monster.isDead()){
+			System.out.println("Good job, you have killed "+monster.getName());
+			System.out.println("Let's see your drop !");
+			getDrop();
+			return player;
+		}			
 		else
-			return 1;
+			return monster;
 	}
+	
+	/** add the drops table to the player inventory's
+	 * 
+	 */
+	public void getDrop() {
+		Item item;
+		for(int i=0;i<this.monster.getChest().getDrop().size();i++){
+			item=this.monster.getChest().getDrop().get(i);
+			this.player.getInventory().addItem(item);
+			System.out.println(item.toString());
+		}
+	}
+	
 
 	/**
 	 * @return the player

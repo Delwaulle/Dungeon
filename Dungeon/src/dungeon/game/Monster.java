@@ -7,11 +7,8 @@ import dungeon.item.Item;
  * @author fguilbert
  * all the components for having a monster
  */
-public class Monster {
-	
-	private String name;
-	private int damages, health;
-	private boolean dead;
+public class Monster extends Character{
+
 	private Chest chest = new Chest();
 	
 	/**
@@ -20,10 +17,9 @@ public class Monster {
 	 * @param name
 	 */
 	public Monster(String name){
-		this.name=name;
-		this.dead = false;
+		super("name");
 		this.damages = 2;
-		this.health = 5;
+		this.maxHealth = 5;
 	}
 	
 	/**
@@ -34,64 +30,23 @@ public class Monster {
 	 * @param damages
 	 */
 	public Monster (String name,int damages){
-		this.name=name;
+		super(name);
 		this.damages=damages;
-		this.dead = false;
-		this.health = 5;
-	}
-	
-	/**
-	 * the monster is dead
-	 */
-	public void die(){
-		this.dead = true;
-	}
-	
-	/**
-	 * @return the state of the monster (dead or not ?)
-	 */
-	public boolean isDead(){
-		return this.dead;
-	}
-	
-	/**
-	 * when the monster is hit, its life is lower and the monster is maybe dead
-	 * @param dmg
-	 */
-	public void getHit(int dmg){
-		this.health = this.health - dmg;
-		if(this.health <= 0)
-			this.dead = true;
+		this.maxHealth = 5;
 	}
 
 	/**
-	 * @return the name of the monster (example: "Camille")
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * We choose the name of the monster (example: "Camille")
+	 * We create a monster with its state,
+	 * its strength and its life (HP:HealthPoints)
+	 * But, here, we specify its strength
 	 * @param name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @return damages
-	 */
-	public int getDamages() {
-		return damages;
-	}
-
-	/**
-	 * We choose the strength of the monster
 	 * @param damages
+	 * @param health
 	 */
-	public void setDamages(int damages) {
-		this.damages = damages;
+	public Monster (String name,int damages,int health){
+		super(name);
+		this.damages=damages;
+		this.maxHealth = health;
 	}
 
 	/** add the drops table to the player inventory's
@@ -120,28 +75,4 @@ public class Monster {
 	public void setChest(Chest chest) {
 		this.chest = chest;
 	}
-
-	/**
-	 * When a monster attacks a player
-	 * @param player
-	 */
-	public void attack(Player player){
-		player.getHit(this.damages);
-	}
-	
-	/**
-	 * @return health
-	 */
-	public int getHealth(){
-		return this.health;
-	}
-	
-	/**
-	 * set the health of the monster
-	 * @param health
-	 */
-	public void setHealth(int health){
-		this.health = health;
-	}
-
 }
