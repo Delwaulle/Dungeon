@@ -1,6 +1,8 @@
 package dungeon.game;
 
 
+import dungeon.action.Action;
+import dungeon.action.ConsumeHealthPotion;
 import dungeon.item.Inventory;
 import dungeon.item.Potion;
 import dungeon.item.Weapon;
@@ -31,7 +33,7 @@ public class Player extends Character{
 	public void initializeBasicInventory(){
 		this.inventory=new Inventory();
 		this.inventory.addItem(new Weapon("Wooden sword"));
-		this.inventory.addItem(new Potion("Health's potion",1,3));
+		this.inventory.addItem(new Potion("Health's_potion",1,3));
 	}
 
 	/**
@@ -64,6 +66,10 @@ public class Player extends Character{
 	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+	
+	public void executeAction(Action action){
+		action.execute();
 	}
 
 }

@@ -3,8 +3,11 @@ package dungeon.level;
 import java.util.List;
 import java.util.Scanner;
 
+import dungeon.action.Action;
+import dungeon.action.ConsumeHealthPotion;
 import dungeon.game.GameBoard;
 import dungeon.item.Inventory;
+import dungeon.item.Potion;
 
 /**
  * @author Lo�c
@@ -132,6 +135,12 @@ public class Level {
 			Inventory inventory = GameBoard.player.getInventory();
 			System.out.println("Your inventory :");
 			System.out.println(inventory);
+			break;
+			
+		case "use Health's_potion":
+			Potion potion = (Potion) GameBoard.player.getInventory().getItem(cmd[1]);
+			Action consumeHealthPotion = new ConsumeHealthPotion(GameBoard.player, potion);
+			GameBoard.player.executeAction(consumeHealthPotion);
 			break;
 			
 		default:
