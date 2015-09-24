@@ -8,9 +8,16 @@ public class Weapon extends Item{
 
 	private int damages=5;
 	//private int durability=10;
+	/**
+	 * @return the damages of the weapon
+	 */
 	public int getDamages() {
 		return damages;
 	}
+	/**
+	 * set the damages of the weapon
+	 * @param damages
+	 */
 	public void setDamages(int damages) {
 		this.damages = damages;
 	}

@@ -1,5 +1,9 @@
 package dungeon.item;
 
+/**
+ * @author fguilbert
+ * the player can use some potions for healing or having more strength
+ */
 public class Potion extends Item{
 	
 

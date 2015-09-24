@@ -1,5 +1,9 @@
 package dungeon.item;
 
+/**
+ * @author fguilbert
+ * the key is for opening locked doors and maybe some chests
+ */
 public class Key extends Item{
 
 	

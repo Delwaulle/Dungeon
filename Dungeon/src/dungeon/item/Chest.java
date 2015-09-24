@@ -3,6 +3,10 @@ package dungeon.item;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author fguilbert
+ * in a chest, the player can find gold, weapons and potions
+ */
 public class Chest {
 	
 	private List<Item> drop;

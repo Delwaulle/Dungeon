@@ -6,6 +6,10 @@ import java.util.List;
 public class Inventory {
 	private List<Item> items = new ArrayList<Item>();
 	
+	/**
+	 * when the player adds an item into his inventory
+	 * @param item
+	 */
 	public void addItem(Item item){
 		int i=searchItem(item.getName());
 		if(i!=-1)
@@ -14,13 +18,20 @@ public class Inventory {
 			this.items.add(item);
 	}
 	
+	/**
+	 * when the player removes an item from his inventory
+	 * @param item
+	 */
 	public void dropItem(Item item){
 		int i=searchItem(item.getName());
 		if(i!=-1)
 			items.remove(i);
 	}
 	
-	//return the index of the item if the inventory contains it else return -1
+	/**
+	 * @param name
+	 * @return the index of the item if the inventory contains it else return -1
+	 */
 	public int searchItem(String name){
 		for(int i=0;i<items.size();i++){
 			if(items.get(i).getName().equals(name))
@@ -29,6 +40,11 @@ public class Inventory {
 		return -1;
 	}
 	
+	/**
+	 * update the number of item in the inventory when the player uses one
+	 * @param name
+	 * @param quantity
+	 */
 	public void useItem(String name,int quantity){
 		for(int i=0;i<items.size();i++){
 			if(items.get(i).getName().equals(name))
@@ -44,6 +60,10 @@ public class Inventory {
 		return list;
 	}
 	
+	/**
+	 * @param itemName
+	 * @return the item which is searching by the player
+	 */
 	public Item getItem(String itemName){
 		Item item = null;
 		if(items.contains(itemName))
