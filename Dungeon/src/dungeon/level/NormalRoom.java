@@ -1,5 +1,11 @@
 package dungeon.level;
 
+/**
+ * @author fguilbert
+ * this class is for a basic/normal room
+ * without monster, chest or trap
+ * and this is not the entrance or the exit
+ */
 public class NormalRoom extends Room{
 
 	protected String description;

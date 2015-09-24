@@ -22,11 +22,18 @@ public class Level {
 	protected boolean gameIsFinished=false;
 	protected final Scanner scanner = new Scanner(System.in);
 	
+	/**
+	 * construct a level
+	 * @param numLevel
+	 */
 	public Level(int numLevel){
 		initializeRooms2();
 		this.currentRoom=entrance;
 	}
 	
+	/**
+	 * for the moment, we initialize some level with its rooms
+	 */
 	public void initializeRooms(){
 		entrance= new NormalRoom("entrance",this);
 		intersection= new NormalRoom("intersection",this);
@@ -41,6 +48,9 @@ public class Level {
 	
 	}
 	
+	/**
+	 * for the moment, we initialize some level with its rooms
+	 */
 	public void initializeRooms2(){
 		entrance = new NormalRoom("entrance",this);
 		intersection = new NormalRoom("intersection",this);
@@ -71,16 +81,26 @@ public class Level {
 	}
 	
 	
+	/**
+	 * @return the current room of the player
+	 */
 	public Room getCurrentRoom(){
 		return this.currentRoom;
 	}
 	
+	/**
+	 * when the player go into the first room of the level
+	 */
 	public void goToEntrance(){
 		this.currentRoom=entrance;
 		this.displayMessage();
 	}
 	
 	
+	/**
+	 * ask to the player what does he want to do ?
+	 * @param command
+	 */
 	public void interpretCommand(String command){
 		String[] cmd = command.split(" ",2);
 		switch(cmd[0]){
@@ -119,6 +139,9 @@ public class Level {
 		}
 	}
 
+	/**
+	 * ask for the player his choices
+	 */
 	public void displayMessage(){
 		currentRoom.displayInformation();
 		currentRoom.displayDirections();
@@ -126,6 +149,12 @@ public class Level {
 	}
 
 	
+	/**
+	 * the buckle into which one the player is into for a level
+	 * we give him the possible directions from his current room
+	 * and we made it until he completes the level or loses the game 
+	 * @throws InterruptedException
+	 */
 	public void start() throws InterruptedException{
 		do{			
 			displayMessage();
@@ -148,18 +177,30 @@ public class Level {
 		
 	}
 	
+	/**
+	 * @return if the player lose or win
+	 */
 	public boolean gameIsFinished(){
 		return gameIsLose() || gameIsWon();
 	}
 
+	/**
+	 * @return the win when the player has finished the level
+	 */
 	public boolean gameIsWon() {
 		return currentRoom.getName().equals("exit");
 	}
 	
+	/**
+	 * @return the lose when the player is dead or in a trap
+	 */
 	public boolean gameIsLose() {
 		return currentRoom.getName().equals("trap");
 	}
 
+	/**
+	 * if the player wants to go back
+	 */
 	public void goToPreviousRoom(){
 		this.currentRoom=previousRoom;
 		this.displayMessage();

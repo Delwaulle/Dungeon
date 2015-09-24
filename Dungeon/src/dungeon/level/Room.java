@@ -10,7 +10,7 @@ import dungeon.action.DecorAction;
 import dungeon.game.GameBoard;
 
 /**
- * @author Loïc
+ * @author Loï¿½c
  *
  */
 
@@ -21,15 +21,28 @@ public abstract class Room {
 	protected Level level;
 	Scanner scanner = new Scanner(System.in);
 	
+	/**
+	 * construct a room with a name and the level which the room is inside
+	 * @param name
+	 * @param level
+	 */
 	public Room(String name,Level level){
 		this.name=name;
 		this.level=level;
 	}
 	
+	/**
+	 * set the decor of a room
+	 * @param name
+	 * @param action
+	 */
 	public void setDecor(String name,DecorAction action){
 		this.decors.put(name,action);
 	}
 	
+	/**
+	 * We show to the player all the directions he can go now
+	 */
 	public void displayDirections(){
 		System.out.println("Possible(s) direction(s) :");
 		String directions="-- ";
@@ -45,9 +58,18 @@ public abstract class Room {
 		System.out.println(directions);
 	}
 	
+	/**
+	 * set a neighbor between two rooms
+	 * @param door
+	 * @param neighbour
+	 */
 	public void setNeighbour(Door door, Room neighbour){
 		neighbours.put(door,neighbour);
 	}
+	/**
+	 * @param direction
+	 * @return the direction of the player
+	 */
 	public Room goToDirection(String direction){
 		
 		Door door = validDirection(direction,this.neighbours); // test if the direction is possible
@@ -79,6 +101,10 @@ public abstract class Room {
 			return null;
 	}
 	
+	/**
+	 * @param direction
+	 * @return back up of the player
+	 */
 	public String getOppositeDirection(String direction){
 		switch(direction){
 		case "north" :
@@ -93,7 +119,12 @@ public abstract class Room {
 		}
 	}
 	
-	//for each Door we look at the direction
+	/**
+	 * for each Door we look at the direction
+	 * @param direction
+	 * @param directions
+	 * @return
+	 */
 	public Door validDirection(String direction,Map<Door, Room> directions){
 		for(Door door : directions.keySet()){
 			if(door.getDirection().equals(direction))
@@ -103,6 +134,9 @@ public abstract class Room {
 	}
 	
 	
+	/**
+	 * @return the name
+	 */
 	public String getName(){
 		return this.name;
 	}

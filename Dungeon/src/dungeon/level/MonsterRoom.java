@@ -6,6 +6,10 @@ import dungeon.game.GameBoard;
 import dungeon.game.Monster;
 import dungeon.game.Player;
 
+/**
+ * @author fguilbert
+ * a specific room in which one there is a monster
+ */
 public class MonsterRoom extends Room {
 
 	private Monster monster;
