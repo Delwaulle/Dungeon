@@ -15,14 +15,12 @@ import dungeon.item.Potion;
 public class PotionTest {
 	
 	private Player player;
-	Command command;
+	
 	
 	@Test
 	public void consumeHealthPotionTest(){
 		this.player = new Player("player");
 		Potion potion = (Potion) player.getInventory().getItem("Health's_potion");
-		//this.action = new ConsumeHealthPotion(player, potion);
-		this.command = new ConsumeHealPotionCommand(player, potion);
 		player.setCurrentHealth(5);
 		
 		//test if player has 3 potions in his inventory
@@ -30,6 +28,8 @@ public class PotionTest {
 		//test if player has 5HP
 		assertEquals(5, player.getCurrentHealth());
 		
+		Command command;
+		command = new ConsumeHealPotionCommand(player, potion);
 		command.apply();
 		
 		//test if player has 2 potions in his inventory after using 1
@@ -49,6 +49,28 @@ public class PotionTest {
 		
 		assertEquals(20, player.getCurrentHealth());
 		
+	}
+	
+	/**
+	 * test if the player life does not increase when he drink a potion while he is full life
+	 * also test if the potion is not removed from the inventory
+	 */
+	@Test
+	public void consumeHealPotionWhileFullLife(){
+		player = new Player("player");
+		Potion potion = (Potion) player.getInventory().getItem("Health's_potion");
+		
+		assertEquals(20, player.getCurrentHealth());
+		assertEquals(3, potion.getQuantity());
+		
+		Command command = new ConsumeHealPotionCommand(player, potion);
+		
+		command.apply();
+		
+		assertNotEquals(21, player.getCurrentHealth());
+		assertEquals(20, player.getCurrentHealth());
+		assertNotEquals(2, potion.getQuantity());
+		assertEquals(3, potion.getQuantity());
 	}
 	
 }

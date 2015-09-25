@@ -25,9 +25,8 @@ public class ConsumeHealPotionCommand implements Command{
 					player.setCurrentHealth(player.getCurrentHealth()
 							+ potion.getPower());
 				
+				player.getInventory().useItem(potion.getName(), 1);
 			}
-
-			player.getInventory().useItem(potion.getName(), 1);
 		}
 	}
 	
