@@ -21,9 +21,11 @@ public class Player extends Character{
 	 * @param name
 	 */
 	public Player(String name){
-		super("name");
+		super(name);
 		this.maxHealth=20;
+		this.currentHealth=20;
 		this.damages=5;
+		this.inventory = new Inventory();
 		initializeBasicInventory();
 	}
 	
@@ -31,7 +33,6 @@ public class Player extends Character{
 	 * When the player is created, we give him some basic stuff
 	 */
 	public void initializeBasicInventory(){
-		this.inventory=new Inventory();
 		this.inventory.addItem(new Weapon("Wooden sword"));
 		this.inventory.addItem(new Potion("Health's_potion",1,3));
 	}

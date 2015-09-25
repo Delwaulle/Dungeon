@@ -1,6 +1,6 @@
 package dungeon.action;
 
-public class DecorAction implements Action{	
+public abstract class DecorAction {	
 	private String description;
 	private String consequence;
 	

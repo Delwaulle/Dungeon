@@ -23,14 +23,15 @@ public class ConsumeHealthPotion implements Action {
 	@Override
 	public void execute() {
 		if (player.getInventory().searchItem(potion.getName()) != -1) {
-
-			if (player.getCurrentHealth() < player.getMaxHealth()) {
-				if (player.getCurrentHealth() + potion.getPower() > player
+		
+			if (player.getCurrentHealth() < player.getMaxHealth()){
+				if ((player.getCurrentHealth() + potion.getPower()) > player
 						.getMaxHealth())
 					player.setCurrentHealth(player.getMaxHealth());
 				else
 					player.setCurrentHealth(player.getCurrentHealth()
 							+ potion.getPower());
+				
 			}
 
 			player.getInventory().useItem(potion.getName(), 1);

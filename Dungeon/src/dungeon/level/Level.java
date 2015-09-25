@@ -6,6 +6,7 @@ import java.util.Scanner;
 import dungeon.action.Action;
 import dungeon.action.ConsumeHealthPotion;
 import dungeon.game.GameBoard;
+import dungeon.game.Player;
 import dungeon.item.Inventory;
 import dungeon.item.Potion;
 
@@ -111,6 +112,8 @@ public class Level {
 			System.out.println("go : go to a direction. You must specify the direction. Ex: \"go north\"");
 			System.out.println("describe :  describe you the room.");
 			System.out.println("inventory :  shows your inventory.");
+			System.out.println("use : use an item in your inventory. You must specify the name of the item. Ex: \"use Key\"");
+			System.out.println("stats : shows your stats");
 			break;
 		
 		case "go":
@@ -137,10 +140,26 @@ public class Level {
 			System.out.println(inventory);
 			break;
 			
-		case "use Health's_potion":
+		case "use":
 			Potion potion = (Potion) GameBoard.player.getInventory().getItem(cmd[1]);
-			Action consumeHealthPotion = new ConsumeHealthPotion(GameBoard.player, potion);
-			GameBoard.player.executeAction(consumeHealthPotion);
+			if(potion != null){
+				Action consumeHealthPotion = new ConsumeHealthPotion(GameBoard.player, potion);
+				GameBoard.player.executeAction(consumeHealthPotion);
+				System.out.println("You have now " + GameBoard.player.getCurrentHealth());
+			} else {
+				System.out.println("There is no kind of \"" + cmd[1] + "\" in your inventory.");
+			}
+			break;
+			
+		case "stats":
+			Player player = GameBoard.player;
+			System.out.println(player.getName() + " stats");
+			System.out.println("====================");
+			System.out.println("Heath = " + player.getCurrentHealth()+ "/" + player.getMaxHealth());
+			System.out.println("Damages = " + player.getDamages());
+			System.out.println("Critical hit chance = " + player.getPourcentCriticalHit());
+			System.out.println("Critical hit power = " + player.getPowerOfCriticalHit());
+			System.out.println("====================");
 			break;
 			
 		default:

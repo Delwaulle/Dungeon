@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
-	private List<Item> items = new ArrayList<Item>();
+	private List<Item> items;
+	
+	public Inventory(){
+		this.items = new ArrayList<Item>();
+	}
 	
 	/**
 	 * when the player adds an item into his inventory
@@ -66,7 +70,7 @@ public class Inventory {
 	 */
 	public Item getItem(String itemName){
 		Item item = null;
-		if(items.contains(itemName))
+		if(this.searchItem(itemName) != -1)
 			item = items.get(this.searchItem(itemName));
 		return item;	
 	}

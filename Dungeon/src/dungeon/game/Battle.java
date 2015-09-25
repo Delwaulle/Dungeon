@@ -42,7 +42,7 @@ public class Battle {
 				int playerDamages =player.attack();
 				monster.getHit(playerDamages);
 				System.out.println("You imposed "+playerDamages+" damages to " + monster.getName());
-				System.out.println(monster.getName() + "has " + monster.getCurrentHealth() + " HP");
+				System.out.println(monster.getName() + " has " + monster.getCurrentHealth() + " HP");
 				break;
 			case 2:
 				//player.getInventory().useItem(name, quantity); // list all the potion
@@ -67,6 +67,7 @@ public class Battle {
 			System.out.println("Good job, you have killed "+monster.getName());
 			System.out.println("Let's see your drop !");
 			getDrop();
+			System.out.println("You have now " + player.getCurrentHealth() + " HP");
 			return player;
 		}			
 		else
