@@ -2,6 +2,8 @@ package dungeon.game;
 
 import java.util.Scanner;
 
+import dungeon.commands.CommandFactory;
+
 
 /**
  * @author fguilbert
@@ -12,6 +14,7 @@ public class GameBoard {
 	public static int nbDungeon=1;
 	private Scanner scanner = new Scanner(System.in);
 	public static Player player;
+	public static CommandFactory commandFactory;
 	
 	/**
 	 * the beginning of the adventure for the player
@@ -22,6 +25,8 @@ public class GameBoard {
 		System.out.println("Choose a name for your player : \n>");
 		String pseudo = scanner.nextLine();
 		player = new Player(pseudo);
+		commandFactory = new CommandFactory();
+		commandFactory.initCommand();
 		System.out.println("Here is your departure's inventory");
 		System.out.println(player.getInventory().toString());
 		

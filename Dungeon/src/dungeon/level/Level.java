@@ -165,35 +165,21 @@ public class Level {
 		String[] cmd = command.split(" ",2);
 		switch(cmd[0]){
 		case "help":
-			System.out.println("go : go to a direction. You must specify the direction. Ex: \"go north\"");
-			System.out.println("describe :  describe you the room.");
-			System.out.println("inventory :  shows your inventory.");
-			System.out.println("use : use an item in your inventory. You must specify the name of the item. Ex: \"use Key\"");
-			System.out.println("stats : shows your stats");
+			GameBoard.commandFactory.executeCommand("help");
 			break;
 		
 		case "go":
-			Room newRoom = currentRoom.goToDirection(cmd[1]);
-			if(newRoom!=null){
-				this.previousRoom=currentRoom;
-				currentRoom=newRoom;
-			}
-			else
-				System.out.println("Impossible action !");
+			GoCommand goCom = (GoCommand) GameBoard.commandFactory.getMap().get("go");
+			goCom.setDirection(cmd[1]);
+			goCom.apply();
 			break;
 		
 		case "describe":
-			String roomDescription = currentRoom.getDescription();
-			if(roomDescription == null)
-				System.out.println("There is no description for this room.");
-			else
-				System.out.println(roomDescription);
+			GameBoard.commandFactory.executeCommand("describe");
 			break;
 			
 		case "inventory":
-			Inventory inventory = GameBoard.player.getInventory();
-			System.out.println("Your inventory :");
-			System.out.println(inventory);
+			GameBoard.commandFactory.equals("inventory");
 			break;
 			
 		case "use":
@@ -208,14 +194,7 @@ public class Level {
 			break;
 			
 		case "stats":
-			Player player = GameBoard.player;
-			System.out.println(player.getName() + " stats");
-			System.out.println("====================");
-			System.out.println("Heath = " + player.getCurrentHealth()+ "/" + player.getMaxHealth());
-			System.out.println("Damages = " + player.getDamages());
-			System.out.println("Critical hit chance = " + player.getPourcentCriticalHit());
-			System.out.println("Critical hit power = " + player.getPowerOfCriticalHit());
-			System.out.println("====================");
+			GameBoard.commandFactory.executeCommand("stats");
 			break;
 			
 		default:
@@ -288,5 +267,17 @@ public class Level {
 	public void goToPreviousRoom(){
 		this.currentRoom=previousRoom;
 		this.displayMessage();
+	}
+	
+	public Room getPreviousRoom(){
+		return this.previousRoom;
+	}
+	
+	public void setPreviousRoom(Room room){
+		this.previousRoom = room;
+	}
+	
+	public void setCurrentRoom(Room room){
+		this.currentRoom = room;
 	}
 }

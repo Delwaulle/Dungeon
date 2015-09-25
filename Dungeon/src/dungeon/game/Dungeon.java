@@ -1,7 +1,11 @@
 package dungeon.game;
 
+import java.util.Map;
 import java.util.Scanner;
 
+import dungeon.commands.Command;
+import dungeon.commands.CommandFactory;
+import dungeon.commands.GoCommand;
 import dungeon.level.*;
 
 /**
@@ -37,6 +41,10 @@ public class Dungeon {
 				System.out.println("Welcome to the level "+(i+1));
 				Level level = levels[i];
 				this.currentLevel=level;
+				System.out.println("hdkdffdsk");
+				Map<String, Command> map = GameBoard.commandFactory.getMap();
+				GoCommand goCommand = new GoCommand(level);
+				map.put("go", goCommand);
 				level.start();
 				System.out.println("again");
 			}

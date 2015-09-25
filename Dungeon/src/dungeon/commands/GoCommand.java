@@ -8,7 +8,9 @@ public class GoCommand implements Command{
 	private Level level;
 	private String direction;
 	
-	public GoCommand() {}
+	public GoCommand(Level level){
+		this.level = level;
+	}
 
 	public String getDirection() {
 		return direction;
@@ -22,8 +24,8 @@ public class GoCommand implements Command{
 	public void apply() {
 		Room newRoom = level.getCurrentRoom().goToDirection(direction);
 		if(newRoom!=null){
-			//level.previousRoom=currentRoom;
-			//level.currentRoom=newRoom;
+			level.setPreviousRoom(level.getCurrentRoom());
+			level.setCurrentRoom(newRoom);
 		}
 		else
 			System.out.println("Impossible action !");
