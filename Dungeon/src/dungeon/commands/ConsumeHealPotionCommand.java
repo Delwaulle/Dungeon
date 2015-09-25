@@ -1,27 +1,20 @@
-package dungeon.action;
+package dungeon.commands;
 
-import dungeon.item.*;
-import dungeon.game.*;
+import dungeon.game.Player;
+import dungeon.item.Potion;
 
-/**
- * @author cbreuzon create the command in order to consume a health potion
- *
- */
-public class ConsumeHealthPotion implements Action {
+public class ConsumeHealPotionCommand implements Command{
 
-	private Potion potion;
 	private Player player;
-
-	public ConsumeHealthPotion(Player player, Potion potion) {
+	private Potion potion;
+	
+	public ConsumeHealPotionCommand(Player player, Potion potion) {
 		this.player = player;
 		this.potion = potion;
 	}
 
-	/**
-	 * execute the command
-	 */
 	@Override
-	public void execute() {
+	public void apply() {
 		if (player.getInventory().searchItem(potion.getName()) != -1) {
 		
 			if (player.getCurrentHealth() < player.getMaxHealth()){
@@ -37,5 +30,6 @@ public class ConsumeHealthPotion implements Action {
 			player.getInventory().useItem(potion.getName(), 1);
 		}
 	}
+	
 
 }

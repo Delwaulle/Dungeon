@@ -70,7 +70,7 @@ public class Player extends Character{
 	}
 	
 	public void executeAction(Action action){
-		action.execute();
+		action.consume();
 	}
 
 }

@@ -16,7 +16,7 @@ import dungeon.game.GameBoard;
 
 public abstract class Room {
 	protected Map<Door,Room> neighbours = new HashMap<>();
-	protected Map<String,DecorAction> decors = new HashMap<>();
+	//protected Map<String,DecorAction> decors = new HashMap<>();
 	protected String name;
 	protected Level level;
 	Scanner scanner = new Scanner(System.in);
@@ -36,9 +36,9 @@ public abstract class Room {
 	 * @param name
 	 * @param action
 	 */
-	public void setDecor(String name,DecorAction action){
+	/*public void setDecor(String name,DecorAction action){
 		this.decors.put(name,action);
-	}
+	}*/
 	
 	/**
 	 * We show to the player all the directions he can go now

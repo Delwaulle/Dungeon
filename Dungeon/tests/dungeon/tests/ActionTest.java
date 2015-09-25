@@ -30,7 +30,7 @@ public class ActionTest {
 		//test if player has 5HP
 		assertEquals(5, player.getCurrentHealth());
 		
-		action.execute();
+		action.consume();
 		
 		//test if player has 2 potions in his inventory after using 1
 		assertEquals(2, player.getInventory().getItem("Health's_potion").getQuantity());
@@ -45,7 +45,7 @@ public class ActionTest {
 		assertEquals(18, player.getCurrentHealth());
 		assertEquals(5, potion.getPower());
 		
-		action.execute();
+		action.consume();
 		
 		assertEquals(20, player.getCurrentHealth());
 		
