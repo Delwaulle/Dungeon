@@ -6,7 +6,9 @@ public class StatsCommand implements Command{
 	
 	private Player player;
 
-	public StatsCommand() {}
+	public StatsCommand(Player player) {
+		this.player = player;
+	}
 
 	public Player getPlayer() {
 		return player;

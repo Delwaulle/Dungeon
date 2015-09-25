@@ -22,7 +22,6 @@ public class CommandFactory {
 	public void initCommand(){
 		this.commands.put("descbribe", new DesbcribeCommand());
 		this.commands.put("help", new HelpCommand());
-		this.commands.put("stats", new StatsCommand());
 		this.commands.put("inventory", new ShowInventoryCommand());
 	}
 	

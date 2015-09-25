@@ -30,8 +30,8 @@ public class Level {
 	 * @param numLevel
 	 */
 	public Level(int numLevel){
-		//initializeRooms2();
-		initializeRooms3(numLevel);
+		initializeRooms2();
+		//initializeRooms3(numLevel);
 		this.currentRoom=entrance;
 	}
 	
