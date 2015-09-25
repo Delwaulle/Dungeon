@@ -12,15 +12,17 @@ import dungeon.item.Item;
 import dungeon.item.Potion;
 
 
-public class ActionTest {
+public class PotionTest {
 	
 	private Player player;
+	Command command;
 	
 	@Test
 	public void consumeHealthPotionTest(){
 		this.player = new Player("player");
 		Potion potion = (Potion) player.getInventory().getItem("Health's_potion");
 		//this.action = new ConsumeHealthPotion(player, potion);
+		this.command = new ConsumeHealPotionCommand(player, potion);
 		player.setCurrentHealth(5);
 		
 		//test if player has 3 potions in his inventory
@@ -28,7 +30,7 @@ public class ActionTest {
 		//test if player has 5HP
 		assertEquals(5, player.getCurrentHealth());
 		
-		//action.consume();
+		command.apply();
 		
 		//test if player has 2 potions in his inventory after using 1
 		assertEquals(2, player.getInventory().getItem("Health's_potion").getQuantity());
@@ -38,12 +40,12 @@ public class ActionTest {
 		player.setCurrentHealth(18);
 		potion = (Potion) player.getInventory().getItem("Health's_potion");
 		potion.setPower(5);
-		//action = new ConsumeHealthPotion(player, potion);
+		command = new ConsumeHealPotionCommand(player, potion);
 		
 		assertEquals(18, player.getCurrentHealth());
 		assertEquals(5, potion.getPower());
 		
-		//action.consume();
+		command.apply();
 		
 		assertEquals(20, player.getCurrentHealth());
 		
