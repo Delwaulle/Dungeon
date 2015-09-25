@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import dungeon.action.DecorAction;
 import dungeon.game.GameBoard;
 
 /**

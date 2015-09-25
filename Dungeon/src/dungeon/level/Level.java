@@ -3,8 +3,7 @@ package dungeon.level;
 import java.util.List;
 import java.util.Scanner;
 
-import dungeon.action.Action;
-import dungeon.action.ConsumeHealthPotion;
+import dungeon.commands.*;
 import dungeon.game.GameBoard;
 import dungeon.game.Player;
 import dungeon.item.Inventory;
@@ -31,7 +30,8 @@ public class Level {
 	 * @param numLevel
 	 */
 	public Level(int numLevel){
-		initializeRooms2();
+		//initializeRooms2();
+		initializeRooms3(numLevel);
 		this.currentRoom=entrance;
 	}
 	
@@ -67,6 +67,62 @@ public class Level {
 		passage = new NormalRoom("passage",this);
 		passage.setDescription("It turns to the north.");
 		
+		exit = new NormalRoom("exit",this);
+		
+		
+		entrance.setNeighbour(new Door("north"), intersection);
+		
+		intersection.setNeighbour(new Door("west"), treasureRoom);
+		intersection.setNeighbour(new Door("east"), monsterRoom);
+		
+		treasureRoom.setNeighbour(new Door("east"), intersection);
+		
+		monsterRoom.setNeighbour(new Door("west"), intersection);
+		monsterRoom.setNeighbour(new Door("east"), passage);
+		
+		passage.setNeighbour(new Door("west"), monsterRoom);
+		passage.setNeighbour(new Door("north"), exit);
+	}
+	
+	/**
+	 * for the moment, we initialize some level with its rooms
+	 */
+	public void initializeRooms3(int numLevel){
+		// create the entrance
+		entrance = new NormalRoom("entrance",this);
+		
+		int nbNormalRoom=numLevel*(1/2)+2;
+		int nbMonsterRoom=numLevel*(1/5)+1;
+		int nbTreasureRoom=numLevel*(1/6)+1;
+		
+		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom;
+		int r;
+		while(totalNumberOfRoom!=0){
+			r = (int) (10*Math.random());
+			while(r!=1 || r!=2 ||r!=3){
+				r = (int) (10*Math.random());
+			}
+			if(r==1 && nbNormalRoom!=0){
+				nbNormalRoom--;
+			}else if(r==2 && nbMonsterRoom!=0){
+				nbMonsterRoom--;
+			}else if(r==3 && nbTreasureRoom!=0){
+				nbTreasureRoom--;
+			}
+			totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom;
+		}
+		
+		
+		intersection = new NormalRoom("intersection",this);
+		intersection.setDescription("2 ways, west or east. I can hear something strange on the east...");
+		
+		treasureRoom = new TreasureRoom("treasureroom",this);
+		treasureRoom.setDescription("There is an empty chest on the ground.");
+		
+		monsterRoom = new MonsterRoom("monsterRoom",this);
+		passage = new NormalRoom("passage",this);
+		passage.setDescription("It turns to the north.");
+		//create the exit
 		exit = new NormalRoom("exit",this);
 		
 		
@@ -143,8 +199,8 @@ public class Level {
 		case "use":
 			Potion potion = (Potion) GameBoard.player.getInventory().getItem(cmd[1]);
 			if(potion != null){
-				Action consumeHealthPotion = new ConsumeHealthPotion(GameBoard.player, potion);
-				GameBoard.player.executeAction(consumeHealthPotion);
+				//Action consumeHealthPotion = new ConsumeHealthPotion(GameBoard.player, potion);
+				//GameBoard.player.executeAction(consumeHealthPotion);
 				System.out.println("You have now " + GameBoard.player.getCurrentHealth());
 			} else {
 				System.out.println("There is no kind of \"" + cmd[1] + "\" in your inventory.");

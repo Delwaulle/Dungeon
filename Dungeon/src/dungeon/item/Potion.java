@@ -1,13 +1,12 @@
 package dungeon.item;
 
-import dungeon.action.Action;
 import dungeon.game.Player;
 
 /**
  * @author fguilbert
  * the player can use some potions for healing or having more strength
  */
-public class Potion extends Item implements Action{
+public class Potion extends Item{
 	
 
 	private int power;
@@ -34,25 +33,6 @@ public class Potion extends Item implements Action{
 				this.power;
 	}
 	
-	/**
-	 * execute the command
-	 */
-	@Override
-	public void consume(Player player) {
-		if (player.getInventory().searchItem(this.getName()) != -1) {
-		
-			if (player.getCurrentHealth() < player.getMaxHealth()){
-				if ((player.getCurrentHealth() + this.getPower()) > player
-						.getMaxHealth())
-					player.setCurrentHealth(player.getMaxHealth());
-				else
-					player.setCurrentHealth(player.getCurrentHealth()
-							+ this.getPower());
-				
-			}
-
-			player.getInventory().useItem(this.getName(), 1);
-		}
-	}
+	
 
 }

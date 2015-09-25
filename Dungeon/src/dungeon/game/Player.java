@@ -1,8 +1,7 @@
 package dungeon.game;
 
 
-import dungeon.action.Action;
-import dungeon.action.ConsumeHealthPotion;
+import dungeon.commands.*;
 import dungeon.item.Inventory;
 import dungeon.item.Potion;
 import dungeon.item.Weapon;
@@ -69,8 +68,4 @@ public class Player extends Character{
 		this.inventory = inventory;
 	}
 	
-	public void executeAction(Action action){
-		action.consume();
-	}
-
 }
