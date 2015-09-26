@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
-import dungeon.item.Potion;
 
 /**
  * @author Lo�c
@@ -173,7 +172,9 @@ public class Level {
 			break;
 		
 		case "describe":
-			GameBoard.commandFactory.executeCommand("describe");
+			DescribeCommand describeCom = (DescribeCommand) GameBoard.commandFactory.getMap().get("describe");
+			describeCom.setRoom(this.currentRoom);
+			describeCom.apply();
 			break;
 			
 		case "inventory":

@@ -1,7 +1,7 @@
 package dungeon.commands;
 
 import dungeon.game.GameBoard;
-import dungeon.item.Inventory;
+import dungeon.items.Inventory;
 
 public class ShowInventoryCommand implements Command{
 

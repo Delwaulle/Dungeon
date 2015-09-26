@@ -20,7 +20,7 @@ public class CommandFactory {
 	}
 	
 	public void initCommand(){
-		this.commands.put("descbribe", new DesbcribeCommand());
+		this.commands.put("describe", new DescribeCommand());
 		this.commands.put("help", new HelpCommand());
 		this.commands.put("inventory", new ShowInventoryCommand());
 	}

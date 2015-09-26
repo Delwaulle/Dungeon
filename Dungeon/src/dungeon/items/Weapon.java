@@ -1,4 +1,4 @@
-package dungeon.item;
+package dungeon.items;
 
 public class Weapon extends Item{
 

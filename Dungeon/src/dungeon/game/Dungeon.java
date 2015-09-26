@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import dungeon.commands.Command;
-import dungeon.commands.CommandFactory;
 import dungeon.commands.GoCommand;
 import dungeon.level.*;
 

@@ -1,10 +1,9 @@
 package dungeon.game;
 
 
-import dungeon.commands.*;
-import dungeon.item.Inventory;
-import dungeon.item.Potion;
-import dungeon.item.Weapon;
+import dungeon.items.Inventory;
+import dungeon.items.Potion;
+import dungeon.items.Weapon;
 import dungeon.level.Level;
 
 /**

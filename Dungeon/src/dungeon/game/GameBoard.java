@@ -24,7 +24,9 @@ public class GameBoard {
 	public GameBoard() throws InterruptedException{
 		System.out.println("Welcome to the game of dungeons");
 		System.out.println("Choose a name for your player : >");
-		String pseudo = scanner.nextLine();
+		String pseudo ="NO_NAME";
+		while(scanner.nextLine().equals(""))
+			pseudo = scanner.nextLine();
 		player = new Player(pseudo);
 		commandFactory = new CommandFactory();
 		commandFactory.initCommand();

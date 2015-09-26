@@ -2,7 +2,7 @@ package dungeon.commands;
 
 import dungeon.game.GameBoard;
 import dungeon.game.Player;
-import dungeon.item.Potion;
+import dungeon.items.Potion;
 
 public class ConsumeHealPotionCommand implements Command{
 

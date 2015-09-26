@@ -1,7 +1,7 @@
 package dungeon.game;
 
-import dungeon.item.Chest;
-import dungeon.item.Item;
+import dungeon.items.Chest;
+import dungeon.items.Item;
 
 /**
  * @author fguilbert

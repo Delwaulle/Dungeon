@@ -1,6 +1,5 @@
-package dungeon.item;
+package dungeon.items;
 
-import dungeon.game.Player;
 
 /**
  * @author fguilbert

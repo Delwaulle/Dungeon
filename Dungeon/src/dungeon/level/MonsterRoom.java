@@ -24,11 +24,6 @@ public class MonsterRoom extends Room {
 		this.monster = monster;
 	}
 
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String getDirection() {

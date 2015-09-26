@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dungeon.item.Inventory;
-import dungeon.item.Item;
-import dungeon.item.Potion;
+import dungeon.items.Inventory;
+import dungeon.items.Item;
+import dungeon.items.Potion;
 
 public class InventoryTest {
 

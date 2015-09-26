@@ -6,18 +6,21 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import dungeon.actions.ActionFactory;
 import dungeon.game.GameBoard;
 
 /**
- * @author Loï¿½c
+ * @author Loïc
  *
  */
 
 public abstract class Room {
+	
 	protected Map<Door,Room> neighbours = new HashMap<>();
-	//protected Map<String,DecorAction> decors = new HashMap<>();
+	protected ActionFactory actions = new ActionFactory();
 	protected String name;
 	protected Level level;
+	protected boolean isDescribed;
 	Scanner scanner = new Scanner(System.in);
 	
 	/**
@@ -30,14 +33,6 @@ public abstract class Room {
 		this.level=level;
 	}
 	
-	/**
-	 * set the decor of a room
-	 * @param name
-	 * @param action
-	 */
-	/*public void setDecor(String name,DecorAction action){
-		this.decors.put(name,action);
-	}*/
 	
 	/**
 	 * We show to the player all the directions he can go now
@@ -45,10 +40,8 @@ public abstract class Room {
 	public void displayDirections(){
 		System.out.println("Possible(s) direction(s) :");
 		String directions="-- ";
-		@SuppressWarnings("rawtypes")
-		Set listKeys=this.neighbours.keySet();  // key list of the map
-		@SuppressWarnings("rawtypes")
-		Iterator iterateur=listKeys.iterator(); 
+		Set<Door> listKeys=this.neighbours.keySet();  // key list of the map
+		Iterator<Door> iterateur=listKeys.iterator(); 
 		while(iterateur.hasNext())
 		{
 			Door key= (Door)iterateur.next();
@@ -117,7 +110,9 @@ public abstract class Room {
 		default : return "";
 		}
 	}
-	
+
+
+
 	/**
 	 * for each Door we look at the direction
 	 * @param direction
@@ -132,17 +127,36 @@ public abstract class Room {
 		return null;
 	}
 	
+	/**
+	 * If the player asks the description of the room :
+	 * set the boolean isDescribed to true
+	 * display all the objects in the room 
+	 * show all actions possible with this objects
+	 */
+	public void askDescription(){
+		this.isDescribed=true;
+		System.out.println(this.actions.toString());
+		
+	}
+	
 	
 	/**
-	 * @return the name
+	 * @return the name of the room
 	 */
 	public String getName(){
 		return this.name;
 	}
 	
+	
+	/**
+	 * @return if the player asks the description of the room
+	 */
+	public boolean isDescribed() {
+		return isDescribed;
+	}
+	
 	public abstract void setDescription(String description);
 	
-	public abstract String getDescription();
 	
 	public abstract String getDirection();
 	

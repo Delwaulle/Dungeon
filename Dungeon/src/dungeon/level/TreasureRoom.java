@@ -1,6 +1,6 @@
 package dungeon.level;
 
-import dungeon.item.Chest;
+import dungeon.items.Chest;
 
 /**
  * @author fguilbert
@@ -28,11 +28,6 @@ public class TreasureRoom extends Room{
 	public TreasureRoom(String name,Chest chest,Level level){
 		super(name,level);
 		this.setChest(chest);
-	}
-	
-	@Override
-	public String getDescription() {
-		return "There is a chest in the middle of the room !";
 	}
 
 

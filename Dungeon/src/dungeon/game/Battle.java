@@ -2,7 +2,7 @@ package dungeon.game;
 
 import java.util.Scanner;
 
-import dungeon.item.Item;
+import dungeon.items.Item;
 
 /**
  * @author fguilbert

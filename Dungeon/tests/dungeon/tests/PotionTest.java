@@ -7,9 +7,9 @@ import dungeon.commands.*;
 import dungeon.game.Battle;
 import dungeon.game.Monster;
 import dungeon.game.Player;
-import dungeon.item.Inventory;
-import dungeon.item.Item;
-import dungeon.item.Potion;
+import dungeon.items.Inventory;
+import dungeon.items.Item;
+import dungeon.items.Potion;
 
 
 public class PotionTest {
