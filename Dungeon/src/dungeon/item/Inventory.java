@@ -22,6 +22,10 @@ public class Inventory {
 			this.items.add(item);
 	}
 	
+	public List<Item> getItems() {
+		return items;
+	}
+
 	/**
 	 * when the player removes an item from his inventory
 	 * @param item
