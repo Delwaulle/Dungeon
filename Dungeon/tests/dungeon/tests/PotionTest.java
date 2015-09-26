@@ -16,7 +16,7 @@ public class PotionTest {
 	
 	private Player player;
 	
-	
+	/*
 	@Test
 	public void consumeHealthPotionTest(){
 		this.player = new Player("player");
@@ -49,7 +49,7 @@ public class PotionTest {
 		
 		assertEquals(20, player.getCurrentHealth());
 		
-	}
+	}*/
 	
 	/**
 	 * test if the player life does not increase when he drink a potion while he is full life
