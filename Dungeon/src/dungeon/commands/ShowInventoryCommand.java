@@ -11,7 +11,7 @@ public class ShowInventoryCommand implements Command{
 	public void apply() {
 		Inventory inventory = GameBoard.player.getInventory();
 		System.out.println("Your inventory :");
-		System.out.println(inventory);
+		System.out.println(inventory.toString());
 		System.out.println("================");
 	}
 

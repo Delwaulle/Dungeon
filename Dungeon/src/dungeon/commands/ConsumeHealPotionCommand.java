@@ -1,5 +1,6 @@
 package dungeon.commands;
 
+import dungeon.game.GameBoard;
 import dungeon.game.Player;
 import dungeon.item.Potion;
 
@@ -8,9 +9,21 @@ public class ConsumeHealPotionCommand implements Command{
 	private Player player;
 	private Potion potion;
 	
+	public Potion getPotion() {
+		return potion;
+	}
+
+	public void setPotion(Potion potion) {
+		this.potion = potion;
+	}
+
 	public ConsumeHealPotionCommand(Player player, Potion potion) {
 		this.player = player;
 		this.potion = potion;
+	}
+	
+	public ConsumeHealPotionCommand(Player player) {
+		this.player = player;
 	}
 
 	@Override
@@ -26,7 +39,11 @@ public class ConsumeHealPotionCommand implements Command{
 							+ potion.getPower());
 				
 				player.getInventory().useItem(potion.getName(), 1);
+				System.out.println("You have now " + GameBoard.player.getCurrentHealth());
 			}
+		}
+		else{
+			System.out.println("There is no kind of \"" + this.potion.getName() + "\" in your inventory.");
 		}
 	}
 	

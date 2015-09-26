@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
-import dungeon.game.Player;
-import dungeon.item.Inventory;
 import dungeon.item.Potion;
 
 /**
@@ -179,18 +177,13 @@ public class Level {
 			break;
 			
 		case "inventory":
-			GameBoard.commandFactory.equals("inventory");
+			GameBoard.commandFactory.executeCommand("inventory");
 			break;
 			
 		case "use":
-			Potion potion = (Potion) GameBoard.player.getInventory().getItem(cmd[1]);
-			if(potion != null){
-				//Action consumeHealthPotion = new ConsumeHealthPotion(GameBoard.player, potion);
-				//GameBoard.player.executeAction(consumeHealthPotion);
-				System.out.println("You have now " + GameBoard.player.getCurrentHealth());
-			} else {
-				System.out.println("There is no kind of \"" + cmd[1] + "\" in your inventory.");
-			}
+			//ConsumeHealPotionCommand consumeCommand = (ConsumeHealPotionCommand) GameBoard.commandFactory.getMap().get("use");
+			//consumeCommand.setPotion((Potion) GameBoard.player.getInventory().getItem(cmd[1]));
+			//consumeCommand.apply();
 			break;
 			
 		case "stats":
