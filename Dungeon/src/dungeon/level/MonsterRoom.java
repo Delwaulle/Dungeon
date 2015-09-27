@@ -16,7 +16,7 @@ public class MonsterRoom extends Room {
 
 	public MonsterRoom(String name,Level level) {
 		super(name,level);
-		this.monster = new Monster("devil cat");
+		this.monster = new Monster("Devil cat");
 	}
 
 	public MonsterRoom(String name, Monster monster,Level level) {

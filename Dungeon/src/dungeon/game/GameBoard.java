@@ -23,7 +23,7 @@ public class GameBoard {
 	 */
 	public GameBoard() throws InterruptedException{
 		System.out.println("Welcome to the game of dungeons");
-		System.out.println("Choose a name for your player : >");
+		System.out.print("Choose a name for your player :\n> ");
 		String pseudo ="NO_NAME";
 		while(scanner.nextLine().equals(""))
 			pseudo = scanner.nextLine();

@@ -17,7 +17,7 @@ public class Monster extends Character{
 	 * @param name
 	 */
 	public Monster(String name){
-		super("name");
+		super(name);
 		this.damages = 2;
 		this.maxHealth = 5;
 	}
