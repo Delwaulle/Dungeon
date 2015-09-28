@@ -3,6 +3,7 @@ package dungeon.game;
 import java.util.Scanner;
 
 import dungeon.commands.CommandFactory;
+import dungeon.commands.EquipPrimaryWeaponCommand;
 import dungeon.commands.StatsCommand;
 
 
@@ -31,6 +32,7 @@ public class GameBoard {
 		commandFactory = new CommandFactory();
 		commandFactory.initCommand();
 		commandFactory.getMap().put("stats", new StatsCommand(player));
+		commandFactory.getMap().put("equip", new EquipPrimaryWeaponCommand(player));
 		System.out.println("Here is your departure's inventory");
 		System.out.println(player.getInventory().toString());
 		

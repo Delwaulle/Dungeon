@@ -40,9 +40,9 @@ public class Dungeon {
 				System.out.println("Welcome to the level "+(i+1));
 				Level level = levels[i];
 				this.currentLevel=level;
-				Map<String, Command> map = GameBoard.commandFactory.getMap();
+				Map<String, Command> commandMap = GameBoard.commandFactory.getMap();
 				GoCommand goCommand = new GoCommand(level);
-				map.put("go", goCommand);
+				commandMap.put("go", goCommand);
 				level.start();
 				System.out.println("again");
 			}

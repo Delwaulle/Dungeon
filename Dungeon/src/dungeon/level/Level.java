@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
+import dungeon.items.Weapon;
 
 /**
  * @author Lo�c
@@ -185,6 +186,16 @@ public class Level {
 			//ConsumeHealPotionCommand consumeCommand = (ConsumeHealPotionCommand) GameBoard.commandFactory.getMap().get("use");
 			//consumeCommand.setPotion((Potion) GameBoard.player.getInventory().getItem(cmd[1]));
 			//consumeCommand.apply();
+			break;
+		
+		case "equip":
+			EquipPrimaryWeaponCommand equipCommand = (EquipPrimaryWeaponCommand) GameBoard.commandFactory.getMap().get("equip");
+			if(GameBoard.player.getInventory().searchItem(cmd[1]) != -1){
+				equipCommand.setWeapon((Weapon) GameBoard.player.getInventory().getItem(cmd[1]));
+				equipCommand.apply();
+			} else {
+				System.out.println("There is no \"" + cmd[1] + "\" in your inventory. Check if it's the good name, or check your inventory.");
+			}
 			break;
 			
 		case "stats":

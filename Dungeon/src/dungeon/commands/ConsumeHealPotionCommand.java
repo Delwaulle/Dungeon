@@ -9,6 +9,10 @@ public class ConsumeHealPotionCommand implements Command{
 	private Player player;
 	private Potion potion;
 	
+	public ConsumeHealPotionCommand(Player player) {
+		this.player = player;
+	}
+	
 	public Potion getPotion() {
 		return potion;
 	}
@@ -22,9 +26,6 @@ public class ConsumeHealPotionCommand implements Command{
 		this.potion = potion;
 	}
 	
-	public ConsumeHealPotionCommand(Player player) {
-		this.player = player;
-	}
 
 	@Override
 	public void apply() {

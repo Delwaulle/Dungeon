@@ -13,6 +13,7 @@ import dungeon.level.Level;
 public class Player extends Character{
 
 	private Inventory inventory;
+	private Weapon primaryWeapon;
 	
 	/**
 	 * We create the player
@@ -31,7 +32,7 @@ public class Player extends Character{
 	 * When the player is created, we give him some basic stuff
 	 */
 	public void initializeBasicInventory(){
-		this.inventory.addItem(new Weapon("Wooden sword"));
+		this.inventory.addItem(new Weapon("Wooden_sword"));
 		this.inventory.addItem(new Potion("Health's_potion",1,3));
 	}
 
@@ -49,7 +50,7 @@ public class Player extends Character{
 	 * @return the player's damage which is added to the damage of the weapon
 	 */
 	public int getDamagesWithWeapon(){
-		return this.damages + ((Weapon)this.getInventory().getItem("Wooden sword")).getDamages();
+		return this.damages + this.primaryWeapon.getDamages();
 	}
 	
 
@@ -65,6 +66,14 @@ public class Player extends Character{
 	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+
+	public Weapon getPrimaryWeapon() {
+		return primaryWeapon;
+	}
+
+	public void setPrimaryWeapon(Weapon primaryWeapon) {
+		this.primaryWeapon = primaryWeapon;
 	}
 	
 }

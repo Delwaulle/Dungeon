@@ -24,6 +24,8 @@ public class StatsCommand implements Command{
 		System.out.println("====================");
 		System.out.println("Heath = " + player.getCurrentHealth()+ "/" + player.getMaxHealth());
 		System.out.println("Damages = " + player.getDamages());
+		System.out.println("Primary Weapon = " + player.getPrimaryWeapon().getName());
+		System.out.println("               -Weapon Damages = " + player.getPrimaryWeapon().getDamages());
 		System.out.println("Critical hit chance = " + player.getPourcentCriticalHit());
 		System.out.println("Critical hit power = " + player.getPowerOfCriticalHit());
 		System.out.println("====================");
