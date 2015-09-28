@@ -1,5 +1,7 @@
 package dungeon.game;
 
+import dungeon.items.Weapon;
+
 public class Character {
 	
 	protected String name;
@@ -7,6 +9,7 @@ public class Character {
 	protected int pourcentCriticalHit=50;
 	protected int powerOfCriticalHit=2;
 	protected boolean dead;
+	private Weapon primaryWeapon;
 	
 	
 	public Character(String name){
@@ -21,9 +24,18 @@ public class Character {
 	public int attack(){
 		if(isCriticalHit()){
 			System.out.println("Critical hit !");
-			return this.damages*powerOfCriticalHit;
+			return this.getDamagesWithWeapon()*powerOfCriticalHit;
 		}
 		//normal hit
+		return this.getDamagesWithWeapon();
+	}
+	
+	/**
+	 * @return the player's damage which is added to the damage of the weapon
+	 */
+	public int getDamagesWithWeapon(){
+		if(primaryWeapon != null)
+			return this.damages + this.primaryWeapon.getDamages();
 		return this.damages;
 	}
 		
@@ -161,6 +173,15 @@ public class Character {
 	 */
 	public void setCurrentHealth(int currentHealth) {
 		this.currentHealth = currentHealth;
+	}
+	
+
+	public Weapon getPrimaryWeapon() {
+		return primaryWeapon;
+	}
+
+	public void setPrimaryWeapon(Weapon primaryWeapon) {
+		this.primaryWeapon = primaryWeapon;
 	}
 	
 
