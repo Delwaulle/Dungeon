@@ -15,6 +15,7 @@ public class EquipPrimaryWeaponCommand implements Command{
 	@Override
 	public void apply() {
 		player.setPrimaryWeapon(weapon);
+		System.out.println("Your primary weapon is now : " + weapon.getName());
 	}
 
 	public Player getPlayer() {
