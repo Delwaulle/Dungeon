@@ -180,10 +180,16 @@ public class Inventory {
 	
 	// ========================== GETTERS AND SETTERS =============================
 	
+	/**
+	 * @param maxWeight
+	 */
 	public void setMaxWeight(int maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 
+	/**
+	 * @return the list of items of the inventory
+	 */
 	public List<StackItem> getItems() {
 		return items;
 	}

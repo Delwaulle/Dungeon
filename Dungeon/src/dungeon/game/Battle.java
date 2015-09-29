@@ -91,7 +91,8 @@ public class Battle {
 		}
 	}
 	
-
+	// ====================== GETTERS AND SETTERS ===========================
+	
 	/**
 	 * @return the player
 	 */

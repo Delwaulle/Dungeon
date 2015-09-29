@@ -14,11 +14,20 @@ public class MonsterRoom extends Room {
 
 	private Monster monster;
 
+	/**
+	 * @param name
+	 * @param level
+	 */
 	public MonsterRoom(String name,Level level) {
 		super(name,level);
 		this.monster = new Monster("Devil cat");
 	}
 
+	/**
+	 * @param name
+	 * @param monster
+	 * @param level
+	 */
 	public MonsterRoom(String name, Monster monster,Level level) {
 		super(name,level);
 		this.monster = monster;

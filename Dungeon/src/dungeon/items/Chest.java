@@ -11,11 +11,17 @@ import dungeon.exceptions.MaxStacksException;
 public class Chest extends Inventory{
 	
 	
+	/**
+	 * @param items
+	 */
 	public Chest(List<StackItem> items){
 		super();
 		this.addListToInventory(items);
 	}
 	
+	/**
+	 * Empty constructor to initialize a chest with 2 HEALTH_POTION
+	 */
 	public Chest(){	
 		super();
 		this.setBasicChest();
@@ -23,7 +29,7 @@ public class Chest extends Inventory{
 
 
 	/**
-	 * initialize the chest's inventory with 2 health_potion
+	 * initialize the chest's inventory with 2 HEALTH_POTION
 	 */
 	public void setBasicChest(){
 		try {

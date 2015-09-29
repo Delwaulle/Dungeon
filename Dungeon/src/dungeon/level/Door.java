@@ -1,5 +1,10 @@
 package dungeon.level;
 
+/**
+ * @author Loic
+ * Represents the transition between two rooms
+ * Can be in 3 states : normal,locked or hidden
+ */
 public class Door {
 	
 	protected String direction;
@@ -72,8 +77,4 @@ public class Door {
 	public void setHidden(boolean hidden) {
 		this.hidden = hidden;
 	}
-	
-	
-	
-
 }

@@ -248,7 +248,7 @@ public class Level {
 		do{			
 			displayMessage();
 			currentRoom.action();
-			System.out.println("> ");
+			System.out.print("> ");
 			
 			//Read a command from the player
 			String line = this.scanner.nextLine();

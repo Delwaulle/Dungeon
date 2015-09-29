@@ -3,6 +3,11 @@ package dungeon.game;
 import dungeon.items.Item;
 
 
+/**
+ * @author Loic
+ * Etablish the caracteristics of a character
+ * It can be a monster or a player
+ */
 public class Character {
 	
 	protected String name;
@@ -13,6 +18,9 @@ public class Character {
 	protected Item currentWeapon;
 	
 	
+	/**
+	 * @param name
+	 */
 	public Character(String name){
 		this.name=name;
 		this.dead=false;
@@ -58,14 +66,6 @@ public class Character {
 	 */
 	public void die(){
 		this.dead = true;
-	}
-	
-	
-	/**
-	 * @return the state of the character (dead or not ?)
-	 */
-	public boolean isDead(){
-		return this.dead;
 	}
 	
 	
@@ -190,5 +190,13 @@ public class Character {
 	 */
 	public void setCurrentWeapon(Item currentWeapon) {
 		this.currentWeapon = currentWeapon;
+	}
+	
+	
+	/**
+	 * @return the state of the character (dead or not ?)
+	 */
+	public boolean isDead(){
+		return this.dead;
 	}
 }

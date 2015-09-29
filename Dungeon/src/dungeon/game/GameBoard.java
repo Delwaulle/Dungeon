@@ -10,6 +10,8 @@ import dungeon.commands.StatsCommand;
 /**
  * @author fguilbert
  * the beginning of the game
+ * The player can choose his pseudo
+ * The inventory of the player is initialize and the dungeon 1 is instantiate
  */
 public class GameBoard {
 	

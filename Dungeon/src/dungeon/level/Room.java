@@ -11,8 +11,9 @@ import dungeon.game.GameBoard;
 import dungeon.items.Item;
 
 /**
- * @author Loïc
- *
+ * @author Loic
+ * Each elements which composed a level
+ * It contains door(s),monster,treasoure and some actions with decor
  */
 
 public abstract class Room {
@@ -156,12 +157,27 @@ public abstract class Room {
 		return isDescribed;
 	}
 	
+	// ========================= ABSTRACT =======================
+		
+	/**
+	 * @param description
+	 */
 	public abstract void setDescription(String description);
-	
-	
+		
+	/**
+	 * @return the direction
+	 */
 	public abstract String getDirection();
 	
+		
+	/**
+	 * Just display the informations of the room on the screen
+	 */
 	public abstract void displayInformation();
 	
+		
+	/**
+	 * Execute the action bind to the room
+	 */
 	public abstract void action();
 }
