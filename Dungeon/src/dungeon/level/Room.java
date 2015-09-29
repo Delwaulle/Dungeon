@@ -8,6 +8,7 @@ import java.util.Set;
 
 import dungeon.actions.ActionFactory;
 import dungeon.game.GameBoard;
+import dungeon.items.Item;
 
 /**
  * @author Loïc
@@ -68,12 +69,12 @@ public abstract class Room {
 		if(door!=null){
 			
 			if(door.isLocked()){
-				if(GameBoard.player.getInventory().searchItem("key")==-1){
+				if(GameBoard.player.getInventory().isPresent(Item.SAMPLE_KEY)){
 					System.out.println("Sorry you don't have the key to open this door, keep digging around this room");
 					return null;
 				}
 				else{
-					GameBoard.player.getInventory().useItem("key", 1);
+					GameBoard.player.getInventory().useItem(Item.SAMPLE_KEY, 1);
 					System.out.println("Good game you have the key to open this door ! You discover a new room !");
 				}
 			}

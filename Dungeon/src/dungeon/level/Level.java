@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
-import dungeon.items.Weapon;
+import dungeon.items.Item;
 
 /**
- * @author Lo�c
+ * @author Loic
  *
  */
 public class Level {
@@ -89,30 +89,8 @@ public class Level {
 		// create the entrance
 		entrance = new NormalRoom("entrance",this);
 		
-		int nbNormalRoom=numLevel*(1/2)+2;
-		int nbMonsterRoom=numLevel*(1/5)+1;
-		int nbTreasureRoom=numLevel*(1/6)+1;
-		
-		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom;
-		int r;
-		while(totalNumberOfRoom!=0){
-			r = (int) (10*Math.random());
-			while(r!=1 || r!=2 ||r!=3){
-				r = (int) (10*Math.random());
-			}
-			if(r==1 && nbNormalRoom!=0){
-				nbNormalRoom--;
-			}else if(r==2 && nbMonsterRoom!=0){
-				nbMonsterRoom--;
-			}else if(r==3 && nbTreasureRoom!=0){
-				nbTreasureRoom--;
-			}
-			totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom;
-		}
-		
-		
 		intersection = new NormalRoom("intersection",this);
-		intersection.setDescription("2 ways, west or east. I can hear something strange on the east...");
+		//intersection.setDescription("2 ways, west or east. I can hear something strange on the east...");
 		
 		treasureRoom = new TreasureRoom("treasureroom",this);
 		treasureRoom.setDescription("There is an empty chest on the ground.");
@@ -123,22 +101,63 @@ public class Level {
 		//create the exit
 		exit = new NormalRoom("exit",this);
 		
+		int nbNormalRoom=numLevel*(1/2)+2;
+		int nbMonsterRoom=numLevel*(1/5)+1;
+		int nbTreasureRoom=numLevel*(1/6)+1;
 		
-		entrance.setNeighbour(new Door("north"), intersection);
+		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+1;//+the entrance
+		int roomsLeft=totalNumberOfRoom;
+		int aRandomRoom;
+		String direction;
+		Object currentRoom=null;
+		Object nextRoom = null;
 		
-		intersection.setNeighbour(new Door("west"), treasureRoom);
-		intersection.setNeighbour(new Door("east"), monsterRoom);
+		//create different random room from another random room
+		while(roomsLeft!=0){
+			aRandomRoom = generateARoom();
+			direction = generateADireciton();
+			while(aRandomRoom!=1 || aRandomRoom!=2 ||aRandomRoom!=3){
+				aRandomRoom = generateARoom();
+			}
+			if(totalNumberOfRoom==roomsLeft){
+				currentRoom=entrance;
+			}
+			if(aRandomRoom==1 && nbNormalRoom!=0){
+				nextRoom=intersection;
+				nbNormalRoom--;
+			}else if(aRandomRoom==2 && nbMonsterRoom!=0){
+				nextRoom=monsterRoom;
+				nbMonsterRoom--;
+			}else if(aRandomRoom==3 && nbTreasureRoom!=0){
+				nextRoom=treasureRoom;
+				nbTreasureRoom--;
+			}
+			if(roomsLeft==1){
+				nextRoom=exit;
+			}
+			((Room) currentRoom).setNeighbour(new Door(direction), (Room)nextRoom);
+			currentRoom=nextRoom;
+			roomsLeft = nbMonsterRoom+nbNormalRoom+nbTreasureRoom;
+		}
 		
-		treasureRoom.setNeighbour(new Door("east"), intersection);
-		
-		monsterRoom.setNeighbour(new Door("west"), intersection);
-		monsterRoom.setNeighbour(new Door("east"), passage);
-		
-		passage.setNeighbour(new Door("west"), monsterRoom);
-		passage.setNeighbour(new Door("north"), exit);
 	}
 	
 	
+	private String generateADireciton() {
+		return "north";
+	}
+
+	/** generate an int which equals to normalRoom or monsterRoom or treasureRoom
+	 * @return an int between 1, 2 and 3 
+	 */
+	private int generateARoom() {
+		int r = (int) (10*Math.random());
+		while(r!=1 || r!=2 ||r!=3){
+			r = (int) (10*Math.random());
+		}
+		return r;
+	}
+
 	/**
 	 * @return the current room of the player
 	 */
@@ -190,8 +209,8 @@ public class Level {
 		
 		case "equip":
 			EquipPrimaryWeaponCommand equipCommand = (EquipPrimaryWeaponCommand) GameBoard.commandFactory.getMap().get("equip");
-			if(GameBoard.player.getInventory().searchItem(cmd[1]) != -1){
-				equipCommand.setWeapon((Weapon) GameBoard.player.getInventory().getItem(cmd[1]));
+			if(GameBoard.player.getInventory().isPresent(Item.valueOf(cmd[1]))){
+				//equipCommand.setWeapon((Weapon) GameBoard.player.getInventory().getItem(cmd[1]));
 				equipCommand.apply();
 			} else {
 				System.out.println("There is no \"" + cmd[1] + "\" in your inventory. Check if it's the good name, or check your inventory.");
@@ -201,7 +220,9 @@ public class Level {
 		case "stats":
 			GameBoard.commandFactory.executeCommand("stats");
 			break;
-			
+		case "drop":
+			//an item
+			break;	
 		default:
 			System.out.println("I don't know what you mean. Type \"help\" to show the differents commands.");
 		}

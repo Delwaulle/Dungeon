@@ -1,35 +1,42 @@
 package dungeon.items;
-
-import java.util.ArrayList;
 import java.util.List;
 
+import dungeon.exceptions.FullInventoryException;
+import dungeon.exceptions.MaxStacksException;
+
 /**
- * @author fguilbert
- * in a chest, the player can find gold, weapons and potions
+ * @author loic
+ * Basic chest who contains an inventory of items
  */
-public class Chest {
+public class Chest extends Inventory{
 	
-	private List<Item> drop;
 	
-	public Chest(List<Item> drop){
-		this.setDrop(drop);
+	public Chest(List<StackItem> items){
+		super();
+		this.addListToInventory(items);
 	}
 	
-	public Chest(){
-		this.drop=new ArrayList<Item>();
+	public Chest(){	
+		super();
 		this.setBasicChest();
 	}
 
 
+	/**
+	 * initialize the chest's inventory with 2 health_potion
+	 */
 	public void setBasicChest(){
-		this.drop.add(new Potion("Health's potion",2));
+		try {
+			this.addItem(new StackItem(Item.HEALTH_POTION,2));
+		} catch (FullInventoryException | MaxStacksException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public List<Item> getDrop() {
-		return drop;
-	}
-
-	public void setDrop(List<Item> drop) {
-		this.drop = drop;
+	/**
+	 * @return all the contents of the chest
+	 */
+	public List<StackItem> getDrop() {
+		return this.getItems();
 	}
 }

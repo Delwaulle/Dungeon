@@ -1,12 +1,12 @@
 package dungeon.commands;
 
 import dungeon.game.Player;
-import dungeon.items.Weapon;
+import dungeon.items.Item;
 
 public class EquipPrimaryWeaponCommand implements Command{
 
 	private Player player;
-	private Weapon weapon;
+	private Item weapon;
 	
 	public EquipPrimaryWeaponCommand(Player player) {
 		this.player = player;
@@ -14,8 +14,8 @@ public class EquipPrimaryWeaponCommand implements Command{
 
 	@Override
 	public void apply() {
-		player.setPrimaryWeapon(weapon);
-		System.out.println("Your primary weapon is now : " + weapon.getName());
+		player.setCurrentWeapon(weapon);
+		System.out.println("Your primary weapon is now : " + weapon.name());
 	}
 
 	public Player getPlayer() {
@@ -26,12 +26,10 @@ public class EquipPrimaryWeaponCommand implements Command{
 		this.player = player;
 	}
 
-	public Weapon getWeapon() {
-		return weapon;
-	}
-
-	public void setWeapon(Weapon weapon) {
+	public void setWeapon(Item weapon) {
 		this.weapon = weapon;
 	}
+
+	
 
 }

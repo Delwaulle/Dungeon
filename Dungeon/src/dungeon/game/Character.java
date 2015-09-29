@@ -1,6 +1,7 @@
 package dungeon.game;
 
-import dungeon.items.Weapon;
+import dungeon.items.Item;
+
 
 public class Character {
 	
@@ -9,7 +10,7 @@ public class Character {
 	protected int pourcentCriticalHit=50;
 	protected int powerOfCriticalHit=2;
 	protected boolean dead;
-	private Weapon primaryWeapon;
+	protected Item currentWeapon;
 	
 	
 	public Character(String name){
@@ -34,12 +35,13 @@ public class Character {
 	 * @return the player's damage which is added to the damage of the weapon
 	 */
 	public int getDamagesWithWeapon(){
-		if(primaryWeapon != null)
-			return this.damages + this.primaryWeapon.getDamages();
+		if(currentWeapon != null)
+			return this.damages + this.currentWeapon.getPower();
 		return this.damages;
 	}
 		
-	
+
+
 	/**
 	 * @return if the character is making a critical hit or not
 	 */
@@ -175,15 +177,18 @@ public class Character {
 		this.currentHealth = currentHealth;
 	}
 	
-
-	public Weapon getPrimaryWeapon() {
-		return primaryWeapon;
-	}
-
-	public void setPrimaryWeapon(Weapon primaryWeapon) {
-		this.primaryWeapon = primaryWeapon;
-	}
 	
+	/**
+	 * @return currentWeapon
+	 */
+	public Item getCurrentWeapon() {
+		return currentWeapon;
+	}
 
-
+	/**
+	 * @param currentWeapon
+	 */
+	public void setCurrentWeapon(Item currentWeapon) {
+		this.currentWeapon = currentWeapon;
+	}
 }

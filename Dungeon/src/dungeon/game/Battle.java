@@ -2,7 +2,8 @@ package dungeon.game;
 
 import java.util.Scanner;
 
-import dungeon.items.Item;
+import dungeon.exceptions.FullInventoryException;
+import dungeon.items.StackItem;
 
 /**
  * @author fguilbert
@@ -78,10 +79,14 @@ public class Battle {
 	 * 
 	 */
 	public void getDrop() {
-		Item item;
+		StackItem item;
 		for(int i=0;i<this.monster.getChest().getDrop().size();i++){
 			item=this.monster.getChest().getDrop().get(i);
-			this.player.getInventory().addItem(item);
+			try {
+				this.player.getInventory().addItem(item);
+			} catch (FullInventoryException e) {
+				e.printStackTrace();
+			}
 			System.out.println(item.toString());
 		}
 	}

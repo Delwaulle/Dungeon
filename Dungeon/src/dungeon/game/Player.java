@@ -1,9 +1,11 @@
 package dungeon.game;
 
 
+import dungeon.exceptions.FullInventoryException;
+import dungeon.exceptions.MaxStacksException;
 import dungeon.items.Inventory;
-import dungeon.items.Potion;
-import dungeon.items.Weapon;
+import dungeon.items.StackItem;
+import dungeon.items.Item;
 import dungeon.level.Level;
 
 /**
@@ -31,8 +33,13 @@ public class Player extends Character{
 	 * When the player is created, we give him some basic stuff
 	 */
 	public void initializeBasicInventory(){
-		this.inventory.addItem(new Weapon("Wooden_sword"));
-		this.inventory.addItem(new Potion("Health's_potion",1,3));
+		try {
+			this.inventory.addItem(new StackItem(Item.WOODEN_SWORD));
+			this.inventory.addItem(new StackItem(Item.HEALTH_POTION,3));
+		} catch (FullInventoryException | MaxStacksException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

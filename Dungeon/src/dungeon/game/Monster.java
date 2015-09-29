@@ -1,7 +1,8 @@
 package dungeon.game;
 
+import dungeon.exceptions.FullInventoryException;
 import dungeon.items.Chest;
-import dungeon.items.Item;
+import dungeon.items.StackItem;
 
 /**
  * @author fguilbert
@@ -53,10 +54,14 @@ public class Monster extends Character{
 	 * 
 	 */
 	public void getDrop() {
-		Item item;
+		StackItem item;
 		for(int i=0;i<this.chest.getDrop().size();i++){
 			item=this.chest.getDrop().get(i);
-			GameBoard.player.getInventory().addItem(item);
+			try {
+				GameBoard.player.getInventory().addItem(item);
+			} catch (FullInventoryException e) {
+				e.printStackTrace();
+			}
 			System.out.println(item.toString());
 		}
 	}
