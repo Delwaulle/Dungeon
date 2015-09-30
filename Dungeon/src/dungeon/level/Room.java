@@ -11,9 +11,10 @@ import dungeon.game.GameBoard;
 import dungeon.items.Item;
 
 /**
- * @author Loic
  * Each elements which composed a level
  * It contains door(s),monster,treasoure and some actions with decor
+ * @author Loic
+ * 
  */
 
 public abstract class Room {

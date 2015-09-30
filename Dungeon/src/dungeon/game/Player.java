@@ -9,8 +9,9 @@ import dungeon.items.Item;
 import dungeon.level.Level;
 
 /**
+ * All the components for having a player
  * @author fguilbert
- * all the components for having a player
+ * 
  */
 public class Player extends Character{
 

@@ -3,8 +3,9 @@ package dungeon.items;
 import dungeon.exceptions.MaxStacksException;
 
 /**
- * @author Loic
  * Represents an item with his quantity -- This is the elements of inventory
+ * @author Loic
+ * 
  */
 public class StackItem {
 	

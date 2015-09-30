@@ -8,8 +8,9 @@ import dungeon.commands.GoCommand;
 import dungeon.level.*;
 
 /**
- * @author fguilbert
  * all the components of a dungeon
+ * @author fguilbert
+ * 
  */
 public class Dungeon {
 

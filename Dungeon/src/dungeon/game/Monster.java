@@ -5,8 +5,9 @@ import dungeon.items.Chest;
 import dungeon.items.StackItem;
 
 /**
+ * All the components for having a monster
  * @author fguilbert
- * all the components for having a monster
+ * 
  */
 public class Monster extends Character{
 

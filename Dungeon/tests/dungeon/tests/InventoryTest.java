@@ -73,5 +73,12 @@ public class InventoryTest {
 		int expectingQuantity=2;
 		assertEquals(quantity,expectingQuantity);
 	}
+	
+	@Test(expected = FullInventoryException.class)
+	public void addItemToFullInventoryTest() throws FullInventoryException, MaxStacksException{
+		Inventory inventory=new Inventory();
+		inventory.setMaxWeight(5);
+		inventory.addItem(new StackItem(Item.HEALTH_POTION,6));
+	}
 
 }

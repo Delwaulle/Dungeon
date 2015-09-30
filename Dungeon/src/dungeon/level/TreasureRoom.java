@@ -3,8 +3,9 @@ package dungeon.level;
 import dungeon.items.Chest;
 
 /**
- * @author fguilbert
  * This class is for the specific rooms with a chest inside
+ * @author fguilbert
+ * 
  */
 public class TreasureRoom extends Room{
 

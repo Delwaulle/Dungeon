@@ -8,8 +8,9 @@ import dungeon.exceptions.MaxStacksException;
 import dungeon.utils.Constants;
 
 /**
- * @author Loic
  * Inventory contains a list of items with a max weight
+ * @author Loic
+ *
  */
 public class Inventory {
 	protected List<StackItem> items;

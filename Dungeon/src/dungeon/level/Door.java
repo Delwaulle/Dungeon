@@ -1,9 +1,10 @@
 package dungeon.level;
 
 /**
- * @author Loic
  * Represents the transition between two rooms
  * Can be in 3 states : normal,locked or hidden
+ * @author Loic
+ * 
  */
 public class Door {
 	

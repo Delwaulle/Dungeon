@@ -5,8 +5,9 @@ import dungeon.exceptions.FullInventoryException;
 import dungeon.exceptions.MaxStacksException;
 
 /**
- * @author loic
  * Basic chest who contains an inventory of items
+ * @author loic
+ * 
  */
 public class Chest extends Inventory{
 	

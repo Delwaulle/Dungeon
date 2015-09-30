@@ -4,9 +4,10 @@ import dungeon.items.Item;
 
 
 /**
- * @author Loic
- * Etablish the caracteristics of a character
+ *  Etablish the caracteristics of a character
  * It can be a monster or a player
+ * @author Loic
+ *
  */
 public class Character {
 	

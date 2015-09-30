@@ -3,8 +3,9 @@ package dungeon.items;
 import dungeon.utils.Constants;
 
 /**
- * @author Loïc
  * Enum of all possible items in the game
+ * @author Loïc
+ *
  */
 public enum Item {
 	

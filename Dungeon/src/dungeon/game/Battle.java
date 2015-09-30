@@ -6,8 +6,9 @@ import dungeon.exceptions.FullInventoryException;
 import dungeon.items.StackItem;
 
 /**
- * @author fguilbert
  * The scenario of the fight between a player and a monster
+ * @author fguilbert
+ * 
  */
 public class Battle {
 	
