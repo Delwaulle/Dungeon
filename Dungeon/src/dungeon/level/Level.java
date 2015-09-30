@@ -1,11 +1,11 @@
 package dungeon.level;
 
 import java.util.List;
-import java.util.Scanner;
 
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
 import dungeon.items.Item;
+import dungeon.utils.SecureInput;
 
 /**
  * @author Loic
@@ -21,7 +21,6 @@ public class Level {
 	protected Room currentRoom;
 	private Room previousRoom;
 	protected boolean gameIsFinished=false;
-	protected final Scanner scanner = new Scanner(System.in);
 	
 	/**
 	 * construct a level
@@ -44,9 +43,9 @@ public class Level {
 		exit = new NormalRoom("exit",this);
 
 		
-		entrance.setNeighbour(new Door("north"), intersection);
-		intersection.setNeighbour(new Door("north"), exit);
-		intersection.setNeighbour(new Door("west"), trap);
+		entrance.setNeighbour(new Door(Direction.NORTH), intersection);
+		intersection.setNeighbour(new Door(Direction.NORTH), exit);
+		intersection.setNeighbour(new Door(Direction.WEST), trap);
 	
 	}
 	
@@ -68,18 +67,18 @@ public class Level {
 		exit = new NormalRoom("exit",this);
 		
 		
-		entrance.setNeighbour(new Door("north"), intersection);
+		entrance.setNeighbour(new Door(Direction.NORTH), intersection);
 		
-		intersection.setNeighbour(new Door("west"), treasureRoom);
-		intersection.setNeighbour(new Door("east"), monsterRoom);
+		intersection.setNeighbour(new Door(Direction.WEST), treasureRoom);
+		intersection.setNeighbour(new Door(Direction.EAST), monsterRoom);
 		
-		treasureRoom.setNeighbour(new Door("east"), intersection);
+		treasureRoom.setNeighbour(new Door(Direction.EAST), intersection);
 		
-		monsterRoom.setNeighbour(new Door("west"), intersection);
-		monsterRoom.setNeighbour(new Door("east"), passage);
+		monsterRoom.setNeighbour(new Door(Direction.WEST), intersection);
+		monsterRoom.setNeighbour(new Door(Direction.EAST), passage);
 		
-		passage.setNeighbour(new Door("west"), monsterRoom);
-		passage.setNeighbour(new Door("north"), exit);
+		passage.setNeighbour(new Door(Direction.WEST), monsterRoom);
+		passage.setNeighbour(new Door(Direction.NORTH), exit);
 	}
 	
 	/**
@@ -108,7 +107,7 @@ public class Level {
 		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+1;//+the entrance
 		int roomsLeft=totalNumberOfRoom;
 		int aRandomRoom;
-		String direction;
+		Direction direction;
 		Object currentRoom=null;
 		Object nextRoom = null;
 		
@@ -143,8 +142,8 @@ public class Level {
 	}
 	
 	
-	private String generateADireciton() {
-		return "north";
+	private Direction generateADireciton() {
+		return Direction.NORTH;
 	}
 
 	/** generate an int which equals to normalRoom or monsterRoom or treasureRoom
@@ -187,7 +186,7 @@ public class Level {
 		
 		case "go":
 			GoCommand goCom = (GoCommand) GameBoard.commandFactory.getMap().get("go");
-			goCom.setDirection(cmd[1]);
+			goCom.setDirection(Direction.valueOf(cmd[1].toUpperCase()));
 			goCom.apply();
 			break;
 		
@@ -209,7 +208,7 @@ public class Level {
 		
 		case "equip":
 			EquipPrimaryWeaponCommand equipCommand = (EquipPrimaryWeaponCommand) GameBoard.commandFactory.getMap().get("equip");
-			if(GameBoard.player.getInventory().isPresent(Item.valueOf(cmd[1]))){
+			if(GameBoard.player.getInventory().isPresent(Item.valueOf(cmd[1].toUpperCase()))){
 				//equipCommand.setWeapon((Weapon) GameBoard.player.getInventory().getItem(cmd[1]));
 				equipCommand.apply();
 			} else {
@@ -251,7 +250,7 @@ public class Level {
 			System.out.print("> ");
 			
 			//Read a command from the player
-			String line = this.scanner.nextLine();
+			String line = SecureInput.getNoEmptyStringInput();
 			interpretCommand(line);				
 		}while(!gameIsFinished());
 		

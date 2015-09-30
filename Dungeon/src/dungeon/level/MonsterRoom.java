@@ -5,6 +5,7 @@ import dungeon.game.Character;
 import dungeon.game.GameBoard;
 import dungeon.game.Monster;
 import dungeon.game.Player;
+import dungeon.utils.SecureInput;
 
 /**
  * a specific room in which one there is a monster
@@ -50,10 +51,10 @@ public class MonsterRoom extends Room {
 	public void action() {
 		if(!this.monster.isDead()){	
 			System.out.println(monster.getName() + " blocks you the passage !");
-			System.out.println("Press \"1\" to try to kill the monster");
-			System.out.println("Press \"2\" to flee the fight and go back to the previous room");
+			System.out.println("Enter \"1\" to try to kill the monster");
+			System.out.println("Enter \"2\" to flee the fight and go back to the previous room");
 
-			int answer = scanner.nextInt();
+			int answer = SecureInput.getIntSecureInput();
 			switch (answer) {
 			case 1:
 				Battle battle = new Battle(GameBoard.player, this.monster);

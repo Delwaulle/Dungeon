@@ -1,9 +1,8 @@
 package dungeon.game;
 
-import java.util.Scanner;
-
 import dungeon.exceptions.FullInventoryException;
 import dungeon.items.StackItem;
+import dungeon.utils.SecureInput;
 
 /**
  * The scenario of the fight between a player and a monster
@@ -15,7 +14,6 @@ public class Battle {
 	
 	private Player player;
 	private Monster monster;
-	private Scanner scanner=new Scanner(System.in);
 	
 	/**
 	 * create a new battle
@@ -34,10 +32,9 @@ public class Battle {
 	public Character fight(){
 		while(!monster.isDead() && !player.isDead()){
 			System.out.println("What do you want to do ?");
-			System.out.println("Press \"1\" to hit the monster");
-			System.out.println("Press \"2\" to use a potion");
-			
-			int answer = scanner.nextInt();
+			System.out.println("Enter \"1\" to hit the monster");
+			System.out.println("Enter \"2\" to use a potion");
+			int answer = SecureInput.getIntSecureInput();
 			switch (answer) {
 			case 1:
 				//the player attacks the monster 

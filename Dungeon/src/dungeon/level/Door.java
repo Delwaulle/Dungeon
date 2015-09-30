@@ -8,7 +8,7 @@ package dungeon.level;
  */
 public class Door {
 	
-	protected String direction;
+	protected Direction direction;
 	protected boolean locked;
 	protected boolean hidden;
 	
@@ -16,7 +16,7 @@ public class Door {
 	 * create a door with its direction
 	 * @param direction
 	 */
-	public Door(String direction){
+	public Door(Direction direction){
 		this.direction=direction;
 		this.locked=false;
 		this.hidden=false;
@@ -25,7 +25,7 @@ public class Door {
 	/**
 	 * @return the direction
 	 */
-	public String getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
@@ -33,7 +33,7 @@ public class Door {
 	 * set a direction for using the door
 	 * @param direction
 	 */
-	public void setDirection(String direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 
@@ -43,7 +43,7 @@ public class Door {
 	 * @param hidden
 	 * @param locked
 	 */
-	public Door(String direction,boolean hidden,boolean locked){
+	public Door(Direction direction,boolean hidden,boolean locked){
 		this.direction=direction;
 		this.hidden=hidden;
 		this.locked=locked;

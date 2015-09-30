@@ -5,6 +5,7 @@ import java.util.Scanner;
 import dungeon.commands.CommandFactory;
 import dungeon.commands.EquipPrimaryWeaponCommand;
 import dungeon.commands.StatsCommand;
+import dungeon.utils.SecureInput;
 
 
 /**
@@ -28,9 +29,7 @@ public class GameBoard {
 	public GameBoard() throws InterruptedException{
 		System.out.println("Welcome to the game of dungeons");
 		System.out.print("Choose a name for your player :\n> ");
-		String pseudo ="NO_NAME";
-		while(scanner.nextLine().equals(""))
-			pseudo = scanner.nextLine();
+		String pseudo =SecureInput.getNoEmptyStringInput();
 		player = new Player(pseudo);
 		commandFactory = new CommandFactory();
 		commandFactory.initCommand();

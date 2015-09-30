@@ -65,7 +65,7 @@ public abstract class Room {
 	 * @param direction
 	 * @return the direction of the player
 	 */
-	public Room goToDirection(String direction){
+	public Room goToDirection(Direction direction){
 		
 		Door door = validDirection(direction,this.neighbours); // test if the direction is possible
 		if(door!=null){
@@ -86,7 +86,7 @@ public abstract class Room {
 			Room nextRoom = neighbours.get(door);
 			
 			//set the neighboor to back in the previous room
-			String oppositeDirection=getOppositeDirection(direction);
+			Direction oppositeDirection=direction.getOppositeDirection();
 			if(validDirection(oppositeDirection, nextRoom.neighbours)==null){
 				nextRoom.setNeighbour(new Door(oppositeDirection), this);
 			}
@@ -94,24 +94,6 @@ public abstract class Room {
 		}
 		else
 			return null;
-	}
-	
-	/**
-	 * @param direction
-	 * @return back up of the player
-	 */
-	public String getOppositeDirection(String direction){
-		switch(direction){
-		case "north" :
-			return "south";
-		case "west" :
-			return "east";
-		case "east" :
-			return "west";
-		case "south" :
-			return "north";
-		default : return "";
-		}
 	}
 
 
@@ -122,7 +104,7 @@ public abstract class Room {
 	 * @param directions
 	 * @return
 	 */
-	public Door validDirection(String direction,Map<Door, Room> directions){
+	public Door validDirection(Direction direction,Map<Door, Room> directions){
 		for(Door door : directions.keySet()){
 			if(door.getDirection().equals(direction))
 				return door;

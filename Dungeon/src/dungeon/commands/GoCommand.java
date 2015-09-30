@@ -1,22 +1,23 @@
 package dungeon.commands;
 
+import dungeon.level.Direction;
 import dungeon.level.Level;
 import dungeon.level.Room;
 
 public class GoCommand implements Command{
 
 	private Level level;
-	private String direction;
+	private Direction direction;
 	
 	public GoCommand(Level level){
 		this.level = level;
 	}
 
-	public String getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
-	public void setDirection(String direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 
