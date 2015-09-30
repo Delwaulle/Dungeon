@@ -38,6 +38,19 @@ public enum Direction {
 		}
 	}
 	
+	
+	/**
+	 * @param value
+	 * @return if the value is an element of the Direction's enum
+	 */
+	public static boolean isValidDirectionEnum(String value){
+		for (Direction direction : values()) {
+	        if(direction.name().equals(value))
+	           return true;
+	    }
+	    return false;
+	}
+	
 	/**
 	 * @return id
 	 */

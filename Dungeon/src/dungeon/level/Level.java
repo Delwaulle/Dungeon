@@ -186,8 +186,12 @@ public class Level {
 		
 		case "go":
 			GoCommand goCom = (GoCommand) GameBoard.commandFactory.getMap().get("go");
-			goCom.setDirection(Direction.valueOf(cmd[1].toUpperCase()));
-			goCom.apply();
+			if(Direction.isValidDirectionEnum(cmd[1].toUpperCase())){
+				goCom.setDirection(Direction.valueOf(cmd[1].toUpperCase()));
+				goCom.apply();
+			}
+			else
+				System.out.println("Bad direction");
 			break;
 		
 		case "describe":
@@ -208,8 +212,9 @@ public class Level {
 		
 		case "equip":
 			EquipPrimaryWeaponCommand equipCommand = (EquipPrimaryWeaponCommand) GameBoard.commandFactory.getMap().get("equip");
-			if(GameBoard.player.getInventory().isPresent(Item.valueOf(cmd[1].toUpperCase()))){
-				//equipCommand.setWeapon((Weapon) GameBoard.player.getInventory().getItem(cmd[1]));
+			if(Item.isValidItemEnum(cmd[1].toUpperCase()) && GameBoard.player.getInventory().isPresent(Item.valueOf(cmd[1].toUpperCase()))){
+				Item item=GameBoard.player.getInventory().getItemByType(Item.valueOf(cmd[1].toUpperCase())).getType();
+				equipCommand.setWeapon(item);
 				equipCommand.apply();
 			} else {
 				System.out.println("There is no \"" + cmd[1] + "\" in your inventory. Check if it's the good name, or check your inventory.");

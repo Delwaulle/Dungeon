@@ -2,6 +2,7 @@ package dungeon.utils;
 
 import java.util.Scanner;
 
+
 /**
  * Secure the input according to the type of input
  * @author Loic
@@ -41,5 +42,4 @@ public class SecureInput {
 		}
 		return input;
 	}
-
 }

@@ -11,26 +11,26 @@ public enum Item {
 	
 	/*
 	 * POTIONS -- CONSUMABLES
-	 * Id : 0 to 9
+	 *
 	 */
-	HEALTH_POTION(0,10,1,1),
-	STRENGH_POTION(1,10,1,1),
+	HEALTH_POTION(0,10,1,1,true),
+	STRENGH_POTION(1,10,1,1,true),
 
 	/*
 	 * WEAPONS
-	 * Id : 10 to 49
+	 *
 	 */
 	
-	WOODEN_SWORD(10,1,5,2),
-	IRON_SWORD(11,1,10,5),
-	GOLDEN_SWORD(12,1,15,10),
-	DIAMOND_SWORD(13,1,20,15),
+	WOODEN_SWORD(2,1,5,2),
+	IRON_SWORD(3,1,10,5),
+	GOLDEN_SWORD(4,1,15,10),
+	DIAMOND_SWORD(5,1,20,15),
 	
 	/*
 	 * KEYS
-	 * Id : 50 to 59
+	 * 
 	 */
-	SAMPLE_KEY(50,Constants.MAX_KEYS_BY_LEVEL,1);
+	SAMPLE_KEY(6,Constants.MAX_KEYS_BY_LEVEL,1);
 	;
 	
 
@@ -38,6 +38,7 @@ public enum Item {
 	private final int weight;
 	private final int maxStack;
 	private final int power;
+	private final boolean isEdible;
 
 
 	/**
@@ -71,26 +72,46 @@ public enum Item {
      * @param power
      */
     private Item(final int id, final int stack, final int weight,int power){
+    	this(id,stack,weight,power,false);
+    }
+    
+    /**
+     * @param id
+     * @param stack
+     * @param weight
+     * @param power
+     */
+    private Item(final int id, final int stack, final int weight,int power,boolean isEdible){
     	this.id=id;
         this.maxStack=stack;
         this.weight=weight;
         this.power=power;
+        this.isEdible=isEdible;
     }
     
+    /**
+	 * @param value
+	 * @return if the value is an element of the Item's enum
+	 */
+	public static boolean isValidItemEnum(String value){
+		for (Item item : values()) {
+	        if(item.name().equals(value))
+	           return true;
+	    }
+	    return false;
+	}
     
+
+     
+    // ================== GETTERS AND SETTERS ======================
     
     /**
      * Checks if this item is edible.
-     * Here all consumable have their id into 0 and 10 
      * @return true if this item is edible.
      */
     public boolean isEdible() {
-        if(this.id>=0 && this.id<= 10) 
-        	return true;
-        return false;
+        return isEdible;
     }
-     
-    // ================== GETTERS AND SETTERS ======================
     
 	/**
 	 * @return id

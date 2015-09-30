@@ -5,6 +5,7 @@ import java.util.Scanner;
 import dungeon.commands.CommandFactory;
 import dungeon.commands.EquipPrimaryWeaponCommand;
 import dungeon.commands.StatsCommand;
+import dungeon.utils.Constants;
 import dungeon.utils.SecureInput;
 
 
@@ -17,7 +18,7 @@ import dungeon.utils.SecureInput;
  */
 public class GameBoard {
 	
-	public static int nbDungeon=1;
+	private  int nbDungeon=Constants.MAX_DUNGEONS;
 	private Scanner scanner = new Scanner(System.in);
 	public static Player player;
 	public static CommandFactory commandFactory;

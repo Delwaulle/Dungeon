@@ -1,11 +1,11 @@
 package dungeon.game;
 
 import java.util.Map;
-import java.util.Scanner;
 
 import dungeon.commands.Command;
 import dungeon.commands.GoCommand;
 import dungeon.level.*;
+import dungeon.utils.Constants;
 
 /**
  * all the components of a dungeon
@@ -16,9 +16,8 @@ public class Dungeon {
 
 		protected Level currentLevel;
 		protected boolean gameIsFinished=false;
-		protected final Scanner scanner = new Scanner(System.in);
 		private Level[] levels;
-		public static int nbLevel=1;
+		private int nbLevel=Constants.MAX_LEVELS;
 		
 		/**
 		 * Initialize all the levels in the dungeon
