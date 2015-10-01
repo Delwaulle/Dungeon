@@ -1,7 +1,5 @@
 package dungeon.game;
 
-import dungeon.exceptions.FullInventoryException;
-import dungeon.items.StackItem;
 import dungeon.utils.SecureInput;
 
 /**
@@ -65,28 +63,13 @@ public class Battle {
 		if(monster.isDead()){
 			System.out.println("Good job, you have killed "+monster.getName());
 			System.out.println("Let's see your drop !");
-			getDrop();
+			System.out.println(monster.getInventory().toString());
+			player.getDrop(monster);
 			System.out.println("You have now " + player.getCurrentHealth() + " HP");
 			return player;
 		}			
 		else
 			return monster;
-	}
-	
-	/** add the drops table to the player inventory's
-	 * 
-	 */
-	public void getDrop() {
-		StackItem item;
-		for(int i=0;i<this.monster.getChest().getDrop().size();i++){
-			item=this.monster.getChest().getDrop().get(i);
-			try {
-				this.player.getInventory().addItem(item);
-			} catch (FullInventoryException e) {
-				e.printStackTrace();
-			}
-			System.out.println(item.toString());
-		}
 	}
 	
 	// ====================== GETTERS AND SETTERS ===========================

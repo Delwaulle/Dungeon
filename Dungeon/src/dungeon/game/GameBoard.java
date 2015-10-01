@@ -3,8 +3,6 @@ package dungeon.game;
 import java.util.Scanner;
 
 import dungeon.commands.CommandFactory;
-import dungeon.commands.EquipPrimaryWeaponCommand;
-import dungeon.commands.StatsCommand;
 import dungeon.utils.Constants;
 import dungeon.utils.SecureInput;
 
@@ -32,10 +30,6 @@ public class GameBoard {
 		System.out.print("Choose a name for your player :\n> ");
 		String pseudo =SecureInput.getNoEmptyStringInput();
 		player = new Player(pseudo);
-		commandFactory = new CommandFactory();
-		commandFactory.initCommand();
-		commandFactory.getMap().put("stats", new StatsCommand(player));
-		commandFactory.getMap().put("equip", new EquipPrimaryWeaponCommand(player));
 		System.out.println("Here is your departure's inventory");
 		System.out.println(player.getInventory().toString());
 		
@@ -45,6 +39,7 @@ public class GameBoard {
 			System.out.println("Welcome to the dungeon "+(i+1));
 			Dungeon dungeon = new Dungeon();
 			dungeon.start();
+			System.out.println("========= NEXT DUNGEON ==========");
 		}
 	}
 	

@@ -63,6 +63,31 @@ public class Inventory {
 	}
 	
 	
+	/**
+	 * Display all the items to the inventory which are edible
+	 */
+	public void showAllEdibleItems(){
+		System.out.println("Yours edible(s) item(s) :");
+		for(StackItem item : this.items){
+			if(item.getType().isEdible())
+				System.out.println(item.toString());
+		}
+		System.out.println("===========================================================");
+	}
+	
+	
+	/**
+	 * Display all the items to the inventory which are equipable
+	 */
+	public void showAllEquipableItems(){
+		System.out.println("Yours equipable(s) item(s) :");
+		for(StackItem item : this.items){
+			if(item.getType().isEquipable())
+				System.out.println(item.toString());
+		}
+		System.out.println("===========================================================");
+	}
+	
 
 	/**
 	 * when the player removes an item from his inventory
@@ -164,7 +189,7 @@ public class Inventory {
 	 * If the inventory contains items of the list, it will update its quantity
 	 * @param list to add at the inventory
 	 */
-	public void addListToInventory(List<StackItem> listToAdd){
+	public void addListToInventory(List<StackItem> listToAdd)throws FullInventoryException{
 		for(StackItem itemToAdd : listToAdd){
 			if(isPresent(itemToAdd.getType()))	{
 				try {

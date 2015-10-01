@@ -1,5 +1,7 @@
 package dungeon.game;
 
+import dungeon.exceptions.FullInventoryException;
+import dungeon.items.Inventory;
 import dungeon.items.Item;
 
 
@@ -17,6 +19,7 @@ public class Character {
 	protected int powerOfCriticalHit=2;
 	protected boolean dead;
 	protected Item currentWeapon;
+	protected Inventory inventory;
 	
 	
 	/**
@@ -81,6 +84,17 @@ public class Character {
 			this.dead = true;
 	}
 	
+	
+	/** 
+	 * add all the item of the current character to the character inventory's passed in param
+	 */
+	public void getDrop(Character character) {
+			try {
+				this.inventory.addListToInventory(character.getInventory().getItems());
+			} catch (FullInventoryException e) {
+				System.out.println("You are full. Sorry you can't get the drop");
+			}
+	}
 	
 	
 	
@@ -190,7 +204,10 @@ public class Character {
 	 * @param currentWeapon
 	 */
 	public void setCurrentWeapon(Item currentWeapon) {
-		this.currentWeapon = currentWeapon;
+		if(currentWeapon.isEquipable())
+			this.currentWeapon = currentWeapon;
+		else
+			System.out.println("This is not an equipable item !");
 	}
 	
 	
@@ -199,5 +216,19 @@ public class Character {
 	 */
 	public boolean isDead(){
 		return this.dead;
+	}
+	
+	/**
+	 * @return inventory of the character
+	 */
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	/**
+	 * @param inventory
+	 */
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 }

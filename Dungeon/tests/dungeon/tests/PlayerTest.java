@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dungeon.commands.EquipPrimaryWeaponCommand;
+import dungeon.commands.EquipItemCommand;
 import dungeon.game.Player;
 import dungeon.items.Item;
 import dungeon.level.Level;
@@ -25,9 +25,8 @@ public class PlayerTest {
 	@Test
 	public void equipPrimaryWeaponTest(){
 		Player player = new Player("Tata");
-		EquipPrimaryWeaponCommand command = new EquipPrimaryWeaponCommand(player);
-		command.setWeapon(Item.WOODEN_SWORD);
-		command.apply();
+		EquipItemCommand command = new EquipItemCommand(player,Item.WOODEN_SWORD);
+		command.execute();
 		assertTrue(player.getCurrentWeapon().equals(Item.WOODEN_SWORD));
 		int expectingResult = Item.WOODEN_SWORD.getPower() + player.getDamages();
 		assertEquals(expectingResult, player.getDamagesWithWeapon());

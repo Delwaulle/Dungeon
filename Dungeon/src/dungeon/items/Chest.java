@@ -17,7 +17,11 @@ public class Chest extends Inventory{
 	 */
 	public Chest(List<StackItem> items){
 		super();
-		this.addListToInventory(items);
+		try {
+			this.addListToInventory(items);
+		} catch (FullInventoryException e) {
+			System.out.println("Full chest");
+		}
 	}
 	
 	/**

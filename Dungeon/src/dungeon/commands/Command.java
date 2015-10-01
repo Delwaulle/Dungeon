@@ -1,5 +1,12 @@
 package dungeon.commands;
 
+/**
+ * @author Loïc
+ * A command execute an action
+ */
 public interface Command {
-	void apply();
+	/**
+	 * Execute the command 
+	 */
+	public void execute();
 }

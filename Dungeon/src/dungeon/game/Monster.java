@@ -1,8 +1,7 @@
 package dungeon.game;
 
-import dungeon.exceptions.FullInventoryException;
-import dungeon.items.Chest;
-import dungeon.items.StackItem;
+
+import dungeon.items.Inventory;
 
 /**
  * All the components for having a monster
@@ -10,8 +9,6 @@ import dungeon.items.StackItem;
  * 
  */
 public class Monster extends Character{
-
-	private Chest chest = new Chest();
 	
 	/**
 	 * We create a monster with its state (not dead ^^),
@@ -22,6 +19,7 @@ public class Monster extends Character{
 		super(name);
 		this.damages = 2;
 		this.maxHealth = 5;
+		this.inventory=new Inventory();
 	}
 	
 	/**
@@ -51,34 +49,4 @@ public class Monster extends Character{
 		this.maxHealth = health;
 	}
 
-	/** add the drops table to the player inventory's
-	 * 
-	 */
-	public void getDrop() {
-		StackItem item;
-		for(int i=0;i<this.chest.getDrop().size();i++){
-			item=this.chest.getDrop().get(i);
-			try {
-				GameBoard.player.getInventory().addItem(item);
-			} catch (FullInventoryException e) {
-				e.printStackTrace();
-			}
-			System.out.println(item.toString());
-		}
-	}
-	
-	/**
-	 * @return chest
-	 */
-	public Chest getChest() {
-		return chest;
-	}
-
-	/**
-	 * set a chest to the monster
-	 * @param chest
-	 */
-	public void setChest(Chest chest) {
-		this.chest = chest;
-	}
 }

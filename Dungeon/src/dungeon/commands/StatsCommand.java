@@ -1,36 +1,35 @@
 package dungeon.commands;
 
-import dungeon.game.Player;
+import dungeon.game.Character;
 
+/**
+ * @author Loic
+ * This command show the stats of the Character passed in param
+ */
 public class StatsCommand implements Command{
 	
-	private Player player;
+	private Character character;
 
-	public StatsCommand(Player player) {
-		this.player = player;
+	/**
+	 * @param player
+	 */
+	public StatsCommand(Character character) {
+		this.character = character;
 	}
-
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
+	
 	@Override
-	public void apply() {
-		System.out.println(player.getName() + " stats");
+	public void execute() {
+		System.out.println(character.getName() + " stats");
 		System.out.println("====================");
-		System.out.println("Heath = " + player.getCurrentHealth()+ "/" + player.getMaxHealth());
-		System.out.println("Damages = " + player.getDamages());
-		if(player.getCurrentWeapon() != null){
-			System.out.println("Primary Weapon = " + player.getCurrentWeapon().name());
-			System.out.println("               -Weapon Damages = " + player.getCurrentWeapon().getPower());
-			System.out.println("Total Damages = " + player.getDamagesWithWeapon());
+		System.out.println("Heath = " + character.getCurrentHealth()+ "/" + character.getMaxHealth());
+		System.out.println("Damages = " + character.getDamages());
+		if(character.getCurrentWeapon() != null){
+			System.out.println("Primary Weapon = " + character.getCurrentWeapon().name());
+			System.out.println("               -Weapon Damages = " + character.getCurrentWeapon().getPower());
+			System.out.println("Total Damages = " + character.getDamagesWithWeapon());
 		}
-		System.out.println("Critical hit chance = " + player.getPourcentCriticalHit());
-		System.out.println("Critical hit power = " + player.getPowerOfCriticalHit());
+		System.out.println("Critical hit chance = " + character.getPourcentCriticalHit());
+		System.out.println("Critical hit power = " + character.getPowerOfCriticalHit());
 		System.out.println("====================");
 	}
 	

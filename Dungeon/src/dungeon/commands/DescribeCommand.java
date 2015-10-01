@@ -2,18 +2,23 @@ package dungeon.commands;
 
 import dungeon.level.Room;
 
+/**
+ * @author Loic
+ * This command asks the description of the room passed in param
+ */
 public class DescribeCommand implements Command{
 
 	private Room currentRoom;
 	
-	public DescribeCommand() {}
-	
-	public void setRoom(Room room){
-		this.currentRoom = room;
+	/**
+	 * @param room
+	 */
+	public DescribeCommand(Room room) {
+		this.currentRoom=room;
 	}
-
+	
 	@Override
-	public void apply() {
+	public void execute() {
 		currentRoom.askDescription();
 	}
 

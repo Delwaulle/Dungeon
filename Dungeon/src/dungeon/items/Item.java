@@ -13,8 +13,8 @@ public enum Item {
 	 * POTIONS -- CONSUMABLES
 	 *
 	 */
-	HEALTH_POTION(0,10,1,1,true),
-	STRENGH_POTION(1,10,1,1,true),
+	HEALTH_POTION(0,10,1,1),
+	STRENGH_POTION(1,10,1,1),
 
 	/*
 	 * WEAPONS
@@ -38,7 +38,6 @@ public enum Item {
 	private final int weight;
 	private final int maxStack;
 	private final int power;
-	private final boolean isEdible;
 
 
 	/**
@@ -72,21 +71,10 @@ public enum Item {
      * @param power
      */
     private Item(final int id, final int stack, final int weight,int power){
-    	this(id,stack,weight,power,false);
-    }
-    
-    /**
-     * @param id
-     * @param stack
-     * @param weight
-     * @param power
-     */
-    private Item(final int id, final int stack, final int weight,int power,boolean isEdible){
     	this.id=id;
         this.maxStack=stack;
         this.weight=weight;
         this.power=power;
-        this.isEdible=isEdible;
     }
     
     /**
@@ -110,7 +98,34 @@ public enum Item {
      * @return true if this item is edible.
      */
     public boolean isEdible() {
-        return isEdible;
+    	switch (this) {
+          case HEALTH_POTION:
+          case STRENGH_POTION:
+              return true;
+          default:
+              return false;
+    	}
+    }
+    
+    /**
+     * Checks if this item is equipable.
+     * @return true if this item is equipable.
+     */
+    public boolean isEquipable(){
+    	switch (this) {
+    		case WOODEN_SWORD:
+    		case IRON_SWORD:
+    		case GOLDEN_SWORD:
+    		case DIAMOND_SWORD:
+    		return true;
+        default:
+            return false;
+    	}
+    }
+    
+    public String toString(){
+		return "- "+this.name()+" -- Weight : "
+			+this.weight+" -- Power : "+this.power;
     }
     
 	/**

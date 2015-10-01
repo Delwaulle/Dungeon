@@ -15,7 +15,7 @@ import dungeon.level.Level;
  */
 public class Player extends Character{
 
-	private Inventory inventory;
+	
 	
 	/**
 	 * We create the player

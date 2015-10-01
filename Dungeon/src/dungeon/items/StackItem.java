@@ -69,11 +69,21 @@ public class StackItem {
 		return type;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString(){
-		return "- "+this.getType().toString()+" (x"+this.quantityOfStack+") -- Weight(individually) : "
-					+this.getType().getWeight()+" -- Power : "+this.getType().getPower();
+		String name=this.getType().name();
+		String quantity=this.quantityOfStack+"";
+		String weigth = this.getType().getWeight()+"";
+		String power = this.getType().getPower()+"";
+		boolean edible= this.getType().isEdible();
+		boolean equipable=this.getType().isEquipable();
+		if(edible)
+			return "- "+name+" (x"+quantity+") -- Weight(individually) : "
+			+weigth+" -- Power : "+power+ " -- is edible";
+		if(equipable)
+			return "- "+name+" (x"+quantity+") -- Weight(individually) : "
+			+weigth+" -- Power : "+power+ " -- is equipable";
+		else
+			return "- "+name+" (x"+quantity+") -- Weight(individually) : "
+			+weigth+" -- Power : "+power;
 	}
 }

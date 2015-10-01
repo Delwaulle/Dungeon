@@ -4,7 +4,7 @@ import java.util.List;
 
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
-import dungeon.items.Item;
+import dungeon.game.Player;
 import dungeon.utils.SecureInput;
 
 /**
@@ -21,6 +21,7 @@ public class Level {
 	protected Room currentRoom;
 	private Room previousRoom;
 	protected boolean gameIsFinished=false;
+	private Player player=GameBoard.player;
 	
 	/**
 	 * construct a level
@@ -179,53 +180,67 @@ public class Level {
 	 */
 	public void interpretCommand(String command){
 		String[] cmd = command.split(" ",2);
+		CommandFactory commandFactory=new CommandFactory();
 		switch(cmd[0]){
 		case "help":
-			GameBoard.commandFactory.executeCommand("help");
+			commandFactory.setCommand(new HelpCommand());
+			commandFactory.invoke();
 			break;
 		
 		case "go":
-			GoCommand goCom = (GoCommand) GameBoard.commandFactory.getMap().get("go");
-			if(Direction.isValidDirectionEnum(cmd[1].toUpperCase())){
-				goCom.setDirection(Direction.valueOf(cmd[1].toUpperCase()));
-				goCom.apply();
-			}
+			String directionName="";
+			if(cmd.length!=2)
+				directionName=" ";
 			else
-				System.out.println("Bad direction");
+				directionName=cmd[1];
+			commandFactory.setCommand(new GoCommand(this,directionName));			
+			commandFactory.invoke();
 			break;
 		
 		case "describe":
-			DescribeCommand describeCom = (DescribeCommand) GameBoard.commandFactory.getMap().get("describe");
-			describeCom.setRoom(this.currentRoom);
-			describeCom.apply();
+			commandFactory.setCommand(new DescribeCommand(this.currentRoom));
+			commandFactory.invoke();
 			break;
 			
 		case "inventory":
-			GameBoard.commandFactory.executeCommand("inventory");
+			commandFactory.setCommand(new ShowInventoryCommand(this.player));
+			commandFactory.invoke();
 			break;
 			
 		case "use":
-			//ConsumeHealPotionCommand consumeCommand = (ConsumeHealPotionCommand) GameBoard.commandFactory.getMap().get("use");
-			//consumeCommand.setPotion((Potion) GameBoard.player.getInventory().getItem(cmd[1]));
-			//consumeCommand.apply();
+			String potionName="";
+			if(cmd.length!=2)
+				potionName=" ";
+			else
+				potionName=cmd[1];
+			commandFactory.setCommand(new ConsumeHealPotionCommand(this.player,potionName));
+			commandFactory.invoke();
+
 			break;
 		
 		case "equip":
-			EquipPrimaryWeaponCommand equipCommand = (EquipPrimaryWeaponCommand) GameBoard.commandFactory.getMap().get("equip");
-			if(Item.isValidItemEnum(cmd[1].toUpperCase()) && GameBoard.player.getInventory().isPresent(Item.valueOf(cmd[1].toUpperCase()))){
-				Item item=GameBoard.player.getInventory().getItemByType(Item.valueOf(cmd[1].toUpperCase())).getType();
-				equipCommand.setWeapon(item);
-				equipCommand.apply();
-			} else {
-				System.out.println("There is no \"" + cmd[1] + "\" in your inventory. Check if it's the good name, or check your inventory.");
-			}
+			String equipName="";
+			if(cmd.length!=2)
+				equipName=" ";
+			else
+				equipName=cmd[1];
+			commandFactory.setCommand(new EquipItemCommand(this.player,equipName));
+			commandFactory.invoke();
+
 			break;
 			
 		case "stats":
-			GameBoard.commandFactory.executeCommand("stats");
+			commandFactory.setCommand(new StatsCommand(this.player));	
+			commandFactory.invoke();
 			break;
 		case "drop":
-			//an item
+			String itemName;
+			if(cmd.length!=2)
+				itemName=" ";
+			else
+				itemName=cmd[1];
+			commandFactory.setCommand(new DropCommand(this.player,itemName));
+			commandFactory.invoke();
 			break;	
 		default:
 			System.out.println("I don't know what you mean. Type \"help\" to show the differents commands.");
