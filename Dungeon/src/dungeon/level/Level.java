@@ -110,7 +110,7 @@ public class Level {
 		Direction direction;
 		Object currentRoom=null;
 		Object nextRoom = null;
-		
+		//change the direction and move to RandomLevel
 		//create different random room from another random room
 		while(roomsLeft!=0){
 			aRandomRoom = generateARoom();
