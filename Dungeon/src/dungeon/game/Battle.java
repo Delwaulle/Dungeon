@@ -1,5 +1,7 @@
 package dungeon.game;
 
+import dungeon.commands.CommandFactory;
+import dungeon.commands.ConsumeHealPotionCommand;
 import dungeon.utils.SecureInput;
 
 /**
@@ -28,6 +30,7 @@ public class Battle {
 	 * @return the winner
 	 */
 	public Character fight(){
+		CommandFactory commandFactory = new CommandFactory();
 		while(!monster.isDead() && !player.isDead()){
 			System.out.println("What do you want to do ?");
 			System.out.println("Enter \"1\" to hit the monster");
@@ -42,10 +45,19 @@ public class Battle {
 				System.out.println(monster.getName() + " has " + monster.getCurrentHealth() + " HP");
 				break;
 			case 2:
-				//player.getInventory().useItem(name, quantity); // list all the potion
-				
-				//int item = scanner.nextInt();
+				String potionName="";
+				/*if(cmd.length!=2)
+					potionName=" ";
+				else
+					potionName=cmd[1];*/
+				commandFactory.setCommand(new ConsumeHealPotionCommand(this.player,potionName));
+				commandFactory.invoke();
 				break;
+			case 3:
+				//equip a weapon
+				break;
+			case 4:
+				// flee during the battle - respawn the monster
 			default:
 				System.out.println("I don't know what you mean");
 				fight();

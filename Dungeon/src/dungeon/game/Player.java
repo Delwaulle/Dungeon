@@ -53,18 +53,6 @@ public class Player extends Character{
 	}
 	
 
-	/**
-	 * @return inventory
-	 */
-	public Inventory getInventory() {
-		return inventory;
-	}
 
-	/**
-	 * @param inventory
-	 */
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
-	}
 	
 }
