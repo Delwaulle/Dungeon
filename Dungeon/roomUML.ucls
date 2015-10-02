@@ -64,69 +64,106 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <association id="8">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="9" name="neighbours"/>      
-      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="11">    
-    <bendpoint x="918" y="892"/>    
-    <bendpoint x="727" y="893"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="12" name="passage"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="14">    
-    <bendpoint x="1224" y="1034"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="15" name="treasureRoom"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="18">    
+  <class id="8" language="java" name="dungeon.level.TrapRoom" project="Dungeon" 
+    file="/Dungeon/src/dungeon/level/TrapRoom.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1204" y="1056"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="9">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="2"/>    
+  <generalization id="10">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="20">    
-    <bendpoint x="820" y="444"/>    
-    <bendpoint x="427" y="442"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="21" name="monsterRoom"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+  <association id="11">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="12" name="level">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
+  <association id="14">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="24" name="direction"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="15" name="direction">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="27" name="level"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+  <association id="17">    
+    <bendpoint x="820" y="444"/>    
+    <bendpoint x="427" y="442"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="18" name="monsterRoom">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <bendpoint x="1054" y="913"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="21" name="treasureRoom">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <bendpoint x="918" y="892"/>    
+    <bendpoint x="727" y="893"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="24" name="passage">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="26">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="28">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="29" name="neighbours">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
