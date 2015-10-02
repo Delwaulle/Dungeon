@@ -38,24 +38,36 @@ public class RoomTest {
 		
 		room.setNeighbour(new Door(Direction.SOUTH), room2);
 		
-		assertNotEquals("room2", room.goToDirection(Direction.EAST).getName());
-		assertNotEquals("room2", room.goToDirection(Direction.NORTH).getName());
-		assertNotEquals("room2", room.goToDirection(Direction.WEST).getName());
+		assertNull(room.goToDirection(Direction.EAST));
+		assertNull(room.goToDirection(Direction.NORTH));
+		assertNull(room.goToDirection(Direction.WEST));
 	}
 	
 	@Test
-	public void LockedDoorTest() throws MaxStacksException, FullInventoryException{
-		Player player = GameBoard.player;
+	public void lockedDoorTest() throws MaxStacksException, FullInventoryException{
+		Player player = new Player("toto");
 		Room room = new NormalRoom("room", null);
 		Room room2 = new NormalRoom("room2", null);
 		room.setNeighbour(new Door(Direction.SOUTH, false, true), room2);
+		room.setPlayer(player);
 		
 		assertNull(room.goToDirection(Direction.SOUTH));
 		
 		StackItem key = new StackItem(Item.SAMPLE_KEY);
 		player.getInventory().addItem(key);
 		
-		assertEquals("room2", room.goToDirection(Direction.SOUTH));
+		assertEquals("room2", room.goToDirection(Direction.SOUTH).getName());
+	}
+	
+	@Test
+	public void hiddenDoorTest(){
+		Player player = new Player("toto");
+		Room room = new NormalRoom("room", null);
+		Room room2 = new NormalRoom("room2", null);
+		room.setNeighbour(new Door(Direction.EAST, true, false), room2);
+		room.setPlayer(player);
+		
+		assertEquals("room2", room.goToDirection(Direction.EAST).getName());
 	}
 
 }

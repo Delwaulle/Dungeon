@@ -168,7 +168,7 @@ public class Inventory {
 	 * @return if the inventory is full
 	 */
 	public boolean isFull(){
-		return getCurrentWeight() <= maxWeight;
+		return getCurrentWeight() >= maxWeight;
 	}
 	
 	

@@ -2,6 +2,9 @@ package dungeon.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import dungeon.exceptions.FullInventoryException;
@@ -79,6 +82,26 @@ public class InventoryTest {
 		Inventory inventory=new Inventory();
 		inventory.setMaxWeight(5);
 		inventory.addItem(new StackItem(Item.HEALTH_POTION,6));
+	}
+	
+	@Test
+	public void isFullInventoryTest() throws FullInventoryException, MaxStacksException{
+		Inventory inventory=new Inventory();
+		inventory.setMaxWeight(5);
+		inventory.addItem(new StackItem(Item.HEALTH_POTION,4));
+		assertFalse(inventory.isFull());
+		inventory.addItem(new StackItem(Item.HEALTH_POTION,1));
+		assertTrue(inventory.isFull());
+	}
+	
+	@Test
+	public void addListToInventoryTest() throws FullInventoryException, MaxStacksException{
+		Inventory inventory = new Inventory(10000);
+		List<StackItem> listToAdd = new ArrayList<StackItem>();
+		listToAdd.add(new StackItem(Item.HEALTH_POTION, 3));
+		listToAdd.add(new StackItem(Item.STRENGH_POTION, 2));
+		inventory.addListToInventory(listToAdd);
+		inventory.addListToInventory(listToAdd);
 	}
 
 }

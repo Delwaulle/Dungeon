@@ -8,6 +8,7 @@ import java.util.Set;
 
 import dungeon.actions.ActionFactory;
 import dungeon.game.GameBoard;
+import dungeon.game.Player;
 import dungeon.items.Item;
 
 /**
@@ -25,6 +26,7 @@ public abstract class Room {
 	protected Level level;
 	protected boolean isDescribed;
 	Scanner scanner = new Scanner(System.in);
+	protected Player player = GameBoard.player;
 	
 	/**
 	 * construct a room with a name and the level which the room is inside
@@ -47,7 +49,7 @@ public abstract class Room {
 		Iterator<Door> iterateur=listKeys.iterator(); 
 		while(iterateur.hasNext())
 		{
-			Door key= (Door)iterateur.next();
+			Door key= (Door) iterateur.next();
 			directions+=key.getDirection().toString()+" -- ";
 		}
 		System.out.println(directions);
@@ -71,12 +73,12 @@ public abstract class Room {
 		if(door!=null){
 			
 			if(door.isLocked()){
-				if(GameBoard.player.getInventory().isPresent(Item.SAMPLE_KEY)){
+				if(!this.player.getInventory().isPresent(Item.SAMPLE_KEY)){
 					System.out.println("Sorry you don't have the key to open this door, keep digging around this room");
 					return null;
 				}
 				else{
-					GameBoard.player.getInventory().useItem(Item.SAMPLE_KEY, 1);
+					this.player.getInventory().useItem(Item.SAMPLE_KEY, 1);
 					System.out.println("Good game you have the key to open this door ! You discover a new room !");
 				}
 			}
@@ -170,4 +172,12 @@ public abstract class Room {
 	 * Execute the action bind to the room
 	 */
 	public abstract void action();
+	
+	/**
+	 * only used for tests
+	 * @param player
+	 */
+	public void setPlayer(Player player){
+		this.player = player;
+	}
 }
