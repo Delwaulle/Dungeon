@@ -72,6 +72,12 @@ public class TreasureRoom extends Room{
 		this.chest = chest;
 	}
 
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

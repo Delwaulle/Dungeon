@@ -146,7 +146,14 @@ public abstract class Room {
 	 * @param description
 	 */
 	public abstract void setDescription(String description);
-		
+	
+	
+	/**
+	 * @return the description of the room
+	 */
+	public abstract String getDescription();
+	
+	
 	/**
 	 * @return the direction
 	 */
