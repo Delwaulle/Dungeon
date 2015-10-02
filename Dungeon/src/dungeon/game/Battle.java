@@ -2,6 +2,7 @@ package dungeon.game;
 
 import dungeon.commands.CommandFactory;
 import dungeon.commands.ConsumeHealPotionCommand;
+import dungeon.commands.EquipItemCommand;
 import dungeon.utils.SecureInput;
 
 /**
@@ -33,31 +34,37 @@ public class Battle {
 		CommandFactory commandFactory = new CommandFactory();
 		while(!monster.isDead() && !player.isDead()){
 			System.out.println("What do you want to do ?");
-			System.out.println("Enter \"1\" to hit the monster");
-			System.out.println("Enter \"2\" to use a potion");
-			int answer = SecureInput.getIntSecureInput();
-			switch (answer) {
-			case 1:
+			System.out.println("Enter \"hit\" to hit the monster");
+			System.out.println("Enter \"use + potion name\" to use a potion");
+			System.out.println("Enter \"equip + weapon name\" to equip a weapon");
+			String answer = SecureInput.getNoEmptyStringInput();
+			String[] cmd = answer.split(" ",2);
+			switch (cmd[0]) {
+			case "hit":
 				//the player attacks the monster 
 				int playerDamages =player.attack();
 				monster.getHit(playerDamages);
 				System.out.println("You imposed "+playerDamages+" damages to " + monster.getName());
 				System.out.println(monster.getName() + " has " + monster.getCurrentHealth() + " HP");
 				break;
-			case 2:
+			case "use":
 				String potionName="";
-				/*if(cmd.length!=2)
+				if(cmd.length!=2)
 					potionName=" ";
 				else
-					potionName=cmd[1];*/
+					potionName=cmd[1];
 				commandFactory.setCommand(new ConsumeHealPotionCommand(this.player,potionName));
 				commandFactory.invoke();
 				break;
-			case 3:
-				//equip a weapon
+			case "equip":
+				String equipName="";
+				if(cmd.length!=2)
+					equipName=" ";
+				else
+					equipName=cmd[1];
+				commandFactory.setCommand(new EquipItemCommand(this.player,equipName));
+				commandFactory.invoke();
 				break;
-			case 4:
-				// flee during the battle - respawn the monster
 			default:
 				System.out.println("I don't know what you mean");
 				fight();

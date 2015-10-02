@@ -15,7 +15,7 @@ public class Character {
 	
 	protected String name;
 	protected int damages, maxHealth,currentHealth;
-	protected int pourcentCriticalHit=50;
+	protected int pourcentCriticalHit=10;
 	protected int powerOfCriticalHit=2;
 	protected boolean dead;
 	protected Item currentWeapon;
