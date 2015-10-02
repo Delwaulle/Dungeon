@@ -2,7 +2,7 @@ package dungeon.utils;
 
 
 /**
- * @author Loïc
+ * @author Loï¿½c
  * A sample class which contains all important constants of the project
  */
 public final class Constants {
