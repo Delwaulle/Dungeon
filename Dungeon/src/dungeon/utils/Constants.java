@@ -2,7 +2,7 @@ package dungeon.utils;
 
 
 /**
- * @author Lo�c
+ * @author Loic
  * A sample class which contains all important constants of the project
  */
 public final class Constants {
@@ -24,12 +24,30 @@ public final class Constants {
 	/*
 	 * LEVELS
 	 */
-	public static final int MAX_LEVELS =10;
+	public static  int MAX_LEVELS =10;
 	
 	
 	
 	/*
 	 * DUNGEONS
 	 */
-	public static final int MAX_DUNGEONS =10;
+	public static  int MAX_DUNGEONS =10;
+
+
+
+	/**
+	 * @param mAX_LEVELS
+	 */
+	public static void setMAX_LEVELS(int mAX_LEVELS) {
+		MAX_LEVELS = mAX_LEVELS;
+	}
+
+
+
+	/**
+	 * @param mAX_DUNGEONS
+	 */
+	public static void setMAX_DUNGEONS(int mAX_DUNGEONS) {
+		MAX_DUNGEONS = mAX_DUNGEONS;
+	}
 }

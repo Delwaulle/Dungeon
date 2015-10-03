@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import dungeon.commands.CommandFactory;
 import dungeon.utils.Constants;
+import dungeon.utils.LoadProperties;
 import dungeon.utils.SecureInput;
 
 
@@ -62,6 +63,7 @@ public class GameBoard {
 	 * @throws InterruptedException
 	 */
 	public static void main(String args[]) throws InterruptedException{
+		new LoadProperties();
 		new GameBoard();
 	}
 }

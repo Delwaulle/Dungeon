@@ -13,24 +13,23 @@ public enum Item {
 	 * POTIONS -- CONSUMABLES
 	 *
 	 */
-	HEALTH_POTION(0,10,1,1),
-	STRENGH_POTION(1,10,1,1),
+	HEALTH_POTION(0,10,1,1,1),
+	STRENGH_POTION(1,10,1,1,2),
 
 	/*
 	 * WEAPONS
 	 *
 	 */
-	
-	WOODEN_SWORD(2,1,5,2),
-	IRON_SWORD(3,1,10,5),
-	GOLDEN_SWORD(4,1,15,10),
-	DIAMOND_SWORD(5,1,20,15),
+	WOODEN_SWORD(2,1,5,2,10),
+	IRON_SWORD(3,1,10,5,20),
+	GOLDEN_SWORD(4,1,15,10,30),
+	DIAMOND_SWORD(5,1,20,15,50),
 	
 	/*
 	 * KEYS
 	 * 
 	 */
-	SAMPLE_KEY(6,Constants.MAX_KEYS_BY_LEVEL,1);
+	SAMPLE_KEY(6,Constants.MAX_KEYS_BY_LEVEL,1,0,25);
 	;
 	
 
@@ -38,6 +37,7 @@ public enum Item {
 	private final int weight;
 	private final int maxStack;
 	private final int power;
+	private final int rarity;
 
 
 	/**
@@ -71,11 +71,24 @@ public enum Item {
      * @param power
      */
     private Item(final int id, final int stack, final int weight,int power){
+    	this(id,stack,weight,power,1);
+    }
+
+	/**
+     * @param id
+     * @param stack
+     * @param weight
+     * @param power
+     * @param rarity
+     */
+    private Item(final int id, final int stack, final int weight,int power,int rarity){
     	this.id=id;
         this.maxStack=stack;
         this.weight=weight;
         this.power=power;
+        this.rarity=rarity;
     }
+    
     
     /**
 	 * @param value
@@ -155,5 +168,12 @@ public enum Item {
 	 */
 	public int getPower() {
 		return power;
+	}
+	
+    /**
+     * @return rarity
+     */
+    public int getRarity() {
+		return rarity;
 	}
 }
