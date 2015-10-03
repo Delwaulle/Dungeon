@@ -61,8 +61,23 @@ public abstract class Room {
 	 * @param neighbour
 	 */
 	public void setNeighbour(Door door, Room neighbour){
-		neighbours.put(door,neighbour);
+		if(isValidDirection(door.getDirection()))
+			neighbours.put(door,neighbour);
 	}
+	
+	/**
+	 * @param direction
+	 * @return if the direction not exist in the room
+	 */
+	public boolean isValidDirection(Direction direction){
+		boolean valid =true;
+		for(Door doorToCompare : this.neighbours.keySet()){
+			if(doorToCompare.getDirection().equals(direction))
+				valid=false;
+		}
+		return valid;
+	}
+	
 	/**
 	 * @param direction
 	 * @return the direction of the player
