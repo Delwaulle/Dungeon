@@ -4,6 +4,7 @@ import dungeon.game.Battle;
 import dungeon.game.Character;
 import dungeon.game.GameBoard;
 import dungeon.game.Monster;
+import dungeon.game.MonsterEnum;
 import dungeon.game.Player;
 import dungeon.utils.SecureInput;
 
@@ -22,7 +23,7 @@ public class MonsterRoom extends Room {
 	 */
 	public MonsterRoom(String name,Level level) {
 		super(name,level);
-		this.monster = new Monster("Devil cat");
+		this.monster = new Monster(MonsterEnum.DEVIL_CAT);
 	}
 
 	/**

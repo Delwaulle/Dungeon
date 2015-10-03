@@ -15,10 +15,10 @@ public class Monster extends Character{
 	 * its strength and its life (HP:HealthPoints)
 	 * @param name
 	 */
-	public Monster(String name){
-		super(name);
-		this.damages = 2;
-		this.maxHealth = 5;
+	public Monster(MonsterEnum monster){
+		super(monster.getName());
+		this.damages = monster.getPower();
+		this.maxHealth = monster.getHealth();
 		this.inventory=new Inventory();
 	}
 	
