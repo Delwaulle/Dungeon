@@ -2,8 +2,6 @@ package dungeon.game;
 
 public class Trap {
 	
-	private Player player;
-	
 	private String name;
 	private int power;
 
@@ -17,13 +15,6 @@ public class Trap {
 		this.setPower(power);
 	}
 
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
 
 	public String getName() {
 		return this.name;
@@ -40,12 +31,4 @@ public class Trap {
 	public void setPower(int power) {
 		this.power = power;
 	}
-	
-	public void activate(){
-		this.player.getHit(power);
-		System.out.println("You get hit from " + this.getName() +" !");
-		System.out.println("You lose " + this.getPower() + " HP");
-		System.out.println("You have now " + this.player.getCurrentHealth() + " HP");
-	}
-
 }

@@ -38,10 +38,9 @@ public class TrapRoom extends Room {
 
 	@Override
 	public void action() {
-		this.trap.setPlayer(player); // player comes from the Room super class.
-										// May be it should be better to get
-										// player from GameBoard
-		this.trap.activate();
+		System.out.println("You get hit from " + this.trap.getName() +" !");
+		System.out.println("You lose " + this.trap.getPower() + " HP");
+		this.player.getHit(this.trap.getPower());
 	}
 
 	@Override

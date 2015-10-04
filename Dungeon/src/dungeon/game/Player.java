@@ -16,7 +16,7 @@ import dungeon.level.Level;
 public class Player extends Character{
 
 	
-	
+	private Level currentLevel;
 	/**
 	 * We create the player
 	 * @param name
@@ -24,12 +24,14 @@ public class Player extends Character{
 	public Player(String name){
 		super(name);
 		this.maxHealth=20;
-		this.currentHealth=20;
+		this.currentHealth=maxHealth;
 		this.damages=5;
 		this.inventory = new Inventory();
 		initializeBasicInventory();
 	}
 	
+
+
 	/**
 	 * When the player is created, we give him some basic stuff
 	 */
@@ -47,12 +49,33 @@ public class Player extends Character{
 	 * reinitialize the HP of the player and redirect him to the entrance of the level
 	 * @param current level
 	 */
-	public void respawn(Level level){
+	public void respawn(){
 		this.currentHealth=maxHealth;
-		level.goToEntrance();
+		this.currentLevel.goToEntrance();
+		this.dead=false;
+	}
+
+	@Override
+	public void die() {
+		this.dead=true;
+		System.out.println("You succumbed");
+		System.out.println("You will redirect to the entrance of the level");
+		this.respawn();
+	}
+
+	/**
+	 * @param currentLevel
+	 */
+	public void setCurrentLevel(Level currentLevel) {
+		this.currentLevel = currentLevel;
 	}
 	
-
-
+	
+	/**
+	 * @return current level
+	 */
+	public Level getCurrentLevel() {
+		return currentLevel;
+	}
 	
 }

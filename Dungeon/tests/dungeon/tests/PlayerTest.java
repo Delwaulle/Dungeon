@@ -15,10 +15,11 @@ public class PlayerTest {
 	public void respawnTest() {
 		Player player=new Player("toto");
 		Level testLevel=new Level(1);
+		player.setCurrentLevel(testLevel);
 		player.setMaxHealth(10);
 		player.setCurrentHealth(10);
 		player.getHit(5);
-		player.respawn(testLevel);
+		player.respawn();
 		assertEquals(10,player.getCurrentHealth());
 	}
 	

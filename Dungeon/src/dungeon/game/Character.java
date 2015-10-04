@@ -11,7 +11,7 @@ import dungeon.items.Item;
  * @author Loic
  *
  */
-public class Character {
+public abstract class Character {
 	
 	protected String name;
 	protected int damages, maxHealth,currentHealth;
@@ -68,9 +68,7 @@ public class Character {
 	/**
 	 * the character dies
 	 */
-	public void die(){
-		this.dead = true;
-	}
+	public abstract void die();
 	
 	
 	
@@ -81,7 +79,9 @@ public class Character {
 	public void getHit(int dmg){
 		this.currentHealth -= dmg;
 		if(this.currentHealth <= 0)
-			this.dead = true;
+			this.die();
+		else		
+			System.out.println(this.name+" has now " + this.getCurrentHealth() + " HP");
 	}
 	
 	
@@ -218,6 +218,7 @@ public class Character {
 		return this.dead;
 	}
 	
+
 	/**
 	 * @return inventory of the character
 	 */

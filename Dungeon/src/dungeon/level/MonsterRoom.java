@@ -1,11 +1,9 @@
 package dungeon.level;
 
 import dungeon.game.Battle;
-import dungeon.game.Character;
 import dungeon.game.GameBoard;
 import dungeon.game.Monster;
 import dungeon.game.MonsterEnum;
-import dungeon.game.Player;
 import dungeon.utils.SecureInput;
 
 /**
@@ -31,9 +29,9 @@ public class MonsterRoom extends Room {
 	 * @param monster
 	 * @param level
 	 */
-	public MonsterRoom(String name, Monster monster,Level level) {
+	public MonsterRoom(String name, MonsterEnum monster,Level level) {
 		super(name,level);
-		this.monster = monster;
+		this.monster = new Monster(monster);
 	}
 
 
@@ -59,12 +57,9 @@ public class MonsterRoom extends Room {
 			switch (answer) {
 			case 1:
 				Battle battle = new Battle(GameBoard.player, this.monster);
-				Character winner =battle.fight();
-				if (winner.getClass()==Player.class) {
-					this.displayDirections();
-				} else {
-					this.level.goToEntrance();//lose go back to entrance
-				}
+				battle.fight();
+				if(monster.isDead())
+					this.displayDirections(); //if winner wins, display directions
 				break;
 
 			case 2:

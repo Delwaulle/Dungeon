@@ -28,7 +28,7 @@ public class StatsCommand implements Command{
 			System.out.println("               -Weapon Damages = " + character.getCurrentWeapon().getPower());
 			System.out.println("Total Damages = " + character.getDamagesWithWeapon());
 		}
-		System.out.println("Critical hit chance = " + character.getPourcentCriticalHit());
+		System.out.println("Critical hit chance = " + character.getPourcentCriticalHit()+"%");
 		System.out.println("Critical hit power = " + character.getPowerOfCriticalHit());
 		System.out.println("====================");
 	}

@@ -19,34 +19,18 @@ public class Monster extends Character{
 		super(monster.getName());
 		this.damages = monster.getPower();
 		this.maxHealth = monster.getHealth();
+		this.currentHealth=maxHealth;
 		this.inventory=new Inventory();
 	}
 	
-	/**
-	 * We create a monster with its state,
-	 * its strength and its life (HP:HealthPoints)
-	 * But, here, we specify its strength
-	 * @param name
-	 * @param damages
-	 */
-	public Monster (String name,int damages){
-		super(name);
-		this.damages=damages;
-		this.maxHealth = 5;
+	@Override
+	public void die() {
+		this.dead=true;
+		System.out.println("Good job, you have killed "+this.getName());
+		System.out.println("Let's see your drop !");
+		System.out.println(this.getInventory().toString());
+		GameBoard.player.getDrop(this);
 	}
 
-	/**
-	 * We create a monster with its state,
-	 * its strength and its life (HP:HealthPoints)
-	 * But, here, we specify its strength
-	 * @param name
-	 * @param damages
-	 * @param health
-	 */
-	public Monster (String name,int damages,int health){
-		super(name);
-		this.damages=damages;
-		this.maxHealth = health;
-	}
 
 }

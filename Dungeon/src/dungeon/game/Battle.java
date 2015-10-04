@@ -3,6 +3,7 @@ package dungeon.game;
 import dungeon.commands.CommandFactory;
 import dungeon.commands.ConsumeHealPotionCommand;
 import dungeon.commands.EquipItemCommand;
+import dungeon.commands.HitCommand;
 import dungeon.utils.SecureInput;
 
 /**
@@ -15,6 +16,7 @@ public class Battle {
 	
 	private Player player;
 	private Monster monster;
+	private CommandFactory commandFactory;
 	
 	/**
 	 * create a new battle
@@ -24,15 +26,14 @@ public class Battle {
 	public Battle(Player player, Monster monster){
 		this.player = player;
 		this.monster = monster;
+		this.commandFactory = new CommandFactory();
 	}
 	
 	/**
 	 * scenario of a fight between a player and a monster
-	 * @return the winner
 	 */
-	public Character fight(){
-		CommandFactory commandFactory = new CommandFactory();
-		while(!monster.isDead() && !player.isDead()){
+	public void fight(){
+		while(!monster.isDead() && !player.getCurrentLevel().getCurrentRoom().getName().equals("entrance")){
 			System.out.println("What do you want to do ?");
 			System.out.println("Enter \"hit\" to hit the monster");
 			System.out.println("Enter \"use + potion name\" to use a potion");
@@ -42,10 +43,8 @@ public class Battle {
 			switch (cmd[0]) {
 			case "hit":
 				//the player attacks the monster 
-				int playerDamages =player.attack();
-				monster.getHit(playerDamages);
-				System.out.println("You imposed "+playerDamages+" damages to " + monster.getName());
-				System.out.println(monster.getName() + " has " + monster.getCurrentHealth() + " HP");
+				commandFactory.setCommand(new HitCommand(this.player,this.monster));
+				commandFactory.invoke();
 				break;
 			case "use":
 				String potionName="";
@@ -69,26 +68,18 @@ public class Battle {
 				System.out.println("I don't know what you mean");
 				fight();
 			}
-			
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			//the monster attacks the player	
 			if(!monster.isDead()){
-				int monsterDamages = monster.attack();
-				player.getHit(monsterDamages);
-				System.out.println("The "+monster.getName()+ " imposed you "+monsterDamages+" damages");
-				System.out.println("You have " + player.getCurrentHealth() + " HP");
+				commandFactory.setCommand(new HitCommand(this.monster,this.player));
+				commandFactory.invoke();
 			}
 		}
-		
-		if(monster.isDead()){
-			System.out.println("Good job, you have killed "+monster.getName());
-			System.out.println("Let's see your drop !");
-			System.out.println(monster.getInventory().toString());
-			player.getDrop(monster);
-			System.out.println("You have now " + player.getCurrentHealth() + " HP");
-			return player;
-		}			
-		else
-			return monster;
 	}
 	
 	// ====================== GETTERS AND SETTERS ===========================
