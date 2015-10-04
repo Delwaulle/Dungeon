@@ -277,7 +277,6 @@ public class Level {
 	 * ask for the player his choices
 	 */
 	public void displayMessage(){
-		currentRoom.displayInformation();
 		currentRoom.displayDirections();
 		System.out.println("What do you want to do ?");
 	}
@@ -291,8 +290,9 @@ public class Level {
 	 */
 	public void start() throws InterruptedException{
 		do{			
-			displayMessage();
+			currentRoom.displayInformation();
 			currentRoom.action();
+			displayMessage();
 			System.out.print("> ");
 			
 			//Read a command from the player

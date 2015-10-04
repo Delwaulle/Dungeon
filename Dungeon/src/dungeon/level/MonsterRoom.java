@@ -1,7 +1,6 @@
 package dungeon.level;
 
 import dungeon.game.Battle;
-import dungeon.game.GameBoard;
 import dungeon.game.Monster;
 import dungeon.game.MonsterEnum;
 import dungeon.utils.SecureInput;
@@ -43,7 +42,7 @@ public class MonsterRoom extends Room {
 
 	@Override
 	public void displayInformation() {
-		// TODO Auto-generated method stub
+		System.out.println("You are in a monster room !");
 	}
 
 	@Override
@@ -56,10 +55,8 @@ public class MonsterRoom extends Room {
 			int answer = SecureInput.getIntSecureInput();
 			switch (answer) {
 			case 1:
-				Battle battle = new Battle(GameBoard.player, this.monster);
-				battle.fight();
-				if(monster.isDead())
-					this.displayDirections(); //if winner wins, display directions
+				Battle battle = new Battle(player, this.monster);
+				battle.fight(player);
 				break;
 
 			case 2:
