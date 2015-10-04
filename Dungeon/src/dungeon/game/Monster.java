@@ -1,8 +1,6 @@
 package dungeon.game;
 
 
-import dungeon.items.Inventory;
-
 /**
  * All the components for having a monster
  * @author fguilbert
@@ -20,7 +18,6 @@ public class Monster extends Character{
 		this.damages = monster.getPower();
 		this.maxHealth = monster.getHealth();
 		this.currentHealth=maxHealth;
-		this.inventory=new Inventory();
 	}
 	
 	@Override

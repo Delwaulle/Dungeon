@@ -28,6 +28,7 @@ public abstract class Character {
 	public Character(String name){
 		this.name=name;
 		this.dead=false;
+		this.inventory=new Inventory();
 	}
 	
 	/**

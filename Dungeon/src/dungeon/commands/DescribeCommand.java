@@ -9,6 +9,7 @@ import dungeon.level.Room;
 public class DescribeCommand implements Command{
 
 	private Room currentRoom;
+	private final String COMMAND_DESCRIPTION="Describe the room";
 	
 	/**
 	 * @param room
@@ -20,6 +21,11 @@ public class DescribeCommand implements Command{
 	@Override
 	public void execute() {
 		currentRoom.askDescription();
+	}
+
+	@Override
+	public String getDescription() {
+		return COMMAND_DESCRIPTION;
 	}
 
 }

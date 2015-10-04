@@ -3,7 +3,6 @@ package dungeon.game;
 
 import dungeon.exceptions.FullInventoryException;
 import dungeon.exceptions.MaxStacksException;
-import dungeon.items.Inventory;
 import dungeon.items.StackItem;
 import dungeon.items.Item;
 import dungeon.level.Level;
@@ -26,7 +25,6 @@ public class Player extends Character{
 		this.maxHealth=20;
 		this.currentHealth=maxHealth;
 		this.damages=5;
-		this.inventory = new Inventory();
 		initializeBasicInventory();
 	}
 	

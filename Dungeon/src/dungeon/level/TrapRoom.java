@@ -15,11 +15,20 @@ public class TrapRoom extends Room {
 	protected String description;
 	protected Trap trap;
 
+	/**
+	 * @param name
+	 * @param level
+	 */
 	public TrapRoom(String name, Level level) {
 		super(name, level);
 		this.trap = new Trap(TrapEnum.GAZ);
 	}
 	
+	/**
+	 * @param name
+	 * @param trap
+	 * @param level
+	 */
 	public TrapRoom(String name, Trap trap, Level level){
 		super(name, level);
 		this.trap = trap;
@@ -55,10 +64,16 @@ public class TrapRoom extends Room {
 		return null;
 	}
 	
+	/**
+	 * @return the trap
+	 */
 	public Trap getTrap(){
 		return this.trap;
 	}
 	
+	/**
+	 * @param trap
+	 */
 	public void setTrap(Trap trap){
 		this.trap = trap;
 	}

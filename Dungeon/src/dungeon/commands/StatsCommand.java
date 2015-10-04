@@ -9,7 +9,8 @@ import dungeon.game.Character;
 public class StatsCommand implements Command{
 	
 	private Character character;
-
+	private final String COMMAND_DESCRIPTION="shows stats of the character.";
+	
 	/**
 	 * @param player
 	 */
@@ -31,6 +32,11 @@ public class StatsCommand implements Command{
 		System.out.println("Critical hit chance = " + character.getPourcentCriticalHit()+"%");
 		System.out.println("Critical hit power = " + character.getPowerOfCriticalHit());
 		System.out.println("====================");
+	}
+
+	@Override
+	public String getDescription() {
+		return this.COMMAND_DESCRIPTION;
 	}
 	
 	

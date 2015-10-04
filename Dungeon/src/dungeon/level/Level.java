@@ -23,6 +23,7 @@ public class Level {
 	private Room previousRoom;
 	protected boolean gameIsFinished=false;
 	private Player player=GameBoard.player;
+	private CommandFactory commandFactory=new CommandFactory();
 	
 	/**
 	 * construct a level
@@ -206,7 +207,7 @@ public class Level {
 	 */
 	public void interpretCommand(String command){
 		String[] cmd = command.split(" ",2);
-		CommandFactory commandFactory=new CommandFactory();
+		
 		switch(cmd[0]){
 		case "help":
 			commandFactory.setCommand(new HelpCommand());

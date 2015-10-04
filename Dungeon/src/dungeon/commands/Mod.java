@@ -6,8 +6,8 @@ package dungeon.commands;
  */
 public enum Mod {
 	
-	BATTLE_MOD(1),
-	BASIC_MOD(2),
+	BASIC_MOD(1),
+	BATTLE_MOD(2),
 	EXCAVATION_MOD(3),
 	TREASURE_MOD(4),
 	;

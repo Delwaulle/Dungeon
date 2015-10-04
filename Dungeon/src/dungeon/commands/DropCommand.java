@@ -12,6 +12,7 @@ public class DropCommand implements Command{
 	private Character character;
 	private Item item;
 	private String equipValue;
+	private final String COMMAND_DESCRIPTION="choose an item to remove of your inventory. Ex: \"drop HEALTH_POTION\"";
 	
 	/**
 	 * @param player
@@ -44,6 +45,11 @@ public class DropCommand implements Command{
 			System.out.println(" Your inventory :");
 			System.out.println(this.character.getInventory().getItems().toString());
 		}
+	}
+
+	@Override
+	public String getDescription() {
+		return this.COMMAND_DESCRIPTION;
 	}
 
 }
