@@ -61,7 +61,7 @@ public class Level {
 		int nbTreasureRoom=numLevel*(1/6)+1;
 		int nbTrapRoom=numLevel*(1/6)+1;
 		
-		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+1;//+the entrance
+		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom+1;//+the entrance
 		int roomsLeft=totalNumberOfRoom;
 		int aRandomRoom;
 		Direction direction;
@@ -82,7 +82,7 @@ public class Level {
 				aRandomRoom = generateARoom();
 				System.out.println("room generated : " + aRandomRoom );
 				direction = generateADirection(listDirections);
-				lastDirection=direction;
+				lastDirection=oppositeDirection(direction);
 				listDirections.add(direction);
 				System.out.println("direction generated : " + direction);
 				if(totalNumberOfRoom==roomsLeft){
@@ -122,6 +122,11 @@ public class Level {
 	}
 	
 	
+	private Direction oppositeDirection(Direction direction) {
+		return direction.getOppositeDirection();
+	}
+
+
 	private Direction generateADirection(List<Direction> listDirections) {
 		Direction newDirection;
 		int dir;
