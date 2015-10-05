@@ -16,7 +16,7 @@ public class Battle {
 	
 	private Player player;
 	private Monster monster;
-	private CommandFactory commandFactory;
+	private CommandFactory commandFactory=GameBoard.commandFactory;
 	
 	/**
 	 * create a new battle
@@ -26,7 +26,6 @@ public class Battle {
 	public Battle(Player player, Monster monster){
 		this.player = player;
 		this.monster = monster;
-		this.commandFactory = new CommandFactory();
 	}
 	
 	/**
@@ -35,6 +34,8 @@ public class Battle {
 	public void fight(Character aggressor){
 		if(aggressor.equals(player)){
 			if(!player.getCurrentLevel().getCurrentRoom().getName().equals("entrance")){
+				if(player.getCurrentWeapon()==null)
+					System.out.println("/!\\ YOU HAVEN'T EQUIPPED WEAPON");
 				System.out.println("What do you want to do ?");
 				System.out.println("Enter \"hit\" to hit the monster");
 				System.out.println("Enter \"use + potion name\" to use a potion");
@@ -75,7 +76,7 @@ public class Battle {
 			}
 		}
 		else{
-			//the monster attacks the player	
+			//the aggressor is the monster	
 			if(!monster.isDead()){
 				commandFactory.setCommand(new HitCommand(this.monster,this.player));
 				commandFactory.invoke();

@@ -12,7 +12,7 @@ public class EquipItemCommand implements Command{
 	private Character character;
 	private Item item;
 	private String equipValue;
-	private final String COMMAND_DESCRIPTION="equip a weapon from your inventory. Ex: \"equip WOODEN_SWORD\"";
+	private final String COMMAND_DESCRIPTION="equip : equip a weapon from your inventory. Ex: \"equip WOODEN_SWORD\"";
 	
 	/**
 	 * @param player

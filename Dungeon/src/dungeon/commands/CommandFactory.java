@@ -1,6 +1,7 @@
 package dungeon.commands;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -12,13 +13,15 @@ public class CommandFactory {
 
 	private Command command;
 	private Mod currentCommandMod;
-	private Map<Mod,HashMap<String,Command>> allCommands= new HashMap<>();
-	private Map<String,Command> possibleCommandsWithMod= new HashMap<>();
+	private Map<Mod,List<String>> allCommands= new HashMap<>();
+	private Map<String,Command> stringToCommand= new HashMap<>();
 
 	public CommandFactory(Command command) {
 		this.command = command;
 	}
 	
+
+
 
 
 	public void invoke() {
@@ -33,8 +36,22 @@ public class CommandFactory {
 	 * Display all the commands associate to the current commands Mod
 	 */
 	public void showPossibleCommands(){
-		for(String cmd : possibleCommandsWithMod.keySet())
-			System.out.println(possibleCommandsWithMod.get(cmd).getDescription());
+		System.out.println(currentCommandMod.toString());
+	}
+	
+	public void interpretCommand(String [] cmd){
+		if(isValidCommandWithMod(cmd[0])){
+			
+		}
+		else{
+			System.out.println("Non valid command, enter \"help\" to show all possibles commands");
+		}
+		
+	}
+	
+	public boolean isValidCommandWithMod(String cmd){
+		List<String> cmdList = this.allCommands.get(this.currentCommandMod);
+		return cmdList.contains(cmd);
 	}
 	
 	public CommandFactory(Mod commandMod){
@@ -49,6 +66,11 @@ public class CommandFactory {
 	
 	public Mod getCurrentCommandMod() {
 		return currentCommandMod;
+	}
+	
+	public void setCurrentCommandMod(Mod currentCommandMod) {
+		this.currentCommandMod = currentCommandMod;
+		//maj possible cmd
 	}
 
 

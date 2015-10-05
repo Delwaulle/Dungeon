@@ -9,7 +9,7 @@ import dungeon.game.Character;
 public class StatsCommand implements Command{
 	
 	private Character character;
-	private final String COMMAND_DESCRIPTION="shows stats of the character.";
+	private final String COMMAND_DESCRIPTION="stats : shows stats of the character.";
 	
 	/**
 	 * @param player

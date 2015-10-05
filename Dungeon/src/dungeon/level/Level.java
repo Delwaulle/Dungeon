@@ -25,7 +25,7 @@ public class Level {
 	private Room previousRoom;
 	protected boolean gameIsFinished=false;
 	private Player player=GameBoard.player;
-	private CommandFactory commandFactory=new CommandFactory();
+	private CommandFactory commandFactory=GameBoard.commandFactory;
 	
 	/**
 	 * construct a level

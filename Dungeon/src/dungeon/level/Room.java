@@ -1,12 +1,15 @@
 package dungeon.level;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
 
-import dungeon.actions.ActionFactory;
+import dungeon.actions.Furniture;
+import dungeon.commands.CommandFactory;
+import dungeon.commands.Mod;
 import dungeon.game.GameBoard;
 import dungeon.game.Player;
 import dungeon.items.Item;
@@ -21,11 +24,11 @@ import dungeon.items.Item;
 public abstract class Room {
 	
 	protected Map<Door,Room> neighbours = new HashMap<>();
-	protected ActionFactory actions = new ActionFactory();
+	protected List<Furniture> furnitures = new ArrayList<Furniture>(); //generate random pllls
 	protected String name;
 	protected Level level;
 	protected boolean isDescribed;
-	Scanner scanner = new Scanner(System.in);
+	private CommandFactory commandFactory=GameBoard.commandFactory;
 	protected Player player = GameBoard.player;
 	
 	/**
@@ -137,7 +140,11 @@ public abstract class Room {
 	 */
 	public void askDescription(){
 		this.isDescribed=true;
-		System.out.println(this.actions.toString());
+		System.out.println("There are in this room : ");
+		for (Furniture furniture : furnitures){
+			System.out.println("- "+furniture.getName());
+		}
+		this.commandFactory.setCurrentCommandMod(Mod.EXCAVATION_MOD);
 		
 	}
 	

@@ -9,7 +9,7 @@ import dungeon.level.Room;
 public class DescribeCommand implements Command{
 
 	private Room currentRoom;
-	private final String COMMAND_DESCRIPTION="Describe the room";
+	private final String COMMAND_DESCRIPTION="describe : Describe the room";
 	
 	/**
 	 * @param room

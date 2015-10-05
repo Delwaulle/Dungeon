@@ -13,7 +13,7 @@ public class GoCommand implements Command{
 	private Level level;
 	private Direction direction;
 	private String directionName;
-	private final String COMMAND_DESCRIPTION="go to a direction. You must specify the direction. Ex: \"go north\"";
+	private final String COMMAND_DESCRIPTION="go : go to a direction. You must specify the direction. Ex: \"go north\"";
 	
 	/**
 	 * @param level

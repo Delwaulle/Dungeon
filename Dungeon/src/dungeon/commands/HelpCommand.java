@@ -6,7 +6,7 @@ package dungeon.commands;
  */
 public class HelpCommand implements Command{
 
-	private final String COMMAND_DESCRIPTION="Show all the possible commands";
+	private final String COMMAND_DESCRIPTION="help : Show all the possibles commands";
 	@Override
 	public void execute() {
 		System.out.println("go : go to a direction. You must specify the direction. Ex: \"go north\"");

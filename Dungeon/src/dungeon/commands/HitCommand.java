@@ -9,7 +9,7 @@ public class HitCommand implements Command {
 	
 	private Character aggressor;
 	private Character receiver;
-	private final String COMMAND_DESCRIPTION="Hit a character";
+	private final String COMMAND_DESCRIPTION="hit : Hit a character";
 	
 	/**
 	 * @param aggressor

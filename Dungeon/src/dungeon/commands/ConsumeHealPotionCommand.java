@@ -13,7 +13,7 @@ public class ConsumeHealPotionCommand implements Command{
 	private Character character;
 	private String potion;
 	private Item item;
-	private final String COMMAND_DESCRIPTION = "use an item in your inventory. You must specify the name of the item. Ex: \"use HEALTH_POTION\"";
+	private final String COMMAND_DESCRIPTION = "use : use an item in your inventory. You must specify the name of the item. Ex: \"use HEALTH_POTION\"";
 
 	/**
 	 * @param character
