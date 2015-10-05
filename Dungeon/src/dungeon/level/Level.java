@@ -1,5 +1,6 @@
 package dungeon.level;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -30,59 +31,10 @@ public class Level {
 	 * @param numLevel
 	 */
 	public Level(int numLevel){
-		//initializeRooms2();
 		generateLevel(numLevel);
 		this.currentRoom=entrance;
 	}
 	
-	/**
-	 * for the moment, we initialize some level with its rooms
-	 */
-	public void initializeRooms(){
-		entrance= new NormalRoom("entrance",this);
-		intersection= new NormalRoom("intersection",this);
-		intersection.setDescription("There might be something weird on the left...");
-		trap=new NormalRoom("trap",this);
-		exit = new NormalRoom("exit",this);
-
-		
-		entrance.setNeighbour(new Door(Direction.NORTH), intersection);
-		intersection.setNeighbour(new Door(Direction.NORTH), exit);
-		intersection.setNeighbour(new Door(Direction.WEST), trap);
-	
-	}
-	
-	/**
-	 * for the moment, we initialize some level with its rooms
-	 */
-	public void initializeRooms2(){
-		entrance = new NormalRoom("entrance",this);
-		intersection = new NormalRoom("intersection",this);
-		intersection.setDescription("2 ways, west or east. I can hear something strange on the east...");
-		
-		treasureRoom = new TreasureRoom("treasureroom",this);
-		treasureRoom.setDescription("There is an empty chest on the ground.");
-		
-		monsterRoom = new MonsterRoom("monsterRoom",this);
-		passage = new NormalRoom("passage",this);
-		passage.setDescription("It turns to the north.");
-		
-		exit = new NormalRoom("exit",this);
-		
-		
-		entrance.setNeighbour(new Door(Direction.NORTH), intersection);
-		
-		intersection.setNeighbour(new Door(Direction.WEST), treasureRoom);
-		intersection.setNeighbour(new Door(Direction.EAST), monsterRoom);
-		
-		treasureRoom.setNeighbour(new Door(Direction.EAST), intersection);
-		
-		monsterRoom.setNeighbour(new Door(Direction.WEST), intersection);
-		monsterRoom.setNeighbour(new Door(Direction.EAST), passage);
-		
-		passage.setNeighbour(new Door(Direction.WEST), monsterRoom);
-		passage.setNeighbour(new Door(Direction.NORTH), exit);
-	}
 	
 	/**
 	 * for the moment, we initialize some level with its rooms
@@ -115,16 +67,21 @@ public class Level {
 		Object currentRoom=null;
 		Object nextRoom = null;
 		int nbDoor;
+		List <Direction> listDirections = new ArrayList<Direction>();
 		//change the direction and move to RandomLevel
 		//create different random room from another random room
 		while(roomsLeft>0){
+			listDirections.clear();
+			listDirections.add(lastDirection);
 			nbDoor = generateNbDoor();
 			// for each door of the current room, we set a room
 			for(int i=0;i<nbDoor;i++){
 				
 				aRandomRoom = generateARoom();
 				System.out.println("room generated : " + aRandomRoom );
-				direction = generateADireciton(lastDirection);
+				direction = generateADirection(listDirections);
+				lastDirection=direction;
+				listDirections.add(direction);
 				System.out.println("direction generated : " + direction);
 				if(totalNumberOfRoom==roomsLeft){
 					currentRoom=entrance;
@@ -159,24 +116,24 @@ public class Level {
 	}
 	
 	
-	private int generateNbDoor() {
-		// TODO Auto-generated method stub
-		Random r = new Random();
-		int nbDoor = r.nextInt(3)+1;
-		return nbDoor;
-	}
-
-	private Direction generateADireciton(Direction lastDirection) {
+	private Direction generateADirection(List<Direction> listDirections) {
 		Direction newDirection;
 		int dir;
 		do{
 			Random r = new Random();
 			dir = r.nextInt(4);
 			newDirection = Direction.values()[dir];
-		}while(lastDirection==newDirection);
+		}while(listDirections.contains(newDirection));
 		return newDirection;
 	}
 
+	private int generateNbDoor() {
+		// TODO Auto-generated method stub
+		Random r = new Random();
+		int nbDoor = r.nextInt(3)+1;
+		return nbDoor;
+	}
+	
 	/** generate an int which equals to normalRoom or monsterRoom or treasureRoom
 	 * @return an int between 1, 2 and 3 
 	 */
