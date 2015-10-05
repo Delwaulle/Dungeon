@@ -19,6 +19,7 @@ public class Level {
 	protected List<Room> roomList;
 	protected NormalRoom passage;
 	protected TreasureRoom treasureRoom ;
+	protected TrapRoom trapRoom;
 	protected MonsterRoom monsterRoom;
 	protected Room currentRoom;
 	private Room previousRoom;
@@ -48,7 +49,7 @@ public class Level {
 		
 		treasureRoom = new TreasureRoom("treasureroom",this);
 		treasureRoom.setDescription("There is an empty chest on the ground.");
-		
+		trapRoom = new TrapRoom("trapRoom",this);
 		monsterRoom = new MonsterRoom("monsterRoom",this);
 		passage = new NormalRoom("passage",this);
 		passage.setDescription("It turns to the north.");
@@ -58,6 +59,7 @@ public class Level {
 		int nbNormalRoom=numLevel*(1/2)+2;
 		int nbMonsterRoom=numLevel*(1/5)+1;
 		int nbTreasureRoom=numLevel*(1/6)+1;
+		int nbTrapRoom=numLevel*(1/6)+1;
 		
 		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+1;//+the entrance
 		int roomsLeft=totalNumberOfRoom;
@@ -99,6 +101,10 @@ public class Level {
 					nextRoom=treasureRoom;
 					nbTreasureRoom--;
 					System.out.println("treasure room");
+				}else if(aRandomRoom==4 && nbTrapRoom!=0){
+					nextRoom=trapRoom;
+					nbTrapRoom--;
+					System.out.println("trap room");
 				}
 				if(roomsLeft==1){
 					nextRoom=exit;
@@ -107,7 +113,7 @@ public class Level {
 					System.out.println("fin d'un niveau");
 				}
 				((Room) currentRoom).setNeighbour(new Door(direction), (Room)nextRoom);
-				roomsLeft = nbMonsterRoom+nbNormalRoom+nbTreasureRoom;
+				roomsLeft = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom;
 				
 			}
 			currentRoom=nextRoom;
@@ -139,7 +145,7 @@ public class Level {
 	 */
 	private int generateARoom() {
 		Random r = new Random();
-		return r.nextInt(3)+1;
+		return r.nextInt(4)+1;
 	}
 
 	/**
