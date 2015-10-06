@@ -3,6 +3,7 @@ package dungeon.game;
 import dungeon.exceptions.FullInventoryException;
 import dungeon.items.Inventory;
 import dungeon.items.Item;
+import dungeon.utils.Constants;
 
 
 /**
@@ -88,6 +89,14 @@ public abstract class Character {
 			} catch (FullInventoryException e) {
 				System.out.println("You are full. Sorry you can't get the drop");
 			}
+	}
+	
+	/**
+	 * @param level
+	 * @return the pourcentage of critical hit for a character thanks the level
+	 */
+	public int calculatePourcentCriticalHitByLevel(int level){
+		return (int)(level/Constants.MAX_LEVELS)*(Constants.MAX_POURCENT_CRITICAL_HIT-Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT);
 	}
 	
 	

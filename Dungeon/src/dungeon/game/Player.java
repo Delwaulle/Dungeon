@@ -30,7 +30,7 @@ public class Player extends Character{
 	public void initializeCaracteristics(int level){
 		this.maxHealth=Constants.BASIC_LIFE+(2*level);
 		this.damages=Constants.BASIC_POWER+(2*level);
-		this.pourcentCriticalHit=Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT;
+		this.pourcentCriticalHit=Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT+calculatePourcentCriticalHitByLevel(level);
 		this.powerOfCriticalHit=Constants.BASIC_POWER_OF_CRITICAL_HIT+(2*level);
 		
 		this.currentHealth=maxHealth;

@@ -41,7 +41,7 @@ public class Monster extends Character{
 	public void initializeCaracteristics(int level) {
 		this.damages = this.monster.getPower()+(2*level+level);
 		this.maxHealth = this.monster.getHealth()+(2*level+(int)level/2);
-		this.pourcentCriticalHit=Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT+(Constants.MAX_LEVELS/level);
+		this.pourcentCriticalHit=Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT+calculatePourcentCriticalHitByLevel(level);
 		this.powerOfCriticalHit=Constants.BASIC_POWER_OF_CRITICAL_HIT+(2*level);
 		
 		this.currentHealth=maxHealth;		
