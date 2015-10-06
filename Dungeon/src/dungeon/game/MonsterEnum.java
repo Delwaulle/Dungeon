@@ -5,8 +5,8 @@ package dungeon.game;
  * All the monsters which are in the game
  */
 public enum MonsterEnum {	
-	DEVIL_CAT(1,"devil cat",20,10),
-	SPIDER(2,"spider",30,15),
+	DEVIL_CAT(1,"devil cat",15,5),
+	SPIDER(2,"spider",25,10),
 	;
 	
 	private int id;
