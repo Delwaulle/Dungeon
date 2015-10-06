@@ -42,24 +42,12 @@ public class Inventory {
 			throw new FullInventoryException();
 		if(isPresent(item.getType()))
 			try {
-				items.get(getIdxOfItem(item)).updateQuantity(item.getQuantity());
+				items.get(items.indexOf(item)).updateQuantity(item.getQuantity());
 			} catch (MaxStacksException e) {
 				e.printStackTrace();
 			}
 		else
 			this.items.add(item);
-	}
-	
-	/**
-	 * @param item
-	 * @return the idx of the item in the list
-	 */
-	public int getIdxOfItem(StackItem item){
-		for(int i =0;i<items.size();i++){
-			if(item.getType().equals(items.get(i).getType()))
-				return i;
-		}
-		return -1;
 	}
 	
 	
@@ -96,7 +84,7 @@ public class Inventory {
 	 */
 	public boolean dropItem(Item item){
 		if(isPresent(item)){
-			items.remove(getIdxOfItem(searchItem(item)));
+			items.remove(items.indexOf(searchItem(item)));
 			return true;
 		}
 		return false;

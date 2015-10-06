@@ -25,7 +25,11 @@ public class Monster extends Character{
 		this.dead=true;
 		System.out.println("Good job, you have killed "+this.getName());
 		System.out.println("Let's see your drop !");
-		System.out.println(this.getInventory().toString());
+		String drop=this.getInventory().toString();
+		if(drop=="")
+			System.out.println("Nothing to drop !");
+		else
+			System.out.println(drop);
 		GameBoard.player.getDrop(this);
 	}
 

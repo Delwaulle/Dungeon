@@ -64,7 +64,7 @@ public class Level {
 		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom+1;//+the entrance
 		int roomsLeft=totalNumberOfRoom;
 		int aRandomRoom;
-		Direction direction;
+		Direction direction = null;
 		Direction lastDirection = null;
 		Room currentRoom=null;
 		Room nextRoom = null;
@@ -82,7 +82,6 @@ public class Level {
 				aRandomRoom = generateARoom();
 				//System.out.println("room generated : " + aRandomRoom );
 				direction = generateADirection(listDirections);
-				lastDirection=oppositeDirection(direction);
 				listDirections.add(direction);
 				//System.out.println("direction generated : " + direction);
 				if(totalNumberOfRoom==roomsLeft){
@@ -109,6 +108,8 @@ public class Level {
 				roomsLeft = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom;
 				
 			}
+			lastDirection=oppositeDirection(direction);
+
 			currentRoom=nextRoom;
 		}
 		
@@ -158,7 +159,6 @@ public class Level {
 	 */
 	public void goToEntrance(){
 		this.currentRoom=entrance;
-		this.displayMessage();
 	}
 	
 	
