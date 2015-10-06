@@ -66,8 +66,8 @@ public class Level {
 		int aRandomRoom;
 		Direction direction;
 		Direction lastDirection = null;
-		Object currentRoom=null;
-		Object nextRoom = null;
+		Room currentRoom=null;
+		Room nextRoom = null;
 		int nbDoor;
 		List <Direction> listDirections = new ArrayList<Direction>();
 		//change the direction and move to RandomLevel
@@ -92,18 +92,20 @@ public class Level {
 					nextRoom=intersection;
 					nbNormalRoom--;
 				}else if(aRandomRoom==2 && nbMonsterRoom!=0){
+					nextRoom=monsterRoom;
 					nbMonsterRoom--;
 				}else if(aRandomRoom==3 && nbTreasureRoom!=0){
+					nextRoom=treasureRoom;
 					nbTreasureRoom--;
 				}else if(aRandomRoom==4 && nbTrapRoom!=0){
+					nextRoom=trapRoom;
 					nbTrapRoom--;
-					System.out.println("trap room");
 				}
 				if(roomsLeft==1){
 					nextRoom=exit;
 					roomsLeft=0;
 				}
-				((Room) currentRoom).setNeighbour(new Door(direction), (Room)nextRoom);
+				currentRoom.setNeighbour(new Door(direction),nextRoom);
 				roomsLeft = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom;
 				
 			}
@@ -123,7 +125,7 @@ public class Level {
 		int dir;
 		do{
 			Random r = new Random();
-			dir = r.nextInt(4);
+			dir = r.nextInt(Direction.values().length);
 			newDirection = Direction.values()[dir];
 		}while(listDirections.contains(newDirection));
 		return newDirection;
