@@ -80,11 +80,11 @@ public class Level {
 			for(int i=0;i<nbDoor;i++){
 				
 				aRandomRoom = generateARoom();
-				System.out.println("room generated : " + aRandomRoom );
+				//System.out.println("room generated : " + aRandomRoom );
 				direction = generateADirection(listDirections);
 				lastDirection=oppositeDirection(direction);
 				listDirections.add(direction);
-				System.out.println("direction generated : " + direction);
+				//System.out.println("direction generated : " + direction);
 				if(totalNumberOfRoom==roomsLeft){
 					currentRoom=entrance;
 				}
