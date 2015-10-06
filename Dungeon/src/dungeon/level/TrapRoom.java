@@ -47,9 +47,7 @@ public class TrapRoom extends Room {
 
 	@Override
 	public void action() {
-		System.out.println("You get hit from " + this.trap.getName() +" !");
-		System.out.println("You lose " + this.trap.getPower() + " HP");
-		this.player.getHit(this.trap.getPower());
+		this.trap.activate();
 	}
 
 	@Override

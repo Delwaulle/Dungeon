@@ -25,6 +25,16 @@ public class Trap {
 		this.setName(name);
 		this.setPower(power);
 	}
+	
+	
+	/**
+	 * activate the trap
+	 */
+	public void activate(){
+		System.out.println("You get hit from " + this.getName() +" !");
+		System.out.println("You lose " + this.getPower() + " HP");
+		GameBoard.player.getHit(this.getPower());
+	}
 
 
 	/**

@@ -154,7 +154,7 @@ public abstract class Room {
 	
 	
 	public void examineFurniture(){
-		
+		//get the furniture and furniture.examine
 	}
 	
 	
