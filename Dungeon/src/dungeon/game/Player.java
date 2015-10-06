@@ -6,6 +6,7 @@ import dungeon.exceptions.MaxStacksException;
 import dungeon.items.StackItem;
 import dungeon.items.Item;
 import dungeon.level.Level;
+import dungeon.utils.Constants;
 
 /**
  * All the components for having a player
@@ -22,10 +23,17 @@ public class Player extends Character{
 	 */
 	public Player(String name){
 		super(name);
-		this.maxHealth=20;
-		this.currentHealth=maxHealth;
-		this.damages=5;
+		initializeCaracteristics(1);
 		initializeBasicInventory();
+	}
+	
+	public void initializeCaracteristics(int level){
+		this.maxHealth=Constants.BASIC_LIFE+(2*level);
+		this.damages=Constants.BASIC_POWER+(2*level);
+		this.pourcentCriticalHit=Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT;
+		this.powerOfCriticalHit=Constants.BASIC_POWER_OF_CRITICAL_HIT+(2*level);
+		
+		this.currentHealth=maxHealth;
 	}
 	
 

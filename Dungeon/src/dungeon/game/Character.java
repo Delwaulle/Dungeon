@@ -14,9 +14,7 @@ import dungeon.items.Item;
 public abstract class Character {
 	
 	protected String name;
-	protected int damages, maxHealth,currentHealth;
-	protected int pourcentCriticalHit=10;
-	protected int powerOfCriticalHit=2;
+	protected int damages, maxHealth,currentHealth,pourcentCriticalHit,powerOfCriticalHit;
 	protected boolean dead;
 	protected Item currentWeapon;
 	protected Inventory inventory;
@@ -65,11 +63,6 @@ public abstract class Character {
 		return false;
 	}
 	
-	
-	/**
-	 * the character dies
-	 */
-	public abstract void die();
 	
 	
 	
@@ -233,4 +226,21 @@ public abstract class Character {
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
+	
+	/*
+	* ===========================================================================
+	* 						Abstract
+	*/
+	
+	
+	/**
+	 * the character dies
+	 */
+	public abstract void die();
+	
+	/**
+	 * Initialize all the caracteristics for a character with the number of the level to up his carac
+	 * @param level
+	 */
+	public abstract void initializeCaracteristics(int level);
 }

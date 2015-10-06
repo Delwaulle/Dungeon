@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import dungeon.actions.Furniture;
+import dungeon.items.Furniture;
 import dungeon.commands.CommandFactory;
 import dungeon.commands.Mod;
 import dungeon.game.GameBoard;
@@ -142,9 +142,18 @@ public abstract class Room {
 		this.isDescribed=true;
 		System.out.println("There are in this room : ");
 		for (Furniture furniture : furnitures){
-			System.out.println("- "+furniture.getName());
+			System.out.println("- "+furniture.getFurniture().name());
 		}
 		this.commandFactory.setCurrentCommandMod(Mod.EXCAVATION_MOD);
+		System.out.println("Now you can examine the furnitures");
+		System.out.println("What do you want to do : ");
+		for (Furniture furniture : furnitures){
+			System.out.println("- "+furniture.getFurniture().getAction());
+		}
+	}
+	
+	
+	public void examineFurniture(){
 		
 	}
 	

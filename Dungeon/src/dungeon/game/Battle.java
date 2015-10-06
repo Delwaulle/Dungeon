@@ -1,7 +1,7 @@
 package dungeon.game;
 
 import dungeon.commands.CommandFactory;
-import dungeon.commands.ConsumeHealPotionCommand;
+import dungeon.commands.ConsumePotionCommand;
 import dungeon.commands.EquipItemCommand;
 import dungeon.commands.HitCommand;
 import dungeon.utils.SecureInput;
@@ -55,7 +55,7 @@ public class Battle {
 						potionName=" ";
 					else
 						potionName=cmd[1];
-					commandFactory.setCommand(new ConsumeHealPotionCommand(this.player,potionName));
+					commandFactory.setCommand(new ConsumePotionCommand(this.player,potionName));
 					commandFactory.invoke();
 					fight(this.player);
 					break;

@@ -6,14 +6,14 @@ package dungeon.commands;
  */
 public enum Mod {
 	
-	BASIC_MOD(1,new CommandEnum[]{CommandEnum.USE}),
-	BATTLE_MOD(2,new CommandEnum[]{CommandEnum.USE}),
-	EXCAVATION_MOD(3,new CommandEnum[]{CommandEnum.USE}),
-	TREASURE_MOD(4,new CommandEnum[]{CommandEnum.USE})
+	BASIC_MOD(1,new CommandType[]{CommandType.USE}),
+	BATTLE_MOD(2,new CommandType[]{CommandType.USE}),
+	EXCAVATION_MOD(3,new CommandType[]{CommandType.USE}),
+	TREASURE_MOD(4,new CommandType[]{CommandType.USE})
 	;
 
 	private int id;
-	private CommandEnum[] listCommands;
+	private CommandType[] listCommands;
 	
 	/**
 	 * @param id
@@ -26,7 +26,7 @@ public enum Mod {
 	 * @param id
 	 * @param listCommands
 	 */
-	Mod(int id,CommandEnum[] listCommands){
+	Mod(int id,CommandType[] listCommands){
 		this.id=id;
 		this.listCommands=listCommands;
 	}
@@ -34,7 +34,7 @@ public enum Mod {
 	/**
 	 * @return list of the commands associate to the mod
 	 */
-	public CommandEnum[] getListCommands() {
+	public CommandType[] getListCommands() {
 		return listCommands;
 	}
 

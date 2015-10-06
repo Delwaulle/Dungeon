@@ -32,6 +32,14 @@ public final class Constants {
 	 * DUNGEONS
 	 */
 	public static  int MAX_DUNGEONS =10;
+	
+	/*
+	 * PLAYER
+	 */
+	public static final int BASIC_POWER = 5;
+	public static final int BASIC_LIFE = 20;
+	public static final int BASIC_POURCENTAGE_OF_CRITICAL_HIT=10;
+	public static final int BASIC_POWER_OF_CRITICAL_HIT=5;
 
 
 

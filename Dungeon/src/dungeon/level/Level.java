@@ -26,17 +26,21 @@ public class Level {
 	protected boolean gameIsFinished=false;
 	private Player player=GameBoard.player;
 	private CommandFactory commandFactory=GameBoard.commandFactory;
+	private int numLevel;
 	
 	/**
 	 * construct a level
 	 * @param numLevel
 	 */
 	public Level(int numLevel){
+		this.numLevel=numLevel;
 		generateLevel(numLevel);
 		this.currentRoom=entrance;
 	}
 	
-	
+
+
+
 	/**
 	 * for the moment, we initialize some level with its rooms
 	 */
@@ -201,7 +205,7 @@ public class Level {
 				potionName=" ";
 			else
 				potionName=cmd[1];
-			commandFactory.setCommand(new ConsumeHealPotionCommand(this.player,potionName));
+			commandFactory.setCommand(new ConsumePotionCommand(this.player,potionName));
 			commandFactory.invoke();
 
 			break;
@@ -302,14 +306,31 @@ public class Level {
 		this.displayMessage();
 	}
 	
+	
+	/**
+	 * @return number of the level
+	 */
+	public int getNumLevel() {
+		return numLevel;
+	}
+	
+	/**
+	 * @return the previous room
+	 */
 	public Room getPreviousRoom(){
 		return this.previousRoom;
 	}
 	
+	/**
+	 * @param room
+	 */
 	public void setPreviousRoom(Room room){
 		this.previousRoom = room;
 	}
 	
+	/**
+	 * @param room
+	 */
 	public void setCurrentRoom(Room room){
 		this.currentRoom = room;
 	}

@@ -20,7 +20,7 @@ public class MonsterRoom extends Room {
 	 */
 	public MonsterRoom(String name,Level level) {
 		super(name,level);
-		this.monster = new Monster(MonsterEnum.DEVIL_CAT);
+		this.monster = new Monster(MonsterEnum.DEVIL_CAT,level.getNumLevel());
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class MonsterRoom extends Room {
 	 */
 	public MonsterRoom(String name, MonsterEnum monster,Level level) {
 		super(name,level);
-		this.monster = new Monster(monster);
+		this.monster = new Monster(monster,level.getNumLevel());
 	}
 
 

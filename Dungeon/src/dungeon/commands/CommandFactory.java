@@ -13,7 +13,6 @@ public class CommandFactory {
 
 	private Command command;
 	private Mod currentCommandMod;
-	private Map<Mod,List<String>> allCommands= new HashMap<>();
 	private Map<String,Command> stringToCommand= new HashMap<>();
 
 	public CommandFactory(Command command) {
@@ -41,7 +40,7 @@ public class CommandFactory {
 	
 	public void interpretCommand(String [] cmd){
 		if(isValidCommandWithMod(cmd[0])){
-			
+
 		}
 		else{
 			System.out.println("Non valid command, enter \"help\" to show all possibles commands");
@@ -50,8 +49,13 @@ public class CommandFactory {
 	}
 	
 	public boolean isValidCommandWithMod(String cmd){
-		List<String> cmdList = this.allCommands.get(this.currentCommandMod);
-		return cmdList.contains(cmd);
+		/*CommandEnum[] listCmd = this.currentCommandMod.getListCommands();
+		boolean isPresent=false;
+		for(int i=0;i<listCmd.length;i++){
+			if(listCmd[i].name().equals(cmd.toUpperCase()))
+				isPresent=true;
+		}*/
+		return true;
 	}
 	
 	public CommandFactory(Mod commandMod){
@@ -70,7 +74,6 @@ public class CommandFactory {
 	
 	public void setCurrentCommandMod(Mod currentCommandMod) {
 		this.currentCommandMod = currentCommandMod;
-		//maj possible cmd
 	}
 
 

@@ -36,6 +36,7 @@ public class Dungeon {
 				System.out.println("Welcome to the level "+(i+1));
 				Level level = levels[i];
 				GameBoard.player.setCurrentLevel(level);
+				GameBoard.player.initializeCaracteristics(i);
 				this.currentLevel=level;
 				level.start();
 				System.out.println("========= NEXT LEVEL ==========");
