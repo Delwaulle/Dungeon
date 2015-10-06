@@ -30,10 +30,10 @@ public class Trap {
 	/**
 	 * activate the trap
 	 */
-	public void activate(){
+	public void activate(Player player){
 		System.out.println("You get hit from " + this.getName() +" !");
 		System.out.println("You lose " + this.getPower() + " HP");
-		GameBoard.player.getHit(this.getPower());
+		player.getHit(this.getPower());
 	}
 
 

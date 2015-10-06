@@ -1,5 +1,6 @@
 package dungeon.items;
 
+import dungeon.game.GameBoard;
 import dungeon.game.Trap;
 
 /**
@@ -21,7 +22,7 @@ public class TrapFurniture extends Furniture{
 	@Override
 	public void examine() {
 		System.out.println("Bad luck ! There is a trap "+this.furniture.getAction());
-		this.trap.activate();
+		this.trap.activate(GameBoard.player);
 	}
 
 }

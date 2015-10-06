@@ -25,13 +25,12 @@ public class TrapRoomTest {
 	
 	@Test
 	public void trapActivationTest(){
-		TrapRoom trap = new TrapRoom("trap", new Trap(TrapEnum.FIRE), null); //still still no need of level
+		Trap trap = new Trap(TrapEnum.FIRE); //still still no need of level
 		Player player = new Player("player");
 		player.setCurrentHealth(15);
-		trap.setPlayer(player);
-		trap.action();
-		
-		assertEquals(5, player.getCurrentHealth());
+		int expecting = player.getCurrentHealth()-TrapEnum.FIRE.getPower();
+		trap.activate(player);
+		assertEquals(expecting, player.getCurrentHealth());
 	}
 	
 }

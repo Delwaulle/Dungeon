@@ -80,17 +80,19 @@ public class InventoryTest {
 	@Test(expected = FullInventoryException.class)
 	public void addItemToFullInventoryTest() throws FullInventoryException, MaxStacksException{
 		Inventory inventory=new Inventory();
-		inventory.setMaxWeight(5);
-		inventory.addItem(new StackItem(Item.HEALTH_POTION,6));
+		int quantity = 6;
+		inventory.setMaxWeight(Item.HEALTH_POTION.getWeight()*quantity-1);
+		inventory.addItem(new StackItem(Item.HEALTH_POTION,quantity));
 	}
 	
 	@Test
 	public void isFullInventoryTest() throws FullInventoryException, MaxStacksException{
 		Inventory inventory=new Inventory();
-		inventory.setMaxWeight(5);
-		inventory.addItem(new StackItem(Item.HEALTH_POTION,4));
+		int weight=5;
+		inventory.setMaxWeight(weight);
+		inventory.addItem(new StackItem(Item.HEALTH_POTION,weight-1));
 		assertFalse(inventory.isFull());
-		inventory.addItem(new StackItem(Item.HEALTH_POTION,1));
+		inventory.addItem(new StackItem(Item.STRENGH_POTION,1));
 		assertTrue(inventory.isFull());
 	}
 	

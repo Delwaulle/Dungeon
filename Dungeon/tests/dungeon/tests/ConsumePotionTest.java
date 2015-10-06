@@ -18,8 +18,9 @@ public class ConsumePotionTest {
 	@Test
 	public void consumeHealthPotionTest(){
 		this.player = new Player("player");
+		int life=5;
 		StackItem potion = player.getInventory().getItemByType(Item.HEALTH_POTION);
-		player.setCurrentHealth(5);
+		player.setCurrentHealth(life);
 		
 		//test if player has 5HP
 		assertEquals(5, player.getCurrentHealth());
@@ -35,11 +36,11 @@ public class ConsumePotionTest {
 		assertEquals(2, player.getInventory().getItemByType(Item.HEALTH_POTION).getQuantity());
 		
 		//test if player healed himself and has 6HP now
-		assertEquals(6, player.getCurrentHealth());
+		assertEquals(life+Item.HEALTH_POTION.getPower(), player.getCurrentHealth());
 		
 		//test now if the player consume a potion but has not a increase health
-		
-		player.setCurrentHealth(18);
+		life=18;
+		player.setCurrentHealth(life);
 		try {
 			potion = new StackItem(Item.PROFUSE_HEAL_POTION);
 		} catch (MaxStacksException e) {
@@ -57,12 +58,11 @@ public class ConsumePotionTest {
 		
 		command = new ConsumePotionCommand(player, potion.getType());
 		
-		assertEquals(18, player.getCurrentHealth());
-		assertEquals(5, potion.getType().getPower());
+		assertEquals(life, player.getCurrentHealth());
 		
 		command.execute();
 		
-		assertEquals(20, player.getCurrentHealth());
+		assertTrue(player.getMaxHealth()>= player.getCurrentHealth());
 	}
 	
 	/**
@@ -74,8 +74,8 @@ public class ConsumePotionTest {
 		player = new Player("player");
 		StackItem potion = player.getInventory().getItemByType(Item.HEALTH_POTION);
 		
-		// max health of the player equals 20
-		assertEquals(20, player.getCurrentHealth());
+		// max health of the player 
+		assertEquals(player.getMaxHealth(), player.getCurrentHealth());
 		//he has 3 potions in his inventory
 		assertEquals(3, potion.getQuantity());
 		
@@ -86,7 +86,7 @@ public class ConsumePotionTest {
 		//assert that player is still at 20hp
 		//assert that he didn't consume the potion
 		assertNotEquals(21, player.getCurrentHealth());
-		assertEquals(20, player.getCurrentHealth());
+		assertEquals(player.getMaxHealth(), player.getCurrentHealth());
 		assertNotEquals(2, potion.getQuantity());
 		assertEquals(3, potion.getQuantity());
 	}

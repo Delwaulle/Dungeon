@@ -1,5 +1,6 @@
 package dungeon.level;
 
+import dungeon.game.GameBoard;
 import dungeon.game.Trap;
 import dungeon.game.TrapEnum;
 
@@ -47,7 +48,7 @@ public class TrapRoom extends Room {
 
 	@Override
 	public void action() {
-		this.trap.activate();
+		this.trap.activate(GameBoard.player);
 	}
 
 	@Override
