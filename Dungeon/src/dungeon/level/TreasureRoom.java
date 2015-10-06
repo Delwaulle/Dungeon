@@ -10,6 +10,7 @@ import dungeon.items.Chest;
 public class TreasureRoom extends Room{
 
 	private Chest chest=new Chest();
+	public boolean chestIsAlreadyTaken;
 	
 	/**
 	 * create a treasure room
@@ -18,6 +19,7 @@ public class TreasureRoom extends Room{
 	 */
 	public TreasureRoom(String name,Level level) {
 		super(name,level);
+		chestIsAlreadyTaken=false;
 	}
 	
 	/**
@@ -55,6 +57,12 @@ public class TreasureRoom extends Room{
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 		
+	}
+	public boolean chestIsTaken (boolean chestIsAlreadyTaken){
+		if(chestIsAlreadyTaken==false){
+			chestIsAlreadyTaken=true;
+		}
+		return chestIsAlreadyTaken;
 	}
 
 	/**

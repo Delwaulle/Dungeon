@@ -87,30 +87,21 @@ public class Level {
 				System.out.println("direction generated : " + direction);
 				if(totalNumberOfRoom==roomsLeft){
 					currentRoom=entrance;
-					System.out.println("set the entrance");
 				}
 				if(aRandomRoom==1 && nbNormalRoom!=0){
 					nextRoom=intersection;
 					nbNormalRoom--;
-					System.out.println("normal room");
 				}else if(aRandomRoom==2 && nbMonsterRoom!=0){
-					nextRoom=monsterRoom;
 					nbMonsterRoom--;
-					System.out.println("monster room");
 				}else if(aRandomRoom==3 && nbTreasureRoom!=0){
-					nextRoom=treasureRoom;
 					nbTreasureRoom--;
-					System.out.println("treasure room");
 				}else if(aRandomRoom==4 && nbTrapRoom!=0){
-					nextRoom=trapRoom;
 					nbTrapRoom--;
 					System.out.println("trap room");
 				}
 				if(roomsLeft==1){
 					nextRoom=exit;
 					roomsLeft=0;
-					System.out.println("set exit");
-					System.out.println("fin d'un niveau");
 				}
 				((Room) currentRoom).setNeighbour(new Door(direction), (Room)nextRoom);
 				roomsLeft = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom;
