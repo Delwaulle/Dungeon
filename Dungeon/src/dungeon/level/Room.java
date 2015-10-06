@@ -91,12 +91,12 @@ public abstract class Room {
 		if(door!=null){
 			
 			if(door.isLocked()){
-				if(!this.player.getInventory().isPresent(Item.SAMPLE_KEY)){
+				if(!this.player.getInventory().isPresent(Item.KEY)){
 					System.out.println("Sorry you don't have the key to open this door, keep digging around this room");
 					return null;
 				}
 				else{
-					this.player.getInventory().useItem(Item.SAMPLE_KEY, 1);
+					this.player.getInventory().useItem(Item.KEY, 1);
 					System.out.println("Good game you have the key to open this door ! You discover a new room !");
 				}
 			}

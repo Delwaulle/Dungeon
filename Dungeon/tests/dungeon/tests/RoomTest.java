@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import dungeon.exceptions.FullInventoryException;
 import dungeon.exceptions.MaxStacksException;
-import dungeon.game.GameBoard;
 import dungeon.game.Player;
 import dungeon.items.Item;
 import dungeon.items.StackItem;
@@ -53,7 +52,7 @@ public class RoomTest {
 		
 		assertNull(room.goToDirection(Direction.SOUTH));
 		
-		StackItem key = new StackItem(Item.SAMPLE_KEY);
+		StackItem key = new StackItem(Item.KEY);
 		player.getInventory().addItem(key);
 		
 		assertEquals("room2", room.goToDirection(Direction.SOUTH).getName());

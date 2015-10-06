@@ -4,7 +4,7 @@ import dungeon.utils.Constants;
 
 /**
  * Enum of all possible items in the game
- * @author Loïc
+ * @author Loï¿½c
  *
  */
 public enum Item {
@@ -29,7 +29,7 @@ public enum Item {
 	 * KEYS
 	 * 
 	 */
-	SAMPLE_KEY(6,Constants.MAX_KEYS_BY_LEVEL,1,0,25);
+	KEY(6,Constants.MAX_KEYS_BY_LEVEL,1,0,25);
 	;
 	
 
