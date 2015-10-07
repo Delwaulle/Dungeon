@@ -11,6 +11,7 @@ public final class Constants {
 	* ITEMS
 	*/
 	public static final int MAX_KEYS_BY_LEVEL = 10;
+	public static final int MAX_ITEM_RARITY=30;
 	
 	
 	

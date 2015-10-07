@@ -31,12 +31,29 @@ public class RandomGenerator {
 	}
 	
 	/**
-	 * @return a random item
+	 *  /!\ CRITICAL FUNCTION /!\ hard to test
+	 * @return a random item considerate his rarity
 	 */
 	public static Item generateRandomItem(){
 		Random r = new Random();
-		int valeurMax= Item.values().length;
-		Item randomItem= Item.values()[r.nextInt(valeurMax)];
+		List<Item> itemsMultiplyByRarity=new ArrayList<Item>();
+		int nbOfItems= Item.values().length;
+		Item item;
+		for(int i=0;i<nbOfItems;i++){
+			item=Item.values()[i];
+			int rarity=item.getRarity();
+			//More the rarity of the object is important less it will be present in the list
+			int rapport=(int)(((double)1/rarity)*Constants.MAX_ITEM_RARITY);
+			//rapport will be more important than the object is not rare then we add it more time in the list
+			for(int j=0;j<rapport;j++){
+				itemsMultiplyByRarity.add(item);
+			}
+			
+		}	
+		// now me take a random in the list
+		int valeurMax=itemsMultiplyByRarity.size();
+		int random=r.nextInt(valeurMax);
+		Item randomItem= itemsMultiplyByRarity.get(random);
 		return randomItem;
 	}	
 	

@@ -21,16 +21,16 @@ public enum Item {
 	 * WEAPONS
 	 *
 	 */
-	WOODEN_SWORD(2,1,5,2,10),
-	IRON_SWORD(3,1,10,5,20),
-	GOLDEN_SWORD(4,1,15,10,30),
-	DIAMOND_SWORD(5,1,20,15,50),
+	WOODEN_SWORD(2,1,5,2,8),
+	IRON_SWORD(3,1,10,5,15),
+	GOLDEN_SWORD(4,1,15,10,20),
+	DIAMOND_SWORD(5,1,20,15,30),
 	
 	/*
 	 * KEYS
 	 * 
 	 */
-	KEY(6,Constants.MAX_KEYS_BY_LEVEL,1,0,25);
+	KEY(6,Constants.MAX_KEYS_BY_LEVEL,1,0,10);
 	;
 	
 
