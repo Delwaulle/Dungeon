@@ -41,11 +41,11 @@ public class ConsumePotionCommand implements Command{
 			if(item==Item.HEALTH_POTION){
 				if (character.getCurrentHealth() < character.getMaxHealth()){
 					if ((character.getCurrentHealth() + item.getPower()) > character
-							.getMaxHealth())
+							.getMaxHealth()){
 						character.setCurrentHealth(character.getMaxHealth());
+					}
 					else
-						character.setCurrentHealth(character.getCurrentHealth()
-							+ item.getPower());
+						character.setCurrentHealth(character.getCurrentHealth()+ item.getPower());
 					character.getInventory().useItem(item, 1);
 					System.out.println("You have now " + character.getCurrentHealth());
 				}

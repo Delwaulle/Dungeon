@@ -38,7 +38,7 @@ public final class Constants {
 	 */
 	public static final int BASIC_POWER = 5;
 	public static final int BASIC_LIFE = 20;
-	public static final int BASIC_POURCENTAGE_OF_CRITICAL_HIT=40;
+	public static final int BASIC_POURCENTAGE_OF_CRITICAL_HIT=5;
 	public static final int BASIC_POWER_OF_CRITICAL_HIT=5;
 	public static final int MAX_POURCENT_CRITICAL_HIT=50;
 

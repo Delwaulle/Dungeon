@@ -134,6 +134,7 @@ public class Inventory {
 		if(itemToUse!=null && item.isEdible()){
 			try {
 				itemToUse.updateQuantity(-quantity);
+				System.out.println("quuannnt "+itemToUse.getQuantity());
 			} catch (MaxStacksException e) {
 				e.printStackTrace();
 			}

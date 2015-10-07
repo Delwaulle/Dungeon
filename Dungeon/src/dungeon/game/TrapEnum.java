@@ -6,10 +6,10 @@ package dungeon.game;
  */
 public enum TrapEnum {
 
-	GAZ(1,"Gaz", 5),
-	FIRE(2, "Fire", 10),
-	HIDDEN_SPIKES(3, "Hidden Spikes", 15),
-	ROCKS_FELL(4, "Rocks Fell", 20);
+	GAZ(1,"Gaz", 2),
+	FIRE(2, "Fire", 4),
+	HIDDEN_SPIKES(3, "Hidden Spikes", 6),
+	ROCKS_FELL(4, "Rocks Fell", 8);
 	
 	/**
 	 * id of the enum, power of the trap
