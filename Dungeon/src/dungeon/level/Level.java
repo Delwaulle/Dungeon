@@ -220,7 +220,7 @@ public class Level {
 			break;
 			
 		case "stats":
-			commandFactory.setCommand(new StatsCommand(this.player));	
+			commandFactory.setCommand(new StatsCommand(this.player));
 			commandFactory.invoke();
 			break;
 		case "drop":
