@@ -51,7 +51,7 @@ public class RandomGenerator {
 		int quantity;
 		for(int i =0; i<nbItems;i++){
 			Item randomItem=generateRandomItem();
-			quantity=r.nextInt(randomItem.getMaxStack()+1);
+			quantity=r.nextInt(randomItem.getMaxStack())+1;
 			try {
 				randomItemList.add(new StackItem(randomItem,quantity));
 			} catch (MaxStacksException e) {

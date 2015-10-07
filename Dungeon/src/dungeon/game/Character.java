@@ -37,7 +37,7 @@ public abstract class Character {
 	public int attack(){
 		if(isCriticalHit()){
 			System.out.println("Critical hit !");
-			return this.getDamagesWithWeapon()*powerOfCriticalHit;
+			return this.getDamagesWithWeapon()+powerOfCriticalHit;
 		}
 		//normal hit
 		return this.getDamagesWithWeapon();
