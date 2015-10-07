@@ -32,5 +32,14 @@ public class CharacterTest {
 		character.setDamages(10);
 		assertEquals(character.attack(),10);
 	}
+	
+	@Test
+	public void calculatePourcentCriticalHitByLevelTest(){
+		
+		Character character = new Player("toto");
+		int level=1;
+		int res = character.calculatePourcentCriticalHitByLevel(level);
+		assertEquals(4,res);
+	}
 
 }

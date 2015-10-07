@@ -96,7 +96,7 @@ public abstract class Character {
 	 * @return the pourcentage of critical hit for a character thanks the level
 	 */
 	public int calculatePourcentCriticalHitByLevel(int level){
-		return (int)(level/Constants.MAX_LEVELS)*(Constants.MAX_POURCENT_CRITICAL_HIT-Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT);
+		return (int)(((double)level/Constants.MAX_LEVELS)*(Constants.MAX_POURCENT_CRITICAL_HIT-Constants.BASIC_POURCENTAGE_OF_CRITICAL_HIT));
 	}
 	
 	

@@ -11,11 +11,6 @@ import dungeon.level.TrapRoom;
 
 public class TrapRoomTest {
 
-	@Test
-	public void trapNameNotInConstrcutorTest(){
-		TrapRoom trapRoom = new TrapRoom("TrapRoom", null); // no need of level
-		assertEquals("Gaz", trapRoom.getTrap().getName());
-	}
 	
 	@Test
 	public void trapNameWithConstructorTest(){
