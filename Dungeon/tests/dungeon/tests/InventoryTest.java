@@ -70,7 +70,7 @@ public class InventoryTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		inventory.useItem(Item.HEALTH_POTION,1);
+		inventory.useItem(Item.HEALTH_POTION);
 		StackItem expectingItem = inventory.getItemByType(Item.HEALTH_POTION);
 		int quantity=expectingItem.getQuantity();
 		int expectingQuantity=2;

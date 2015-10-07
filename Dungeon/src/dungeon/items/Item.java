@@ -115,6 +115,7 @@ public enum Item {
     	switch (this) {
           case HEALTH_POTION:
           case STRENGH_POTION:
+          case PROFUSE_HEAL_POTION:
               return true;
           default:
               return false;

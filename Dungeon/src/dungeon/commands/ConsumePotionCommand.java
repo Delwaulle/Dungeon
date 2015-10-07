@@ -46,8 +46,9 @@ public class ConsumePotionCommand implements Command{
 					}
 					else
 						character.setCurrentHealth(character.getCurrentHealth()+ item.getPower());
-					character.getInventory().useItem(item, 1);
+					character.getInventory().useItem(item);
 					System.out.println("You have now " + character.getCurrentHealth());
+
 				}
 				else
 					System.out.println("You are full life : "+character.getCurrentHealth()+" HP.");
@@ -55,6 +56,7 @@ public class ConsumePotionCommand implements Command{
 			else if (item==Item.STRENGH_POTION){
 				character.setDamages(character.getDamages()+Item.STRENGH_POTION.getPower());
 				System.out.println("You have now "+character.getDamages()+" power !");
+
 			}
 		}
 		else{

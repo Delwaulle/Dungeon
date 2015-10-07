@@ -96,7 +96,7 @@ public abstract class Room {
 					return null;
 				}
 				else{
-					this.player.getInventory().useItem(Item.KEY, 1);
+					this.player.getInventory().useItem(Item.KEY);
 					System.out.println("Good game you have the key to open this door ! You discover a new room !");
 				}
 			}

@@ -65,11 +65,16 @@ public class Inventory {
 	 * Display all the items to the inventory which are edible
 	 */
 	public void showAllEdibleItems(){
+		String strToShow="";
 		System.out.println("Yours edible(s) item(s) :");
 		for(StackItem item : this.items){
 			if(item.getType().isEdible())
-				System.out.println(item.toString());
+				strToShow+=item.toString()+"\n";
 		}
+		if(strToShow=="")
+			System.out.println("/!\\ No edible item /!\\ ");
+		else
+			System.out.println(strToShow);			
 		System.out.println("===========================================================");
 	}
 	
@@ -78,11 +83,16 @@ public class Inventory {
 	 * Display all the items to the inventory which are equipable
 	 */
 	public void showAllEquipableItems(){
+		String strToShow="";
 		System.out.println("Yours equipable(s) item(s) :");
 		for(StackItem item : this.items){
 			if(item.getType().isEquipable())
-				System.out.println(item.toString());
+				strToShow+=item.toString()+"\n";
 		}
+		if(strToShow=="")
+			System.out.println("/!\\ No equipable item /!\\ ");
+		else
+			System.out.println(strToShow);			
 		System.out.println("===========================================================");
 	}
 	
@@ -129,12 +139,13 @@ public class Inventory {
 	 * @param the item
 	 * @return if the item has been used
 	 */
-	public boolean useItem(Item item,int quantity){
+	public boolean useItem(Item item){
 		StackItem itemToUse = getItemByType(item);
 		if(itemToUse!=null && item.isEdible()){
 			try {
-				itemToUse.updateQuantity(-quantity);
-				System.out.println("quuannnt "+itemToUse.getQuantity());
+				itemToUse.updateQuantity(-1);
+				if(itemToUse.getQuantity()==0)
+					items.remove(itemToUse);
 			} catch (MaxStacksException e) {
 				e.printStackTrace();
 			}
