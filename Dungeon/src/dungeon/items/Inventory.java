@@ -29,8 +29,18 @@ public class Inventory {
 	 * @param maxWeight
 	 */
 	public Inventory(int maxWeight){
-		this.items = new ArrayList<StackItem>();
+		this(maxWeight,new ArrayList<StackItem>());
+	}
+	
+	
+	/**
+	 * Instanciate the inventory with a itemList
+	 * @param maxWeight
+	 * @param itemList
+	 */
+	public Inventory(int maxWeight,List<StackItem> itemList){
 		this.maxWeight=maxWeight;
+		this.items=itemList;
 	}
 	
 	/**

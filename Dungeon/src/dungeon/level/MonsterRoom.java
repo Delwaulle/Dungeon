@@ -3,6 +3,7 @@ package dungeon.level;
 import dungeon.game.Battle;
 import dungeon.game.Monster;
 import dungeon.game.MonsterEnum;
+import dungeon.utils.RandomGenerator;
 import dungeon.utils.SecureInput;
 
 /**
@@ -20,7 +21,7 @@ public class MonsterRoom extends Room {
 	 */
 	public MonsterRoom(String name,Level level) {
 		super(name,level);
-		this.monster = new Monster(MonsterEnum.DEVIL_CAT,level.getNumLevel());
+		this.monster = new Monster(RandomGenerator.generateRandomMonster(),level.getNumLevel());
 	}
 
 	/**

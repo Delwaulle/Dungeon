@@ -1,6 +1,7 @@
 package dungeon.level;
 
 import dungeon.items.Chest;
+import dungeon.utils.RandomGenerator;
 
 /**
  * This class is for the specific rooms with a chest inside
@@ -9,8 +10,7 @@ import dungeon.items.Chest;
  */
 public class TreasureRoom extends Room{
 
-	private Chest chest=new Chest();
-	public boolean chestIsAlreadyTaken;
+	private Chest chest;
 	
 	/**
 	 * create a treasure room
@@ -19,7 +19,7 @@ public class TreasureRoom extends Room{
 	 */
 	public TreasureRoom(String name,Level level) {
 		super(name,level);
-		chestIsAlreadyTaken=false;
+		this.chest=RandomGenerator.generateRandomChest();
 	}
 	
 	/**
@@ -57,12 +57,6 @@ public class TreasureRoom extends Room{
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 		
-	}
-	public boolean chestIsTaken (boolean chestIsAlreadyTaken){
-		if(chestIsAlreadyTaken==false){
-			chestIsAlreadyTaken=true;
-		}
-		return chestIsAlreadyTaken;
 	}
 
 	/**

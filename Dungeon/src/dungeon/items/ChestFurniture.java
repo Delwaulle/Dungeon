@@ -1,5 +1,7 @@
 package dungeon.items;
 
+import dungeon.utils.RandomGenerator;
+
 /**
  * @author Loic
  * When the player examine a chest furniture he discover a chest and can take its content
@@ -13,7 +15,7 @@ public class ChestFurniture extends Furniture{
 	 */
 	public ChestFurniture(FurnitureType furniture) {
 		super(furniture);
-		//initialize random chest
+		this.chest=RandomGenerator.generateRandomChest();
 	}
 
 	@Override

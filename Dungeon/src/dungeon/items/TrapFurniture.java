@@ -2,6 +2,7 @@ package dungeon.items;
 
 import dungeon.game.GameBoard;
 import dungeon.game.Trap;
+import dungeon.utils.RandomGenerator;
 
 /**
  * @author Loic
@@ -16,7 +17,7 @@ public class TrapFurniture extends Furniture{
 	 */
 	public TrapFurniture(FurnitureType furniture) {
 		super(furniture);
-		//iniatialize trap
+		this.trap=new Trap(RandomGenerator.generateRandomTrap());
 	}
 
 	@Override

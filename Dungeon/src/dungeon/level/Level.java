@@ -7,6 +7,7 @@ import java.util.Random;
 import dungeon.commands.*;
 import dungeon.game.GameBoard;
 import dungeon.game.Player;
+import dungeon.utils.RandomGenerator;
 import dungeon.utils.SecureInput;
 
 /**
@@ -127,11 +128,8 @@ public class Level {
 
 	private Direction generateADirection(List<Direction> listDirections) {
 		Direction newDirection;
-		int dir;
 		do{
-			Random r = new Random();
-			dir = r.nextInt(Direction.values().length);
-			newDirection = Direction.values()[dir];
+			newDirection = RandomGenerator.generateRandomDirection();
 		}while(listDirections.contains(newDirection));
 		return newDirection;
 	}

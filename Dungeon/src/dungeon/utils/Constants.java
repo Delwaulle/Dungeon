@@ -43,6 +43,11 @@ public final class Constants {
 	public static final int MAX_POURCENT_CRITICAL_HIT=50;
 
 
+	/*
+	 * RANDOM
+	 */
+	public static final int MAX_RANDOM_ITEM= 3;
+	
 	/**
 	 * @param mAX_LEVELS
 	 */

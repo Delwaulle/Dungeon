@@ -2,7 +2,7 @@ package dungeon.level;
 
 import dungeon.game.GameBoard;
 import dungeon.game.Trap;
-import dungeon.game.TrapEnum;
+import dungeon.utils.RandomGenerator;
 
 /**
  * this class is for a basic/normal room without monster, chest or trap and this
@@ -22,7 +22,7 @@ public class TrapRoom extends Room {
 	 */
 	public TrapRoom(String name, Level level) {
 		super(name, level);
-		this.trap = new Trap(TrapEnum.GAZ);
+		this.trap = new Trap(RandomGenerator.generateRandomTrap());
 	}
 	
 	/**

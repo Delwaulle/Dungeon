@@ -1,6 +1,7 @@
 package dungeon.game;
 
 import dungeon.utils.Constants;
+import dungeon.utils.RandomGenerator;
 
 
 /**
@@ -20,6 +21,7 @@ public class Monster extends Character{
 	public Monster(MonsterEnum monster,int level){
 		super(monster.getName());
 		this.monster=monster;
+		this.inventory=RandomGenerator.generateRandomInventory();
 		initializeCaracteristics(level);
 	
 	}
