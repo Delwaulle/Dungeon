@@ -53,11 +53,9 @@ public class Level {
 		//intersection.setDescription("2 ways, west or east. I can hear something strange on the east...");
 		
 		treasureRoom = new TreasureRoom("treasureroom",this);
-		treasureRoom.setDescription("There is an empty chest on the ground.");
 		trapRoom = new TrapRoom("trapRoom",this);
 		monsterRoom = new MonsterRoom("monsterRoom",this);
 		passage = new NormalRoom("passage",this);
-		passage.setDescription("It turns to the north.");
 		//create the exit
 		exit = new NormalRoom("exit",this);
 		

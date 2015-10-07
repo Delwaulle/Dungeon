@@ -47,8 +47,7 @@ public class RandomGenerator {
 			//rapport will be more important than the object is not rare then we add it more time in the list
 			for(int j=0;j<rapport;j++){
 				itemsMultiplyByRarity.add(item);
-			}
-			
+			}	
 		}	
 		// now me take a random in the list
 		int valeurMax=itemsMultiplyByRarity.size();

@@ -35,11 +35,6 @@ public class MonsterRoom extends Room {
 	}
 
 
-	@Override
-	public String getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void displayInformation() {
@@ -70,18 +65,6 @@ public class MonsterRoom extends Room {
 				action();
 			}
 		}
-	}
-
-	@Override
-	public void setDescription(String description) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

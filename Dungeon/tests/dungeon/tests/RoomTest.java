@@ -23,12 +23,6 @@ public class RoomTest {
 		assertEquals("room2", room.goToDirection(Direction.NORTH).getName());
 	}
 	
-	@Test
-	public void descriptionRoomTest(){
-		Room room = new NormalRoom("room", null);		
-		room.setDescription("description");
-		assertEquals("description", room.getDescription());
-	}
 	
 	@Test
 	public void notValidDirectionTest(){

@@ -6,14 +6,13 @@ package dungeon.commands;
  */
 public enum Mod {
 	
-	BASIC_MOD(1,new CommandType[]{CommandType.USE}),
-	BATTLE_MOD(2,new CommandType[]{CommandType.USE}),
-	EXCAVATION_MOD(3,new CommandType[]{CommandType.USE}),
-	TREASURE_MOD(4,new CommandType[]{CommandType.USE})
+	BASIC_MOD(1,new String[]{"go","stats","help","equip","describe","inventory","use","drop"}),
+	BATTLE_MOD(2,new String[]{"hit","stats","help","equip","inventory","use"}),
+	EXCAVATION_MOD(3,new String[]{"go","stats","help","equip","describe","inventory","use","drop","examine"}),
 	;
 
 	private int id;
-	private CommandType[] listCommands;
+	private String[] listCommands;
 	
 	/**
 	 * @param id
@@ -26,7 +25,7 @@ public enum Mod {
 	 * @param id
 	 * @param listCommands
 	 */
-	Mod(int id,CommandType[] listCommands){
+	Mod(int id,String[] listCommands){
 		this.id=id;
 		this.listCommands=listCommands;
 	}
@@ -34,7 +33,7 @@ public enum Mod {
 	/**
 	 * @return list of the commands associate to the mod
 	 */
-	public CommandType[] getListCommands() {
+	public String[] getListCommands() {
 		return listCommands;
 	}
 
@@ -44,13 +43,4 @@ public enum Mod {
 	public int getId() {
 		return id;
 	}
-	
-	public String toString(){
-		String str="";
-		for(int i =0;i<listCommands.length;i++){
-			str+="- "+listCommands[i].getDescription()+"\n";
-		}
-		return str;
-	}
-	
 }

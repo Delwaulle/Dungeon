@@ -13,15 +13,11 @@ public class CommandFactory {
 
 	private Command command;
 	private Mod currentCommandMod;
-	private Map<String,Command> stringToCommand= new HashMap<>();
 
 	public CommandFactory(Command command) {
 		this.command = command;
 	}
 	
-
-
-
 
 	public void invoke() {
 		command.execute();
@@ -38,6 +34,10 @@ public class CommandFactory {
 		System.out.println(currentCommandMod.toString());
 	}
 	
+	/**
+	 * execute the command associate to the user input
+	 * @param user input (command + args)
+	 */
 	public void interpretCommand(String [] cmd){
 		if(isValidCommandWithMod(cmd[0])){
 
@@ -48,14 +48,18 @@ public class CommandFactory {
 		
 	}
 	
+	/**
+	 * @param name of the command
+	 * @return if it is a valid command with the current mod
+	 */
 	public boolean isValidCommandWithMod(String cmd){
-		/*CommandEnum[] listCmd = this.currentCommandMod.getListCommands();
+		String[] listCmd = this.currentCommandMod.getListCommands();
 		boolean isPresent=false;
 		for(int i=0;i<listCmd.length;i++){
-			if(listCmd[i].name().equals(cmd.toUpperCase()))
+			if(cmd.equals(listCmd[i]))
 				isPresent=true;
-		}*/
-		return true;
+		}
+		return isPresent;
 	}
 	
 	public CommandFactory(Mod commandMod){

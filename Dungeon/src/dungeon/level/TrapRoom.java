@@ -35,11 +35,6 @@ public class TrapRoom extends Room {
 		this.trap = trap;
 	}
 
-	@Override
-	public String getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void displayInformation() {
@@ -49,18 +44,6 @@ public class TrapRoom extends Room {
 	@Override
 	public void action() {
 		this.trap.activate(GameBoard.player);
-	}
-
-	@Override
-	public void setDescription(String description) {
-		this.description = description;
-
-	}
-
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	/**

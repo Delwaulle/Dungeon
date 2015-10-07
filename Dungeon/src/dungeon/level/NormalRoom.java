@@ -15,11 +15,6 @@ public class NormalRoom extends Room{
 		super(name,level);
 	}
 
-	@Override
-	public String getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void displayInformation() {
@@ -31,17 +26,4 @@ public class NormalRoom extends Room{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void setDescription(String description) {
-		this.description = description;
-		
-	}
-
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return this.description;
-	}
-
 }

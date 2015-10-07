@@ -173,25 +173,17 @@ public abstract class Room {
 		return isDescribed;
 	}
 	
+	/**
+	 * only used for tests
+	 * @param player
+	 */
+	public void setPlayer(Player player){
+		this.player = player;
+	}
+	
 	// ========================= ABSTRACT =======================
 		
-	/**
-	 * @param description
-	 */
-	public abstract void setDescription(String description);
-	
-	
-	/**
-	 * @return the description of the room
-	 */
-	public abstract String getDescription();
-	
-	
-	/**
-	 * @return the direction
-	 */
-	public abstract String getDirection();
-	
+
 		
 	/**
 	 * Just display the informations of the room on the screen
@@ -204,11 +196,5 @@ public abstract class Room {
 	 */
 	public abstract void action();
 	
-	/**
-	 * only used for tests
-	 * @param player
-	 */
-	public void setPlayer(Player player){
-		this.player = player;
-	}
+
 }

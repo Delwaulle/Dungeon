@@ -33,14 +33,6 @@ public class TreasureRoom extends Room{
 		this.setChest(chest);
 	}
 
-
-	@Override
-	public String getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	@Override
 	public void displayInformation() {
 		System.out.println("You are in a treasure room !");
@@ -49,15 +41,10 @@ public class TreasureRoom extends Room{
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
+		System.out.println("There is a chest in the middle of this room !");
 		
 	}
 
-	@Override
-	public void setDescription(String description) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	/**
 	 * @return chest
@@ -73,13 +60,5 @@ public class TreasureRoom extends Room{
 	public void setChest(Chest chest) {
 		this.chest = chest;
 	}
-
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 
 }

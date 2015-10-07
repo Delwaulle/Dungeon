@@ -10,7 +10,7 @@ import dungeon.items.Inventory;
 public class ShowInventoryCommand implements Command{
 
 	private Character character;
-	private final String COMMAND_DESCRIPTION="show : Shows the invotory of the character";
+	private final String COMMAND_DESCRIPTION="inventory : Shows the invotory of the character";
 	
 	/**
 	 * @param character
