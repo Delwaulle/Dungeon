@@ -8,10 +8,13 @@ import dungeon.exceptions.MaxStacksException;
 import dungeon.game.MonsterEnum;
 import dungeon.game.TrapEnum;
 import dungeon.items.Chest;
+import dungeon.items.ChestFurniture;
+import dungeon.items.Furniture;
 import dungeon.items.FurnitureType;
 import dungeon.items.Inventory;
 import dungeon.items.Item;
 import dungeon.items.StackItem;
+import dungeon.items.TrapFurniture;
 import dungeon.level.Direction;
 
 /**
@@ -122,6 +125,31 @@ public class RandomGenerator {
 		int valeurMax= FurnitureType.values().length;
 		FurnitureType randomFurniture= FurnitureType.values()[r.nextInt(valeurMax)];
 		return randomFurniture;
+	}
+	
+	/**
+	 * @param furnitureType
+	 * @return randomly a chest furniture or a trap furniture
+	 */
+	public static Furniture generateRandomFurnitureType(FurnitureType furnitureType){
+		Random r = new Random();
+		int valeurMax=2;
+		int random=r.nextInt(valeurMax);
+		if(random==0)
+			return new ChestFurniture(furnitureType);
+		return new TrapFurniture(furnitureType);
+	}
+	
+	/**
+	 * @return a random list of furnitures
+	 */
+	public static List<Furniture> generateRandomFurnitureList(){
+		int nbMaxFurniture=Constants.MAX_RANDOM_FURNITURE;
+		List<Furniture> list=new ArrayList<Furniture>();
+		for(int i=0;i<nbMaxFurniture;i++){
+			list.add(generateRandomFurnitureType(generateRandomFurniture()));
+		}
+		return list;
 	}
 	
 	

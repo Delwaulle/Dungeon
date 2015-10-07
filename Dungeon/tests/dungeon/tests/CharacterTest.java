@@ -22,7 +22,7 @@ public class CharacterTest {
 		character.setPourcentCriticalHit(100); //set to 100% the critical hit pourcentage's
 		character.setPowerOfCriticalHit(2);
 		character.setDamages(10);
-		assertEquals(character.attack(),20);
+		assertEquals(character.attack(),character.getDamages()+character.getPowerOfCriticalHit());
 	}
 	
 	@Test

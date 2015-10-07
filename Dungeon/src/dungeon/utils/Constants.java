@@ -48,12 +48,13 @@ public final class Constants {
 	 * RANDOM
 	 */
 	public static final int MAX_RANDOM_ITEM= 3;
+	public static final int MAX_RANDOM_FURNITURE=3;
 	
 	/**
 	 * @param mAX_LEVELS
 	 */
-	public static void setMAX_LEVELS(int mAX_LEVELS) {
-		MAX_LEVELS = mAX_LEVELS;
+	public static void setMAX_LEVELS(int maxLevels) {
+		MAX_LEVELS = maxLevels;
 	}
 
 
@@ -61,7 +62,7 @@ public final class Constants {
 	/**
 	 * @param mAX_DUNGEONS
 	 */
-	public static void setMAX_DUNGEONS(int mAX_DUNGEONS) {
-		MAX_DUNGEONS = mAX_DUNGEONS;
+	public static void setMAX_DUNGEONS(int maxDungeons) {
+		MAX_DUNGEONS = maxDungeons;
 	}
 }

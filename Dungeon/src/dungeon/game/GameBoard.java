@@ -2,8 +2,6 @@ package dungeon.game;
 
 import java.util.Scanner;
 
-import dungeon.commands.CommandFactory;
-import dungeon.commands.Mod;
 import dungeon.utils.Constants;
 import dungeon.utils.LoadProperties;
 import dungeon.utils.SecureInput;
@@ -21,7 +19,6 @@ public class GameBoard {
 	private  int nbDungeon=Constants.MAX_DUNGEONS;
 	private Scanner scanner = new Scanner(System.in);
 	public static Player player;
-	public static CommandFactory commandFactory=new CommandFactory(Mod.BASIC_MOD);
 	
 	/**
 	 * the beginning of the adventure for the player

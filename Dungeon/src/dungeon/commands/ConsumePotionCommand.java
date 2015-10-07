@@ -46,7 +46,7 @@ public class ConsumePotionCommand implements Command{
 					else
 						character.setCurrentHealth(character.getCurrentHealth()+ item.getPower());
 					character.getInventory().useItem(item);
-					System.out.println("You have now " + character.getCurrentHealth());
+					System.out.println("You have now " + character.getCurrentHealth()+" HP");
 
 				}
 				else

@@ -1,6 +1,5 @@
 package dungeon.level;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +12,8 @@ import dungeon.commands.Mod;
 import dungeon.game.GameBoard;
 import dungeon.game.Player;
 import dungeon.items.Item;
+import dungeon.utils.RandomGenerator;
+import dungeon.utils.SecureInput;
 
 /**
  * Each elements which composed a level
@@ -24,11 +25,11 @@ import dungeon.items.Item;
 public abstract class Room {
 	
 	protected Map<Door,Room> neighbours = new HashMap<>();
-	protected List<Furniture> furnitures = new ArrayList<Furniture>(); //generate random pllls
+	protected List<Furniture> furnitures; //generate random pllls
 	protected String name;
 	protected Level level;
 	protected boolean isDescribed;
-	private CommandFactory commandFactory=GameBoard.commandFactory;
+	private CommandFactory commandFactory;
 	protected Player player = GameBoard.player;
 	
 	/**
@@ -39,6 +40,7 @@ public abstract class Room {
 	public Room(String name,Level level){
 		this.name=name;
 		this.level=level;
+		this.furnitures=RandomGenerator.generateRandomFurnitureList();
 	}
 	
 	
@@ -144,17 +146,35 @@ public abstract class Room {
 		for (Furniture furniture : furnitures){
 			System.out.println("- "+furniture.getFurniture().name());
 		}
-		this.commandFactory.setCurrentCommandMod(Mod.EXCAVATION_MOD);
+		this.commandFactory=new CommandFactory(Mod.EXCAVATION_MOD);
 		System.out.println("Now you can examine the furnitures");
-		System.out.println("What do you want to do : ");
-		for (Furniture furniture : furnitures){
-			System.out.println("- "+furniture.getFurniture().getAction());
-		}
+		examineFurniture();
+		
 	}
 	
 	
+	/**
+	 * verify if the furniture to examine is correct and call the action associate with it 
+	 */
 	public void examineFurniture(){
-		//get the furniture and furniture.examine
+		System.out.println("What do you want to do ? (Enter help to show all the possible commands)");
+		System.out.print("> ");	
+		String line = SecureInput.getNoEmptyStringInput();
+		String[] cmd = line.split(" ",2);
+	
+		Furniture furniture=null;
+		if(cmd.length!=1 && cmd[0].equals("examine")){
+			for(Furniture f : furnitures){
+				if(f.getFurniture().name().equals(cmd[1].toUpperCase()))
+					furniture=f;
+			}
+			if(furniture==null){
+				System.out.println("Invalid furniture, please try again");
+				examineFurniture();
+			}
+		}
+		if(!this.commandFactory.interpretCommand(cmd, this.player, this.level, this,null, furniture))
+			this.examineFurniture();
 	}
 	
 	

@@ -200,7 +200,13 @@ public class Inventory {
 	 * @param list to add at the inventory
 	 */
 	public void addListToInventory(List<StackItem> listToAdd)throws FullInventoryException{
-		for(StackItem itemToAdd : listToAdd){
+		
+		StackItem itemToAdd;
+		/*Traverse the list in reverse order to cancel the error ConcurrentModificationException 
+		 * Caused by the iterator because we update the list with a remove action after the iterator is created,
+		 */
+		for (int i=listToAdd.size()-1; i> -1; i--) { 
+			itemToAdd=listToAdd.get(i);
 			if(isPresent(itemToAdd.getType()))	{
 				try {
 					searchItem(itemToAdd.getType()).updateQuantity(itemToAdd.getQuantity());
