@@ -12,7 +12,6 @@ public class ConsumePotionCommand implements Command{
 	private Character character;
 	private String potion;
 	private Item item;
-	private final String COMMAND_DESCRIPTION = "use : use an item in your inventory. You must specify the name of the item. Ex: \"use HEALTH_POTION\"";
 
 	/**
 	 * @param character
@@ -64,11 +63,4 @@ public class ConsumePotionCommand implements Command{
 			this.character.getInventory().showAllEdibleItems();
 		}
 	}
-
-	@Override
-	public String getDescription() {
-		return this.COMMAND_DESCRIPTION;
-	}
-	
-
 }

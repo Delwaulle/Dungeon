@@ -12,7 +12,6 @@ public class EquipItemCommand implements Command{
 	private Character character;
 	private Item item;
 	private String equipValue;
-	private final String COMMAND_DESCRIPTION="equip : equip a weapon from your inventory. Ex: \"equip WOODEN_SWORD\"";
 	
 	/**
 	 * @param player
@@ -45,11 +44,4 @@ public class EquipItemCommand implements Command{
 			this.character.getInventory().showAllEquipableItems();
 		}
 	}
-
-	@Override
-	public String getDescription() {
-		return this.COMMAND_DESCRIPTION;
-	}
-
-
 }

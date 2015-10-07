@@ -1,9 +1,8 @@
 package dungeon.game;
 
 import dungeon.commands.CommandFactory;
-import dungeon.commands.ConsumePotionCommand;
-import dungeon.commands.EquipItemCommand;
 import dungeon.commands.HitCommand;
+import dungeon.commands.Mod;
 import dungeon.utils.SecureInput;
 
 /**
@@ -16,7 +15,7 @@ public class Battle {
 	
 	private Player player;
 	private Monster monster;
-	private CommandFactory commandFactory=GameBoard.commandFactory;
+	private CommandFactory commandFactory;
 	
 	/**
 	 * create a new battle
@@ -26,6 +25,7 @@ public class Battle {
 	public Battle(Player player, Monster monster){
 		this.player = player;
 		this.monster = monster;
+		this.commandFactory=new CommandFactory(Mod.BATTLE_MOD);
 	}
 	
 	/**
@@ -36,43 +36,14 @@ public class Battle {
 			if(!player.getCurrentLevel().getCurrentRoom().getName().equals("entrance")){
 				if(player.getCurrentWeapon()==null)
 					System.out.println("/!\\ YOU HAVEN'T EQUIPPED WEAPON");
-				System.out.println("What do you want to do ?");
-				System.out.println("Enter \"hit\" to hit the monster");
-				System.out.println("Enter \"use + potion name\" to use a potion");
-				System.out.println("Enter \"equip + weapon name\" to equip a weapon");
+				System.out.println("What do you want to do ? (Enter help to show all the possible commands)");
+				System.out.print("> ");	
 				String answer = SecureInput.getNoEmptyStringInput();
 				String[] cmd = answer.split(" ",2);
-				switch (cmd[0]) {
-				case "hit":
-					//the player attacks the monster 
-					commandFactory.setCommand(new HitCommand(this.player,this.monster));
-					commandFactory.invoke();
-					fight(this.monster);
-					break;
-				case "use":
-					String potionName="";
-					if(cmd.length!=2)
-						potionName=" ";
-					else
-						potionName=cmd[1];
-					commandFactory.setCommand(new ConsumePotionCommand(this.player,potionName));
-					commandFactory.invoke();
-					fight(this.player);
-					break;
-				case "equip":
-					String equipName="";
-					if(cmd.length!=2)
-						equipName=" ";
-					else
-						equipName=cmd[1];
-					commandFactory.setCommand(new EquipItemCommand(this.player,equipName));
-					commandFactory.invoke();
-					fight(this.player);
-					break;
-				default:
-					System.out.println("I don't know what you mean");
+				if(!this.commandFactory.interpretCommand(cmd, aggressor, null, null, monster, null))
 					fight(player);
-				}
+				else
+					fight(monster);
 			}
 		}
 		else{

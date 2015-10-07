@@ -1,16 +1,15 @@
 package dungeon.commands;
 
-import dungeon.game.Character;
 import dungeon.items.Inventory;
+import dungeon.game.Character;
 
 /**
  * @author Loic
- * Show the inventory of the character passed in param
+ * Show the inventory of the player
  */
 public class ShowInventoryCommand implements Command{
 
 	private Character character;
-	private final String COMMAND_DESCRIPTION="inventory : Shows the invotory of the character";
 	
 	/**
 	 * @param character
@@ -25,11 +24,6 @@ public class ShowInventoryCommand implements Command{
 		System.out.println("Your inventory :");
 		System.out.println(inventory.toString());
 		System.out.println("================");
-	}
-
-	@Override
-	public String getDescription() {
-		return this.COMMAND_DESCRIPTION;
 	}
 
 }

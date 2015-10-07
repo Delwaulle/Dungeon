@@ -9,7 +9,6 @@ public class HitCommand implements Command {
 	
 	private Character aggressor;
 	private Character receiver;
-	private final String COMMAND_DESCRIPTION="hit : Hit a character";
 	
 	/**
 	 * @param aggressor
@@ -27,10 +26,4 @@ public class HitCommand implements Command {
 		receiver.getHit(aggressorDamages);
 		
 	}
-
-	@Override
-	public String getDescription() {
-		return this.COMMAND_DESCRIPTION;
-	}
-
 }

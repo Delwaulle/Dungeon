@@ -26,7 +26,7 @@ public class Level {
 	private Room previousRoom;
 	protected boolean gameIsFinished=false;
 	private Player player=GameBoard.player;
-	private CommandFactory commandFactory=GameBoard.commandFactory;
+	private CommandFactory commandFactory;
 	private int numLevel;
 	
 	/**
@@ -161,88 +161,30 @@ public class Level {
 		this.currentRoom=entrance;
 	}
 	
-	
-	/**
-	 * ask to the player what does he want to do ?
-	 * @param command
-	 */
-	public void interpretCommand(String command){
-		String[] cmd = command.split(" ",2);
-		
-		switch(cmd[0]){
-		case "help":
-			commandFactory.setCommand(new HelpCommand());
-			commandFactory.invoke();
-			break;
-		
-		case "go":
-			String directionName="";
-			if(cmd.length!=2)
-				directionName=" ";
-			else
-				directionName=cmd[1];
-			commandFactory.setCommand(new GoCommand(this,directionName));			
-			commandFactory.invoke();
-			break;
-		
-		case "describe":
-			commandFactory.setCommand(new DescribeCommand(this.currentRoom));
-			commandFactory.invoke();
-			break;
-			
-		case "inventory":
-			commandFactory.setCommand(new ShowInventoryCommand(this.player));
-			commandFactory.invoke();
-			break;
-			
-		case "use":
-			String potionName="";
-			if(cmd.length!=2)
-				potionName=" ";
-			else
-				potionName=cmd[1];
-			commandFactory.setCommand(new ConsumePotionCommand(this.player,potionName));
-			commandFactory.invoke();
-
-			break;
-		
-		case "equip":
-			String equipName="";
-			if(cmd.length!=2)
-				equipName=" ";
-			else
-				equipName=cmd[1];
-			commandFactory.setCommand(new EquipItemCommand(this.player,equipName));
-			commandFactory.invoke();
-
-			break;
-			
-		case "stats":
-			commandFactory.setCommand(new StatsCommand(this.player));
-			commandFactory.invoke();
-			break;
-		case "drop":
-			String itemName;
-			if(cmd.length!=2)
-				itemName=" ";
-			else
-				itemName=cmd[1];
-			commandFactory.setCommand(new DropCommand(this.player,itemName));
-			commandFactory.invoke();
-			break;	
-		default:
-			System.out.println("I don't know what you mean. Type \"help\" to show the differents commands.");
-		}
-	}
-
 	/**
 	 * ask for the player his choices
 	 */
 	public void displayMessage(){
 		currentRoom.displayDirections();
-		System.out.println("What do you want to do ?");
+		System.out.println("What do you want to do ? (Enter help to show all the possible commands)");
+		System.out.print("> ");	
 	}
 
+	/**
+	 * read the command from the player
+	 */
+	public void readCommand(){
+		this.commandFactory=new CommandFactory(Mod.BASIC_MOD);
+		//this.commandFactory.showPossibleCommand();
+		displayMessage();		
+		//Read a command from the player
+		String line = SecureInput.getNoEmptyStringInput();
+		String[] cmd = line.split(" ",2);
+		
+		if(!this.commandFactory.interpretCommand(cmd, this.player, this, this.currentRoom, null, null))
+			this.readCommand();
+		
+	}
 	
 	/**
 	 * the buckle into which one the player is into for a level
@@ -254,12 +196,7 @@ public class Level {
 		do{			
 			currentRoom.displayInformation();
 			currentRoom.action();
-			displayMessage();
-			System.out.print("> ");
-			
-			//Read a command from the player
-			String line = SecureInput.getNoEmptyStringInput();
-			interpretCommand(line);				
+			readCommand();
 		}while(!gameIsFinished());
 		
 		System.out.println("You are in "+getCurrentRoom().getName());
@@ -299,7 +236,6 @@ public class Level {
 	 */
 	public void goToPreviousRoom(){
 		this.currentRoom=previousRoom;
-		this.displayMessage();
 	}
 	
 	

@@ -4,12 +4,11 @@ import dungeon.items.Furniture;
 
 /**
  * @author Loic
- * 
+ * Launch the examination of the furniture
  */
 public class ExamineCommand implements Command{
 
 	private Furniture furniture;
-	private final String COMMAND_DESCRIPTION="examine : Examine a furniture which are in a room Ex : \"examine the carpet \"";
 	
 	/**
 	 * @param furniture
@@ -20,11 +19,7 @@ public class ExamineCommand implements Command{
 	
 	@Override
 	public void execute() {
-		//
+		this.furniture.examine();
 	}
 
-	@Override
-	public String getDescription() {
-		return COMMAND_DESCRIPTION;
-	}
 }

@@ -13,7 +13,6 @@ public class GoCommand implements Command{
 	private Level level;
 	private Direction direction;
 	private String directionName;
-	private final String COMMAND_DESCRIPTION="go : go to a direction. You must specify the direction. Ex: \"go north\"";
 	
 	/**
 	 * @param level
@@ -50,11 +49,4 @@ public class GoCommand implements Command{
 			System.out.println("Bad Direction !");
 		
 	}
-
-	@Override
-	public String getDescription() {
-		return this.COMMAND_DESCRIPTION;
-	}
-
-
 }
