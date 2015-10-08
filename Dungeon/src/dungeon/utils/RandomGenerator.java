@@ -72,12 +72,28 @@ public class RandomGenerator {
 			Item randomItem=generateRandomItem();
 			quantity=r.nextInt(randomItem.getMaxStack())/3+1;
 			try {
-				randomItemList.add(new StackItem(randomItem,quantity));
+				if(!itemIsPresent(randomItemList,randomItem))
+					randomItemList.add(new StackItem(randomItem,quantity));
+				else
+					i--;
 			} catch (MaxStacksException e) {
 				e.printStackTrace();
 			}
 		}
 		return randomItemList;
+	}
+	
+	/**
+	 * @param list
+	 * @param item
+	 * @return if the item is present in the list
+	 */
+	public static boolean itemIsPresent(List<StackItem> list,Item item){
+		for(StackItem stackItem : list){
+			if(stackItem.getType().equals(item))
+				return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -141,13 +157,31 @@ public class RandomGenerator {
 	}
 	
 	/**
+	 * @param list
+	 * @param furniture
+	 * @return if the item is present in the list
+	 */
+	public static boolean furnitureIsPresent(List<Furniture> list,FurnitureType furniture){
+		for(Furniture f : list){
+			if(f.getFurniture().equals(furniture))
+				return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * @return a random list of furnitures
 	 */
 	public static List<Furniture> generateRandomFurnitureList(){
-		int nbMaxFurniture=Constants.MAX_RANDOM_FURNITURE;
+		Random r = new Random();
+		int nbMaxFurniture=r.nextInt(Constants.MAX_RANDOM_FURNITURE);
 		List<Furniture> list=new ArrayList<Furniture>();
 		for(int i=0;i<nbMaxFurniture;i++){
-			list.add(generateRandomFurnitureType(generateRandomFurniture()));
+			FurnitureType randomnFurniture=generateRandomFurniture();
+			if(!furnitureIsPresent(list, randomnFurniture))
+				list.add(generateRandomFurnitureType(randomnFurniture));
+			else
+				i--;
 		}
 		return list;
 	}

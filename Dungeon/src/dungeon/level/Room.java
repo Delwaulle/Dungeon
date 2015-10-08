@@ -143,13 +143,17 @@ public abstract class Room {
 	public void askDescription(){
 		this.isDescribed=true;
 		System.out.println("There are in this room : ");
-		for (Furniture furniture : furnitures){
-			System.out.println("- "+furniture.getFurniture().name());
+		if(furnitures.size()==0){
+			System.out.println("No furniture in this room !");
 		}
-		this.commandFactory=new CommandFactory(Mod.EXCAVATION_MOD);
-		System.out.println("Now you can examine the furnitures");
-		examineFurniture();
-		
+		else{
+			for (Furniture furniture : furnitures){
+				System.out.println("- "+furniture.getFurniture().name());
+			}
+			this.commandFactory=new CommandFactory(Mod.EXCAVATION_MOD);
+			System.out.println("Now you can examine the furnitures");
+			examineFurniture();
+		}
 	}
 	
 	
