@@ -198,7 +198,7 @@ public class Level {
 			currentRoom.displayInformation();
 			currentRoom.action();
 			readCommand();
-		}while(!gameIsFinished());
+		}while(!gameIsWon());
 		
 		System.out.println("You are in "+getCurrentRoom().getName());
 		if(gameIsWon()){
@@ -212,25 +212,12 @@ public class Level {
 	}
 	
 	/**
-	 * @return if the player lose or win
-	 */
-	public boolean gameIsFinished(){
-		return gameIsLose() || gameIsWon();
-	}
-
-	/**
 	 * @return the win when the player has finished the level
 	 */
 	public boolean gameIsWon() {
 		return currentRoom.getName().equals("exit");
 	}
 	
-	/**
-	 * @return the lose when the player is dead or in a trap
-	 */
-	public boolean gameIsLose() {
-		return currentRoom.getName().equals("trap");
-	}
 
 	/**
 	 * if the player wants to go back

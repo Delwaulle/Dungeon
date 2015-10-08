@@ -69,7 +69,7 @@ public class ChestCommand implements Command{
 		else{
 			System.out.println("I don't know what you mean. Type \"help\" to show the differents commands.");
 			execute();
-		}	
+		}
 	}
 
 }
