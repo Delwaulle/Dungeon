@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import dungeon.commands.CommandFactory;
 import dungeon.commands.Mod;
+import dungeon.game.Monster;
+import dungeon.game.MonsterEnum;
+import dungeon.game.Player;
+import dungeon.level.Level;
 
 public class CommandFactoryTest {
 	private CommandFactory commandFac;
@@ -23,5 +27,14 @@ public class CommandFactoryTest {
 		assertTrue(commandFac.isValidCommandWithMod("inventory"));
 		assertFalse(commandFac.isValidCommandWithMod("hit"));
 		
+	}
+	
+	@Test
+	public void interpretCommandTest(){
+		commandFac = new CommandFactory(Mod.BASIC_MOD);
+		String[]cmd = new String[]{"go","north"};
+		assertTrue(commandFac.interpretCommand(cmd, new Player("toto"), new Level(1,1), null, new Monster(MonsterEnum.DEVIL_CAT,1), null));
+		String[]cmd2 = new String[]{"help"};
+		assertFalse(commandFac.interpretCommand(cmd2, null, null, null, null, null));
 	}
 }
