@@ -29,6 +29,13 @@ public class InventoryTest {
 		assertEquals(testItem,itemInInventory);
 	}
 	
+	@Test(expected = MaxStacksException.class)
+	public void addMaxItemWeightTest() throws FullInventoryException, MaxStacksException{
+		Inventory inventory=new Inventory();
+		inventory.addItem(new StackItem(Item.IRON_SWORD,Item.IRON_SWORD.getMaxStack()+1));
+
+	}
+	
 	@Test
 	public void searchExistingItemTest() {
 		Inventory inventory=new Inventory();

@@ -17,15 +17,6 @@ public class Trap {
 		this.setPower(trap.getPower());
 	}
 	
-	/**
-	 * @param name
-	 * @param power
-	 */
-	public Trap(String name, int power){
-		this.setName(name);
-		this.setPower(power);
-	}
-	
 	
 	/**
 	 * activate the trap

@@ -3,6 +3,7 @@ package dungeon.tests;
 import static org.junit.Assert.*;
 import dungeon.game.Character;
 import dungeon.game.Player;
+import dungeon.items.Item;
 
 import org.junit.Test;
 
@@ -40,6 +41,17 @@ public class CharacterTest {
 		int level=1;
 		int res = character.calculatePourcentCriticalHitByLevel(level);
 		assertEquals(4,res);
+	}
+	
+	
+	@Test
+	public void getDropTest(){
+		Character character = new Player("toto");
+		Character characterDrop = new Player("tata");
+		int expectingQuantity= character.getInventory().getItemByType(Item.HEALTH_POTION).getQuantity()*2;
+		character.getDrop(characterDrop);	
+		assertEquals(character.getInventory().getItemByType(Item.HEALTH_POTION).getQuantity(),expectingQuantity);
+		assertEquals(character.getInventory().getItemByType(Item.WOODEN_SWORD).getQuantity(),Item.WOODEN_SWORD.getMaxStack());
 	}
 
 }
