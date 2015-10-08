@@ -58,13 +58,14 @@ public class Level {
 		passage = new NormalRoom("passage",this);
 		//create the exit
 		exit = new NormalRoom("exit",this);
-		
+		//give a prorata for each type of room in a level
 		int nbNormalRoom=numDungeon*numLevel*(1/2)+2;
 		int nbMonsterRoom=numDungeon*numLevel*(1/5)+1;
 		int nbTreasureRoom=numDungeon*numLevel*(1/6)+1;
 		int nbTrapRoom=numDungeon*numLevel*(1/6)+1;
-		
+		//the total number of rooms we have to create
 		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom;//+the entrance
+		// the number of rooms left that we have to create
 		int roomsLeft=totalNumberOfRoom;
 		int aRandomRoom;
 		Direction direction = null;
@@ -119,11 +120,19 @@ public class Level {
 	}
 	
 	
+	/**
+	 * @param direction
+	 * @return the opposite direction
+	 */
 	private Direction oppositeDirection(Direction direction) {
 		return direction.getOppositeDirection();
 	}
 
 
+	/**
+	 * @param listDirections
+	 * @return a random direction which is not in the listDirections
+	 */
 	private Direction generateADirection(List<Direction> listDirections) {
 		Direction newDirection;
 		do{
@@ -132,6 +141,9 @@ public class Level {
 		return newDirection;
 	}
 
+	/**
+	 * @return a number of Door for this room
+	 */
 	private int generateNbDoor() {
 		// TODO Auto-generated method stub
 		Random r = new Random();
