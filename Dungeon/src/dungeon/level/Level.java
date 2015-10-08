@@ -33,20 +33,20 @@ public class Level {
 	 * construct a level
 	 * @param numLevel
 	 */
-	public Level(int numLevel){
+	public Level(int numDungeon, int numLevel){
 		this.numLevel=numLevel;
-		generateLevel(numLevel);
+		generateLevel(numDungeon,numLevel);
 		this.currentRoom=entrance;
 	}
 	
-
-
-
 	/**
-	 * for the moment, we initialize some level with its rooms
+	 * generate all the levels of all the dungeons
+	 * @param numDungeon
+	 * @param numLevel
 	 */
-	public void generateLevel(int numLevel){
+	public void generateLevel(int numDungeon,int numLevel){
 		// create the entrance
+		
 		entrance = new NormalRoom("entrance",this);
 		
 		intersection = new NormalRoom("intersection",this);
@@ -59,12 +59,12 @@ public class Level {
 		//create the exit
 		exit = new NormalRoom("exit",this);
 		
-		int nbNormalRoom=numLevel*(1/2)+2;
-		int nbMonsterRoom=numLevel*(1/5)+1;
-		int nbTreasureRoom=numLevel*(1/6)+1;
-		int nbTrapRoom=numLevel*(1/6)+1;
+		int nbNormalRoom=numDungeon*numLevel*(1/2)+2;
+		int nbMonsterRoom=numDungeon*numLevel*(1/5)+1;
+		int nbTreasureRoom=numDungeon*numLevel*(1/6)+1;
+		int nbTrapRoom=numDungeon*numLevel*(1/6)+1;
 		
-		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom+1;//+the entrance
+		int totalNumberOfRoom = nbMonsterRoom+nbNormalRoom+nbTreasureRoom+nbTrapRoom;//+the entrance
 		int roomsLeft=totalNumberOfRoom;
 		int aRandomRoom;
 		Direction direction = null;
@@ -119,10 +119,6 @@ public class Level {
 	}
 	
 	
-	/**
-	 * @param direction
-	 * @return the opposite direction of the direction in param
-	 */
 	private Direction oppositeDirection(Direction direction) {
 		return direction.getOppositeDirection();
 	}
@@ -139,7 +135,7 @@ public class Level {
 	private int generateNbDoor() {
 		// TODO Auto-generated method stub
 		Random r = new Random();
-		int nbDoor = r.nextInt(3)+1;
+		int nbDoor = r.nextInt(2)+1;
 		return nbDoor;
 	}
 	

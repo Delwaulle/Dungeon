@@ -14,7 +14,7 @@ public class PlayerTest {
 	@Test
 	public void respawnTest() {
 		Player player=new Player("toto");
-		Level testLevel=new Level(1);
+		Level testLevel=new Level(1,1);
 		player.setCurrentLevel(testLevel);
 		player.setMaxHealth(10);
 		player.setCurrentHealth(10);

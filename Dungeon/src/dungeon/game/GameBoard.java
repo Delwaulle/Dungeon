@@ -37,7 +37,7 @@ public class GameBoard {
 		for(int i =0;i<nbDungeon;i++){
 			System.out.println("Welcome to the dungeon "+(i+1));
 			System.out.println("Enter 'help' for knowing all your possibilities.");
-			Dungeon dungeon = new Dungeon();
+			Dungeon dungeon = new Dungeon(i);
 			dungeon.start();
 			System.out.println("========= NEXT DUNGEON ==========");
 		}

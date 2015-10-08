@@ -19,10 +19,10 @@ public class Dungeon {
 		 * Initialize all the levels in the dungeon
 		 * @throws InterruptedException
 		 */
-		public Dungeon() throws InterruptedException{
+		public Dungeon(int numDungeon) throws InterruptedException{
 			levels = new Level[nbLevel];
 			for(int i=0;i<levels.length;i++){
-				levels[i]=new Level(i+1);
+				levels[i]=new Level(numDungeon,i+1);
 			}
 		}
 		
