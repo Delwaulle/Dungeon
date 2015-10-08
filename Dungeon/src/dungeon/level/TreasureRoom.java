@@ -1,5 +1,8 @@
 package dungeon.level;
 
+import dungeon.commands.ChestCommand;
+import dungeon.commands.CommandFactory;
+import dungeon.commands.Mod;
 import dungeon.items.Chest;
 import dungeon.utils.RandomGenerator;
 
@@ -11,6 +14,7 @@ import dungeon.utils.RandomGenerator;
 public class TreasureRoom extends Room{
 
 	private Chest chest;
+	private CommandFactory commandFactory;
 	
 	/**
 	 * create a treasure room
@@ -41,8 +45,9 @@ public class TreasureRoom extends Room{
 
 	@Override
 	public void action() {
-		System.out.println("There is a chest in the middle of this room !");
-		
+		this.commandFactory=new CommandFactory(Mod.TREASURE_MOD);
+		this.commandFactory.setCommand(new ChestCommand(this.chest));
+		this.commandFactory.invoke();	
 	}
 
 

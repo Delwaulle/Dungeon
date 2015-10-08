@@ -54,7 +54,7 @@ public class Inventory {
 			try {
 				items.get(items.indexOf(item)).updateQuantity(item.getQuantity());
 			} catch (MaxStacksException e) {
-				e.printStackTrace();
+				System.out.println("You can't add this item you are full stack");
 			}
 		else
 			this.items.add(item);
@@ -159,6 +159,8 @@ public class Inventory {
 		for(int i=0;i<items.size();i++){
 			list+=items.get(i).toString()+"\n";
 		}
+		if(list.equals(""))
+			System.out.println("No items !");
 		return list;
 	}
 	
@@ -211,7 +213,7 @@ public class Inventory {
 				try {
 					searchItem(itemToAdd.getType()).updateQuantity(itemToAdd.getQuantity());
 				} catch (MaxStacksException e) {
-					e.printStackTrace();
+					System.out.println(" /!\\ Max stack of "+itemToAdd.getType().name());
 				}
 				listToAdd.remove(itemToAdd);
 			}

@@ -102,6 +102,7 @@ public class CommandFactory {
 				break;
 			default:
 				System.out.println("I don't know what you mean. Type \"help\" to show the differents commands.");
+				isTerminal=false;
 			}	
 			//call the execution of the command
 			this.invoke();

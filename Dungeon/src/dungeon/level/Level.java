@@ -119,6 +119,10 @@ public class Level {
 	}
 	
 	
+	/**
+	 * @param direction
+	 * @return the opposite direction of the direction in param
+	 */
 	private Direction oppositeDirection(Direction direction) {
 		return direction.getOppositeDirection();
 	}
@@ -159,6 +163,7 @@ public class Level {
 	 */
 	public void goToEntrance(){
 		this.currentRoom=entrance;
+		this.currentRoom.displayDirections();
 	}
 	
 	/**

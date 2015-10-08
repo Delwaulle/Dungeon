@@ -26,8 +26,10 @@ public class HelpCommand implements Command{
 		this.commandDescription.put("stats", "shows stats of the character.");
 		this.commandDescription.put("drop", "choose an item to remove of your inventory. Ex: \"drop HEALTH_POTION\"");
 		this.commandDescription.put("equip", "equip a weapon from your inventory. Ex: \"equip WOODEN_SWORD\"");
-		this.commandDescription.put("examine", "examine a furniture present in the room. Ex :\"examine carpter\"");
+		this.commandDescription.put("examine", "examine a furniture present in the room. Ex :\"examine carpet\"");
 		this.commandDescription.put("hit", "hit a character");
+		this.commandDescription.put("take", "take an object/all objects to the chest to your inventory");
+		this.commandDescription.put("ignore", "ignore the content of the chest and continue your adventure");
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ public enum Mod {
 	BASIC_MOD(1,new String[]{"go","stats","help","equip","describe","inventory","use","drop"}),
 	BATTLE_MOD(2,new String[]{"hit","stats","help","equip","inventory","use"}),
 	EXCAVATION_MOD(3,new String[]{"go","stats","help","equip","describe","inventory","use","drop","examine"}),
+	TREASURE_MOD(4,new String[]{"take","ignore"}),
 	;
 
 	private int id;
