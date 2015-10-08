@@ -48,6 +48,7 @@ public class TreasureRoom extends Room{
 		this.commandFactory=new CommandFactory(Mod.TREASURE_MOD);
 		this.commandFactory.setCommand(new ChestCommand(this.chest));
 		this.commandFactory.invoke();	
+		this.displayDirections();
 	}
 
 
